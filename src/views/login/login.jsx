@@ -9,7 +9,7 @@ class Login extends Component {
     this.state = {
       emailId: '',
       password: '',
-      developerMode: true // Change this to false to contact API
+      developerMode: false // Change this to false to contact API
     };
   }
 
@@ -28,12 +28,10 @@ class Login extends Component {
   performLogin = (e) => {
     e.preventDefault();
     if (this.state.developerMode) {
-      console.log('inside developerMode login');
       this.props.dispatchDeveloperModeLogin();
       AppHelper.developerModeLoginUser(true);
       return;
     }
-    console.log('outside developerMode login');
     this.props.dispatchLogin(this.state).then((response) => {
       const accessToken = response.payload.data.data.accessToken;
       AppHelper.loginUser(true, accessToken);
