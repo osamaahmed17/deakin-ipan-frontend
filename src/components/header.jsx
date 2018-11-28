@@ -22,11 +22,15 @@ class Header extends Component {
     return (
       <div>
         <ul className="sidenav" id="mobile-demo">
+          <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
+          <h5>Mary Who</h5>
           <li><a href="#!">My progress</a></li>
           <li><a href="#!">Browse programs</a></li>
           <li><a href="#!">Invitations</a></li>
+          <li><a href="#!">Events</a></li>
+          <li><a href="#!">Notifications</a></li>
           <li><a href="/profile">My Profile</a></li>
-          <li> <a onClick={this.logout} href="#!">Logout</a></li>
+          <li><a onClick={this.logout} href="#!">Logout</a></li>
         </ul>
         <div className="navbar-fixed">
           <ul id="dropdown1" className="dropdown-content">
@@ -34,17 +38,19 @@ class Header extends Component {
             <li><a href="#!">Browse programs</a></li>
             <li><a href="#!">Invitations</a></li>
             <li><a href="/profile">My Profile</a></li>
-            <li> <a onClick={this.logout} href="#!">Logout</a></li>
+            <li><a onClick={this.logout} href="#!">Logout</a></li>
           </ul>
 
           <nav>
             <div className="nav-wrapper">
               <a href="#!" data-target="mobile-demo" className="sidenav-trigger show-on-small"><i className="material-icons">menu</i></a>
               <a href="#!" className="brand-logo center">{this.props.title}</a>
-              <ul id="nav-mobile" className="right">
-                <li> <a href="#!"><i className="material-icons">event</i></a></li>
-                <li> <a href="#!"><i className="material-icons">notifications</i></a></li>
-                <li className="hide-on-med-and-down" > <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
+              <ul id="nav-mobile" className="left">
+                <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
+                <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
+                <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">notifications</i></a></li>
+                <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
+                <li className="hide-on-med-and-down header-username">Mary Who</li>
               </ul>
             </div>
           </nav>

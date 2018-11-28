@@ -30,3 +30,14 @@
     transform: rotate(360deg);
   }
 }
+
+.header-avatar {
+  max-height: 56px;
+  width: auto;
+  margin-top: 4px;
+}
+
+.header-username {
+  padding: 0 10px;
+  font-weight: 600;
+}
