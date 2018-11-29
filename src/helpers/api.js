@@ -1,5 +1,5 @@
 import AppHelper from "helpers/AppHelper.js";
-import axiosClient from 'index.js';
+import { axiosClient } from 'index.js';
 
 class API {
 
@@ -19,7 +19,19 @@ class API {
   }
 
   // GET requests
+  getProfile = (stateHandler) => {
+    axiosClient.get("user/1/profile")
+    .then((response) => {
+      stateHandler({profile: response.data.profile});
+    })
+  }
 
+  getName = (stateHandler) => {
+    axiosClient.get("user/1/profile")
+    .then((response) => {
+      stateHandler({name: `${response.data.profile.first_name} ${response.data.profile.last_name}`});
+    })
+  }
 }
 
 const instance = new API();

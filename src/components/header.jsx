@@ -3,8 +3,25 @@ import AppHelper from "helpers/AppHelper.js";
 import { connect } from 'react-redux';
 import { requestLogout } from 'actions';
 import M from "materialize-css";
+import API from 'helpers/api.js';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ''
+    }
+    this.getName();
+  }
+
+  stateHandler = (state) => {
+    this.setState(state);
+  }
+
+  getName = () => {
+    API.getName(this.stateHandler);
+  }
+
   logout = (e) => {
     e.preventDefault();
     this.props.dispatchLogout()
@@ -23,7 +40,7 @@ class Header extends Component {
       <div>
         <ul className="sidenav" id="mobile-demo">
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
-          <h5>Mary Who</h5>
+          <h5>{this.state.name}</h5>
           <li><a href="#!">My progress</a></li>
           <li><a href="#!">Browse programs</a></li>
           <li><a href="#!">Invitations</a></li>
@@ -50,7 +67,7 @@ class Header extends Component {
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">notifications</i></a></li>
                 <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
-                <li className="hide-on-med-and-down header-username">Mary Who</li>
+                <li className="hide-on-med-and-down header-username">{this.state.name}</li>
               </ul>
             </div>
           </nav>
