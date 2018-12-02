@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -40,4 +43,8 @@
 .header-username {
   padding: 0 15px;
   font-weight: 600;
+}
+
+main {
+  flex: 1 0 auto;
 }
