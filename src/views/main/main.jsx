@@ -9,14 +9,16 @@ import AppHelper from 'helpers/AppHelper'
 class Main extends Component {
   render() {
     return (
-      <div className="Main">
-        <Switch>
-          <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/home'/> : <div></div> )} />
-          <Route exact path='/team' component={Team}/>
-          <Route exact path='/home' component={Home}/>
-          <Route exact path='/profile' component={Profile}/>
-        </Switch>
-      </div>
+      <main>
+        <div className="Main">
+          <Switch>
+            <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/home'/> : <div></div> )} />
+            <Route exact path='/team' component={Team}/>
+            <Route exact path='/home' component={Home}/>
+            <Route exact path='/profile' component={Profile}/>
+          </Switch>
+        </div>
+      </main>
     );
   }
 }
