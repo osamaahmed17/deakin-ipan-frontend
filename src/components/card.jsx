@@ -10,14 +10,14 @@ class Card extends Component {
             <p>{this.props.data.shortDesc}</p>
           </div>
           <div className="row" style={{marginBottom:"0px"}}>
-            <p className="col left">Lesson Progress</p>
-            <p className="col right">{this.props.data.progress === ''? 0 : this.props.data.progress}%</p>
+            <p className="col left">Progress</p>
+            <p className="col right">{this.props.data.progress && this.props.data.progress !== '' ? this.props.data.progress : 0}%</p>
           </div>
           <div className="progress">
-            <div className="determinate" style={{width: (this.props.data.progress === ''? 0 : this.props.data.progress) +"%"}}></div>
+            <div className="determinate" style={{width: (this.props.data.progress && this.props.data.progress !== '' ? this.props.data.progress : 0) + "%"}}></div>
           </div>
           <div className="card-action">
-            <a className="flat-btn" href="#!">Visit</a>
+            <a className="flat-btn" href={(this.props.data.link && this.props.data.link !== '' ? this.props.data.link : '#!')}>Visit</a>
           </div>
         </div>
       </div>
