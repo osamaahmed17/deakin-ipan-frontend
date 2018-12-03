@@ -5,15 +5,19 @@ class UserPrograms extends Component {
   render () {
     let data= {
       title: 'Title',
-      descriptionShort: 'body'
+      shortDesc: 'Body',
+      progress: '',
+      link: ''
     }
     
     return (
       <div>
-        <Card 
-          id='1'
-          data= {data}
-        />
+        <div className="row">
+          <Card 
+            id='1'
+            data= {data}
+          />
+        </div>
       </div>
     );
   }
