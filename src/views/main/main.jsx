@@ -6,6 +6,7 @@ import Profile from 'views/profile/profile.jsx'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHelper from 'helpers/AppHelper'
 import UserPrograms from 'views/userProjects/userPrograms.jsx'
+import Error from 'views/error/error.jsx'
 
 class Main extends Component {
   render() {
@@ -18,6 +19,9 @@ class Main extends Component {
             <Route exact path='/home' component={Home}/>
             <Route exact path='/profile' component={Profile}/>
             <Route exact path='/programs' component={UserPrograms}/>
+            <Route render= {(props) => (
+              <Error {...props} errorCode={401} />
+            )} />
           </Switch>
         </div>
       </main>
