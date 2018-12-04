@@ -32,6 +32,35 @@ class API {
       stateHandler({name: `${response.data.profile.first_name} ${response.data.profile.last_name}`});
     })
   }
+
+  // Get User Programs
+  getPrograms = (stateHandler) => {
+    axiosClient.get("programs")
+    .then((response) => {
+      stateHandler({programs: response.data.programs});
+    })
+  }
+
+  getProgram = (stateHandler, p_id) => {
+    axiosClient.get("program/" + p_id)
+    .then((response) => {
+      stateHandler({program: response.data.program});
+    })
+  }
+
+  getModule = (stateHandler, p_id, m_id) => {
+    axiosClient.get("program/" + p_id + "/module/" + m_id)
+    .then((response) => {
+      stateHandler({module: response.data.module});
+    })
+  }
+
+  getActivity = (stateHandler, p_id, m_id, a_id) => {
+    axiosClient.get("program/" + p_id + "/module/" + m_id + "/activity/" + a_id)
+    .then((response) => {
+      stateHandler({activity: response.data.activity});
+    })
+  }
 }
 
 const instance = new API();
