@@ -11,14 +11,21 @@ class Login extends Component {
       password: '',
       developerMode: false, // Change this to false to contact API
       error: false,
+<<<<<<< HEAD
       errorMsg: ''
+=======
+>>>>>>> login: New validation check
     };
   }
 
   errorMessage = () => {
     if(this.state.error) {
       return (
+<<<<<<< HEAD
         <p><b>{this.state.errorMsg}</b></p>
+=======
+        <p><b>Invalid credentials!</b></p>
+>>>>>>> login: New validation check
       )
     }
   }
@@ -39,6 +46,7 @@ class Login extends Component {
     let email = this.state.emailId
     let password = this.state.password
     if ((email.length > 0) && (password.length > 0)) {
+<<<<<<< HEAD
       return true
     } else {
       this.setState({
@@ -46,11 +54,17 @@ class Login extends Component {
         errorMsg: "Email or password must not be empty!"
       })
       return false
+=======
+      this.performLogin()
+    } else {
+      this.setState({
+        error: true
+      })
+>>>>>>> login: New validation check
     }
   }
 
   performLogin = (e) => {
-    e.preventDefault();
     if (this.state.developerMode) {
       this.props.dispatchDeveloperModeLogin();
       AppHelper.developerModeLoginUser(true);
@@ -79,6 +93,7 @@ class Login extends Component {
         <h1>
           {this.props.parentState.title}
         </h1>
+<<<<<<< HEAD
         <div className='row'>
           <div className='row'>
             <div className='col s6 offset-s3'>
@@ -93,6 +108,14 @@ class Login extends Component {
                   </a>
               }
             </div>
+=======
+        <div className="row">
+          <div className='col s6 offset-s3'>
+            <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
+            <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
+            {this.errorMessage()}
+            <button className="waves-effect waves-light btn" id='loginButton' onClick={this.validationCheck}>Login</button>
+>>>>>>> login: New validation check
           </div>
         </div>
       </div>
