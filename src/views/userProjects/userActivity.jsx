@@ -34,8 +34,19 @@ class UserActivity extends Component {
         {
           activity.section.map((items, i) => {
             return (
-              <div key={i+1}>
+              <div key={i+1} className="section">
                 <Section data = {items} />
+                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/'+ this.props.match.params.a_id + '/tasks/'+ (i+1)}>
+                  <Card data={items} p_id={items.id} />
+                </Link>
+              </div>
+            )
+          })
+        }
+        {
+          activity.section.map((items, i) => {
+            return (
+              <div key={i+1} className="task-card">
                 <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/'+ this.props.match.params.a_id + '/tasks/'+ (i+1)}>
                   <Card data={items} p_id={items.id} />
                 </Link>

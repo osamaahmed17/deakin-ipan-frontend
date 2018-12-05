@@ -34,14 +34,23 @@ class UserModule extends Component {
         {
           module.section.map((items) => {
             return (
-              <div key={module.id}>
+              <div className="section" key={module.id}>
                 <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+              </div>
+            )
+          })
+        }
+        {
+          module.section.map((items) => {
+            return (
+              <div className="activity-card" key={module.id}>
                 <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + module.id}>
                   <Card data={items} p_id={items.id} />
                 </Link>
               </div>
             )
           })
+          
         }
       </div>
     )
