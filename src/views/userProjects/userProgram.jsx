@@ -34,7 +34,7 @@ class UserProgram extends Component {
           program.modules.map((items) => {
             return (
               <div key={program.id}>
-                <Link to={'/program/' + this.props.match.params.p_id + '/module/' + program.id}>
+                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + program.id}>
                   <Card data={program} p_id={this.props.match.params.id} m_id = {program.id} />
                 </Link>
               </div>

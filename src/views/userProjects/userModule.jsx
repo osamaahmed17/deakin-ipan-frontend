@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
+import Card from 'components/card.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading';
@@ -28,14 +29,15 @@ class UserModule extends Component {
     let module = this.state.module;
     if (!this.state.module) return <LoadingComponent />;
     return(
-      <div>
+      <div className="container">
         <p>Module {this.props.match.params.m_id}</p>
         {
           module.section.map((items) => {
             return (
               <div key={module.id}>
-                <Link to={'/program/' + this.props.match.params.p_id + '/module/' + this.props.match.params.m_id + '/activity/' + module.id}>
-                  <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + module.id}>
+                  <Card data={items} p_id={items.id} />
                 </Link>
               </div>
             )

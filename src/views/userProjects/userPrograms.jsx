@@ -34,7 +34,7 @@ class UserPrograms extends Component {
           programs.map((items) => {
             return (
               <div key={items.id}>
-                <Link to={'/program/' + items.id}>
+                <Link to={'/programs/' + items.id}>
                   <Card data={items} p_id={items.id} />
                 </Link>
               </div>
