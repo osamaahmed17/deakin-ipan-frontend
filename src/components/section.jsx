@@ -23,7 +23,7 @@ function content(data) {
 class Section extends Component {
   render () {
     return (
-      <div className="container">
+      <div>
         {content(this.props.data)}
       </div>
     )
