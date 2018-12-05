@@ -32,7 +32,7 @@ class Header extends Component {
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
     let sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav);
+    M.Sidenav.init(sidenav, { edge: 'right'});
   }
 
   render() {
@@ -42,7 +42,7 @@ class Header extends Component {
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
           <h5>{this.state.name}</h5>
           <li><a href="#!">My progress</a></li>
-          <li><a href="#!">Browse programs</a></li>
+          <li><a href="/programs">Browse programs</a></li>
           <li><a href="#!">Invitations</a></li>
           <li><a href="#!">Events</a></li>
           <li><a href="#!">Notifications</a></li>
@@ -52,7 +52,7 @@ class Header extends Component {
         <div className="navbar-fixed">
           <ul id="dropdown1" className="dropdown-content">
             <li><a href="#!">My progress</a></li>
-            <li><a href="#!">Browse programs</a></li>
+            <li><a href="/programs">Browse programs</a></li>
             <li><a href="#!">Invitations</a></li>
             <li><a href="/profile">My Profile</a></li>
             <li><a onClick={this.logout} href="#!">Logout</a></li>
@@ -60,9 +60,15 @@ class Header extends Component {
 
           <nav>
             <div className="nav-wrapper">
-              <a href="#!" data-target="mobile-demo" className="sidenav-trigger show-on-small"><i className="material-icons">menu</i></a>
+              <a href="#!" data-target="mobile-demo" className="sidenav-trigger show-on-small right"><i className="material-icons">menu</i></a>
               <a href="#!" className="brand-logo center">{this.props.title}</a>
-              <ul id="nav-mobile" className="left">
+              <ul>
+                <li>
+                  <a href="#!"><i className="material-icons">arrow_back</i></a>
+                </li>
+              </ul>
+              
+              <ul id="nav-mobile" className="right">
                 <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">notifications</i></a></li>
