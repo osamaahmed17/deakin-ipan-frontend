@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 class Card extends Component {
   render() {
-    console.log("card rendered")
     return (
       <div className="col s12 m12 l6 offset-l3">
         <div className={"card-panel card_" + this.props.id}>
