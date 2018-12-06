@@ -72,6 +72,7 @@ class Login extends Component {
     }
     if (!this.validationCheck()) return;
     this.props.dispatchLogin(this.state).then((response) => {
+<<<<<<< HEAD
       if (
       response && response.payload && response.payload.data &&
       response.payload.data.data && response.payload.data.data.accessToken
@@ -84,6 +85,13 @@ class Login extends Component {
           errorMsg: "Invalid credentials!"
         })
       }
+=======
+      // if(response.payload.statusCode != 200){
+      //   return response.payload.message;
+      // }
+      const accessToken = response.payload.data.data.accessToken;
+      AppHelper.loginUser(true, accessToken);
+>>>>>>> loginView: Comments
     });
   }
 
