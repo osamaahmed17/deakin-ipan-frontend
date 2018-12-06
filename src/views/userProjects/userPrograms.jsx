@@ -33,8 +33,11 @@ class UserPrograms extends Component {
               data.map((items) => {
                 return (
                   <div key={items.id}>
-                    <Link to={'/programs/' + items.id}>
+                    
                       <Card data={items} p_id={items.id}>
+                        <Link to={'/programs/' + items.id}>
+                          <p className="justify-content">{items.shortDescription}</p>
+                        </Link>
                         <div className="row" style={{marginBottom:"0px"}}>
                           <p className="col right">Completed Modules {items.progress === ''? 0 : items.progress}/{items.total}</p>
                         </div>
@@ -42,7 +45,6 @@ class UserPrograms extends Component {
                           <div className="determinate" style={{width: (items.progress === ''? 0 : items.progress) +"%"}}></div>
                         </div>
                       </Card>
-                    </Link>
                   </div>
                 )
               })
