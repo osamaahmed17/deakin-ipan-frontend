@@ -30,28 +30,64 @@ class UserModule extends Component {
     if (!this.state.module) return <LoadingComponent />;
     return(
       <div className="container">
-        <p>Module {this.props.match.params.m_id}</p>
-        {
-          module.section.map((items) => {
-            return (
-              <div className="section" key={module.id}>
-                <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
-              </div>
-            )
-          })
-        }
-        {
-          module.section.map((items) => {
-            return (
-              <div className="activity-card" key={module.id}>
-                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + module.id}>
-                  <Card data={items} p_id={items.id} />
-                </Link>
-              </div>
-            )
-          })
-          
-        }
+        <p>Module {this.props.match.params.m_id}: Module Name will come here</p>
+          <div className="card">
+            {
+              module.section.map((items) => {
+                return (
+                  <div className="section" key={module.id}>
+                    <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                  </div>
+                )
+              })
+            }
+          </div>
+        <div className="activites">
+          {
+            module.activities.map((items, x) => {
+              console.log(items.id)
+              return (
+                <div className="activity-card" key={x}>  
+                  <Card data={items} p_id={items.id} status= {false}>
+                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + items.id}>
+                      <p className="justify-content text-color">{items.shortDescription}</p>
+                    </Link>
+                    <div className="row margin-bot-rm">
+                      <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
+                    </div>
+                  </Card>
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className="tasks">
+          {
+            module.tasks.map((items, i) => {
+              return (
+                <div className="activity-card" key={i}>  
+                  <Card data={items} p_id={items.id} status= {false}>
+                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + module.id}>
+                      <p className="justify-content text-color">{items.shortDescription}</p>
+                    </Link>
+                    <div className="row margin-bot-rm">
+                      <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
+                    </div>
+                  </Card>
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className="resources">
+          <Card data={'Resources'} status= {false}>
+          {/* requires redirect of resources to url */}
+          {/* Remove hard coded description */}
+            <Link to={'/'}>
+              <p className="justify-content text-color">Module specific external resources</p>
+            </Link>
+          </Card>
+        </div>
       </div>
     )
   }
