@@ -45,7 +45,6 @@ class UserModule extends Component {
         <div className="activites">
           {
             module.activities.map((items, x) => {
-              console.log(items.id)
               return (
                 <div className="activity-card" key={x}>  
                   <Card data={items} p_id={items.id} status= {false}>
@@ -67,7 +66,7 @@ class UserModule extends Component {
               return (
                 <div className="activity-card" key={i}>  
                   <Card data={items} p_id={items.id} status= {false}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + module.id}>
+                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + i.id}>
                       <p className="justify-content text-color">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">

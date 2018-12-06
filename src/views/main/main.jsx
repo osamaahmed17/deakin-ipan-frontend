@@ -26,7 +26,9 @@ class Main extends Component {
             <Route exact path='/programs/:p_id' component={UserProgram} />
             <Route exact path='/programs/:p_id/modules/:m_id' component={UserModule} />
             <Route exact path='/programs/:p_id/modules/:m_id/activities/:a_id' component={UserActivity} />
-            <Route exact path='/programs/:p_id/modules/:m_id/activities/:a_id/tasks/:t_id' component={UserTask} />
+            <Route exact path='/programs/:p_id/modules/:m_id/tasks/:t_id' component={UserTask} />
+            <Route exact path='/activity/:a_id' component={UserActivity} />
+            <Route exaxt path='/tasks/:t_id' component={UserTask} />
             <Route render= {(props) => (
               <Error {...props} errorCode={401} />
             )} />
