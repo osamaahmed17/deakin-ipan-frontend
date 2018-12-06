@@ -11,9 +11,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { requestAccessTokenLogin } from 'actions';
 import Login from 'views/login/login.jsx';
-import createBrowserHistory from "history/createBrowserHistory"
-
-const customHistory = createBrowserHistory();
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +43,7 @@ class App extends Component {
     if (this.props.loading) return (<LoadingComponent/>);
     else return (
       <div className="App">
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history= {customHistory} title={this.state.title} logout={this.stateHandler}/> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history= {this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler}/> : ''}
         {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Main parentState={this.state} parentStateHandler={this.stateHandler} parentProps={this.props}/> : <Login parentState={this.state} parentProps={this.props}/>}
         {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer/> : ''}
       </div>
