@@ -39,7 +39,7 @@ class UserProgram extends Component {
                 {/* the status in card is for achivements and favourites */}
                   <Card data={items} p_id={this.props.match.params.id} m_id = {program.id} status={true}>
                     <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + program.id}>
-                      <p className="justify-content">{items.shortDescription}</p>
+                      <p className="justify-content text-color">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
                       <p className="col right" style={{marginBottom:"0px"}}>Status: {program.status}</p>
