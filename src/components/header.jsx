@@ -71,19 +71,19 @@ class Header extends Component {
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
           <h5>{this.state.name}</h5>
           <li><a href="#!">My progress</a></li>
-          <li><a href="/programs">Browse programs</a></li>
-          <li><a href="#!">Invitations</a></li>
-          <li><a href="#!">Events</a></li>
-          <li><a href="#!">Notifications</a></li>
-          <li><a href="/profile">My Profile</a></li>
+          <li><a href="/programs">My programs</a></li>
+          <li><a href="#!">Favorite Modules</a></li>
+          <li><a href="#!">Favorite Activities</a></li>
+          <li><a href="/profile">Profile</a></li>
           <li><a onClick={this.logout} href="#!">Logout</a></li>
         </ul>
         <div className="navbar-fixed">
           <ul id="dropdown1" className="dropdown-content">
             <li><a href="#!">My progress</a></li>
-            <li><a href="/programs">Browse programs</a></li>
-            <li><a href="#!">Invitations</a></li>
-            <li><a href="/profile">My Profile</a></li>
+            <li><a href="/programs">My programs</a></li>
+            <li><a href="#!">Favourite Modules</a></li>
+            <li><a href="#!">Favourite Activities</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a onClick={this.logout} href="#!">Logout</a></li>
           </ul>
 
