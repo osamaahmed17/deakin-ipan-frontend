@@ -29,13 +29,20 @@ class UserPrograms extends Component {
     if (!this.state.programs) return <LoadingComponent />;
     return (
       <div className="container">
-        <p>My Programs</p>
+        <p>Your Programs</p>
         {
           programs.map((items) => {
             return (
               <div key={items.id}>
                 <Link to={'/programs/' + items.id}>
-                  <Card data={items} p_id={items.id} />
+                  <Card data={items} p_id={items.id}>
+                    <div className="row" style={{marginBottom:"0px"}}>
+                      <p className="col right">Completed Modules {items.progress === ''? 0 : items.progress}/{items.total}</p>
+                    </div>
+                    <div className="progress">
+                      <div className="determinate" style={{width: (items.progress === ''? 0 : items.progress) +"%"}}></div>
+                    </div>
+                  </Card>
                 </Link>
               </div>
             )
