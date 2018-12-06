@@ -9,7 +9,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
     }
     this.getName();
   }
@@ -36,6 +36,7 @@ class Header extends Component {
   }
 
   render() {
+    console.log("Header Component history :",this.props.history)
     return (
       <div>
         <ul className="sidenav" id="mobile-demo">
@@ -71,7 +72,7 @@ class Header extends Component {
               <ul id="nav-mobile" className="right">
                 <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
-                <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">notifications</i></a></li>
+                <li> <a href="#!"><i className="material-icons">notifications</i></a></li>
                 <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                 <li className="hide-on-med-and-down header-username">{this.state.name}</li>
               </ul>
