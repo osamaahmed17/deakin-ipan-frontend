@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { requestLogout } from 'actions';
 import M from "materialize-css";
 import API from 'helpers/api.js';
+import Modal from 'components/modal.jsx'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   constructor(props) {
@@ -12,6 +14,16 @@ class Header extends Component {
       name: '',
     }
     this.getName();
+  }
+
+  countOccurence = (subStr, str) => {
+    let location = []
+    let i = -1
+    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    location = location.splice(0,location.length-1)
+    location = location.splice(-1)
+    let newLocation = str.substring(0, location)
+    return newLocation;
   }
 
   stateHandler = (state) => {
@@ -35,8 +47,24 @@ class Header extends Component {
     M.Sidenav.init(sidenav, { edge: 'right'});
   }
 
+  modalClick = () => {
+    var data = {
+      title: 'Activity Pill 1',
+      description: 'You should try to put your kids to sleep to achieve maximum efficency' 
+    }
+    return (
+      <Modal data={data}>
+        <div className="modal-footer">
+        <Link to="/programs/1/modules/1/activities/1">
+          <button className="btn waves-effect waves-light">Go To Activity</button>
+        </Link>
+        <button className="btn waves-effect waves-light">Dismiss</button>
+        </div>
+      </Modal>
+    )
+  }
+
   render() {
-    console.log("Header Component history :",this.props.history)
     return (
       <div>
         <ul className="sidenav" id="mobile-demo">
@@ -65,19 +93,20 @@ class Header extends Component {
               <a href="#!" className="brand-logo center">{this.props.title}</a>
               <ul>
                 <li>
-                  <a href="#!"><i className="material-icons">arrow_back</i></a>
+                  <a href={this.countOccurence('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>
                 </li>
               </ul>
               
               <ul id="nav-mobile" className="right">
                 <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
-                <li> <a href="#!"><i className="material-icons">notifications</i></a></li>
+                <li> <a href="#!" data-target="modal" className="modal-trigger"> <i className="material-icons">notifications</i> </a> </li>
                 <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                 <li className="hide-on-med-and-down header-username">{this.state.name}</li>
               </ul>
             </div>
           </nav>
+          {this.modalClick()}
         </div>
       </div>
     );
