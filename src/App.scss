@@ -64,3 +64,27 @@ main {
   color: get-color(white, color);
   background-color: get-color(green, darkest);
 }
+
+.margin-bot-rm {
+  margin-bottom: 0 !important;
+}
+
+.padding-top {
+  padding-top : 40px;
+}
+
+.margin-top-rm{
+  margin-top: 0;
+}
+
+.justify-content {
+  text-align: justify;
+}
+
+.margin-rm {
+  margin: 0 !important;
+}
+
+.text-color {
+  color: white !important;
+}
