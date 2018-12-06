@@ -9,7 +9,7 @@ class UserProgram extends Component {
     super(props);
     this.state = {
       program: null,
-    } 
+    }
   }
 
   componentDidMount() {
@@ -28,7 +28,6 @@ class UserProgram extends Component {
   render () {
     let program = this.state.program;
     if (!this.state.program) return <LoadingComponent />;
-    // this.countOccurence("/","/programs/1/modules/1/activities/1")
     return(
       <div className="container">
         <p>Program {this.props.match.params.p_id}</p>
