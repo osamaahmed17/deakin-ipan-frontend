@@ -27,7 +27,7 @@ class UserTask extends Component {
     if (!this.state.tasks) return <LoadingComponent />;
     return(
       <div className="container">
-        <form>
+      <form onSubmit={this.validationCheck} noValidate>
           {
             tasks.data.questionSet.map((items, i) => {
               return (
@@ -39,7 +39,7 @@ class UserTask extends Component {
                         return (
                           <p key={i+1} className="left-align">
                             <label>
-                              <input type="checkbox" className="filled-in"/>
+                              <input type="checkbox" className="filled-in" />
                               <span>{items}</span>
                             </label>
                           </p>
@@ -51,7 +51,7 @@ class UserTask extends Component {
               )
             })
           }
-          <button className="btn waves-effect waves-light" type="submit" name="action"> Submit </button>
+          <button className="btn waves-effect waves-light" onClick= {this.validationCheck} > Submit </button>
         </form>
       </div>
     )
