@@ -35,7 +35,7 @@ class UserPrograms extends Component {
                   <div key={items.id}>
                       <Card data={items} p_id={items.id}>
                         <Link to={'/programs/' + items.id}>
-                          <p className="justify-content text-color">{items.shortDescription}</p>
+                          <p className="justify-content text-color-white">{items.shortDescription}</p>
                         </Link>
                         <div className="row" style={{marginBottom:"0px"}}>
                           <p className="col right">Completed Modules {items.progress === ''? 0 : items.progress}/{items.total}</p>

@@ -49,7 +49,7 @@ class UserModule extends Component {
                 <div className="activity-card" key={x}>  
                   <Card data={items} p_id={items.id} status= {false}>
                     <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + items.id}>
-                      <p className="justify-content text-color">{items.shortDescription}</p>
+                      <p className="justify-content text-color-white">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
                       <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
@@ -67,7 +67,7 @@ class UserModule extends Component {
                 <div className="activity-card" key={i}>  
                   <Card data={items} p_id={items.id} status= {false}>
                     <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + i.id}>
-                      <p className="justify-content text-color">{items.shortDescription}</p>
+                      <p className="justify-content text-color-white">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
                       <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
@@ -83,7 +83,7 @@ class UserModule extends Component {
           {/* requires redirect of resources to url */}
           {/* Remove hard coded description */}
             <Link to={'/'}>
-              <p className="justify-content text-color">Module specific external resources</p>
+              <p className="justify-content text-color-white">Module specific external resources</p>
             </Link>
           </Card>
         </div>
