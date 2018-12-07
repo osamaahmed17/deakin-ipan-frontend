@@ -7,6 +7,7 @@ import UserProgram from 'views/userProjects/userProgram.jsx'
 import UserModule from 'views/userProjects/userModule.jsx'
 import UserActivity from 'views/userProjects/userActivity.jsx'
 import UserTask from 'views/userProjects/userTasks.jsx'
+import Calender from 'views/calender/calender.jsx'
 import Profile from 'views/profile/profile.jsx'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHelper from 'helpers/AppHelper'
@@ -29,6 +30,7 @@ class Main extends Component {
             <Route exact path='/programs/:p_id/modules/:m_id/tasks/:t_id' component={UserTask} />
             <Route exact path='/activity/:a_id' component={UserActivity} />
             <Route exaxt path='/tasks/:t_id' component={UserTask} />
+            <Route exact path='/calender' component={Calender} />
             <Route render= {(props) => (
               <Error {...props} errorCode={401} />
             )} />
