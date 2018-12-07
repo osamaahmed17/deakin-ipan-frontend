@@ -16,7 +16,7 @@ class Header extends Component {
     this.getName();
   }
 
-  countOccurence = (subStr, str) => {
+  createBackURL = (subStr, str) => {
     let location = []
     let i = -1
     while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
@@ -24,6 +24,12 @@ class Header extends Component {
     location = location.splice(-1)
     let newLocation = str.substring(0, location)
     return newLocation;
+  }
+
+  checkURL = (data) => {
+    if (data === '') {
+      return {display:"none"}
+    }
   }
 
   stateHandler = (state) => {
@@ -58,7 +64,7 @@ class Header extends Component {
         <Link to="/programs/1/modules/1/activities/1">
           <button className="btn waves-effect waves-light">Go To Activity</button>
         </Link>
-        <button className="btn waves-effect waves-light">Dismiss</button>
+        <button className="btn waves-effect waves-light modal-close">Dismiss</button>
         </div>
       </Modal>
     )
@@ -67,7 +73,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <ul className="sidenav" id="mobile-demo">
+        <ul className="sidenav slide-out" id="side-nav">
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
           <h5>{this.state.name}</h5>
           <li><a href="#!">My progress</a></li>
@@ -89,14 +95,14 @@ class Header extends Component {
 
           <nav>
             <div className="nav-wrapper">
-              <a href="#!" data-target="mobile-demo" className="sidenav-trigger show-on-small right"><i className="material-icons">menu</i></a>
+              <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right"><i className="material-icons">menu</i></a>
               <a href="#!" className="brand-logo center">{this.props.title}</a>
+              
               <ul>
                 <li>
-                  <a href={this.countOccurence('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>
+                  <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>
                 </li>
               </ul>
-              
               <ul id="nav-mobile" className="right">
                 <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
                 <li className="hide-on-med-and-down"> <a href="#!"><i className="material-icons">event</i></a></li>
