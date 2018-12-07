@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-import Card from 'components/card.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
@@ -31,29 +30,22 @@ class UserActivity extends Component {
     return(
       <div className="container">
         <p>Activity {this.props.match.params.a_id}</p>
+        <div className="card section">
         {
           activity.section.map((items, i) => {
             return (
               <div key={i+1} className="section">
                 <Section data = {items} />
-                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/'+ this.props.match.params.a_id + '/tasks/'+ (i+1)}>
-                  <Card data={items} p_id={items.id} />
-                </Link>
               </div>
             )
           })
         }
-        {
-          activity.section.map((items, i) => {
-            return (
-              <div key={i+1} className="task-card">
-                <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/'+ this.props.match.params.a_id + '/tasks/'+ (i+1)}>
-                  <Card data={items} p_id={items.id} />
-                </Link>
-              </div>
-            )
-          })
-        }
+        </div>
+        <div className="card calender">
+          <Link to='/calender'>
+            <p className="text-color-black"> Add this activity to you calender </p>
+          </Link>
+        </div>
       </div>
     )
   }
