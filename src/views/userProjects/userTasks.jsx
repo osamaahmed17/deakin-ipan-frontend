@@ -19,7 +19,7 @@ class UserTask extends Component {
   }
 
   getTasks = () => {
-    API.getTasks(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.a_id, this.props.match.params.t_id);
+    API.getTasks(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id);
   }
 
   render () {

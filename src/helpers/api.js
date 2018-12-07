@@ -63,7 +63,7 @@ class API {
   }
 
   getTasks = (stateHandler, p_id, m_id, a_id, t_id) => {
-    axiosClient.get("program/" + p_id + "/module/" + m_id + "/activity/" + a_id + "/tasks/" + t_id)
+    axiosClient.get("program/" + p_id + "/module/" + m_id + "/tasks/" + t_id)
     .then((response) => {
       stateHandler({tasks: response.data.tasks});
     })

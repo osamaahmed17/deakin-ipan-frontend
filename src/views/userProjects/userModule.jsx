@@ -66,7 +66,7 @@ class UserModule extends Component {
               return (
                 <div className="activity-card" key={i}>  
                   <Card data={items} p_id={items.id} status= {false}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + i.id}>
+                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + items.id}>
                       <p className="justify-content text-color-white">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
