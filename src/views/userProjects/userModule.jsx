@@ -31,17 +31,15 @@ class UserModule extends Component {
     return(
       <div className="container">
         <p>Module {this.props.match.params.m_id}: Module Name will come here</p>
-          <div className="card">
-            {
-              module.section.map((items) => {
-                return (
-                  <div className="section" key={module.id}>
-                    <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
-                  </div>
-                )
-              })
-            }
-          </div>
+          {
+            module.section.map((items) => {
+              return (
+                <div className="section" key={module.id}>
+                  <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                </div>
+              )
+            })
+          }
         <div className="activites">
           {
             module.activities.map((items, x) => {
