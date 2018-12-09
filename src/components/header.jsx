@@ -62,7 +62,7 @@ class Header extends Component {
       <Modal data={data}>
         <div className="modal-footer">
         <Link to="/programs/1/modules/1/activities/1">
-          <button className="btn waves-effect waves-light">Go To Activity</button>
+          <button className="btn waves-effect waves-light modal-close">Go To Activity</button>
         </Link>
         <button className="btn waves-effect waves-light modal-close">Dismiss</button>
         </div>
