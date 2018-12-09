@@ -108,7 +108,7 @@ class Header extends Component {
                 <li> <a href="#!" data-target="modal" className="modal-trigger"> <i className="material-icons">notifications</i> </a> </li>
                 <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                 <li className="hide-on-med-and-down header-username">{this.state.name}</li>
-                <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">Menu</i></a></li>
+                <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
               </ul>
             </div>
           </nav>
