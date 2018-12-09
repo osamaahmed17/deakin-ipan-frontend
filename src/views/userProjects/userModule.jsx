@@ -30,6 +30,11 @@ class UserModule extends Component {
     if (!this.state.module) return <LoadingComponent />;
     return(
       <div className="container">
+        <div className="icons row">
+          <p className="col s8 m10 l10 left-align sub-heading">{module.title}</p>
+          <p className="col s2 m2 l2 right"> <i className="material-icons">favorite_border</i> </p>
+          <p className="col s2 m2 l2 right"> <i className="material-icons md-light">directions_run</i> </p>
+        </div>
         <p>Module {this.props.match.params.m_id}: Module Name will come here</p>
           {
             module.section.map((items) => {
@@ -50,7 +55,7 @@ class UserModule extends Component {
                       <p className="justify-content text-color-white">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
+                      <p className="col right" style={{marginBottom:"0px"}}>Status: {items.status}</p>
                     </div>
                   </Card>
                 </div>
@@ -68,7 +73,7 @@ class UserModule extends Component {
                       <p className="justify-content text-color-white">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}>Status: {module.status}</p>
+                      <p className="col right" style={{marginBottom:"0px"}}>Status: {items.status}</p>
                     </div>
                   </Card>
                 </div>

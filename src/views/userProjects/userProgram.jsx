@@ -30,18 +30,18 @@ class UserProgram extends Component {
     if (!this.state.program) return <LoadingComponent />;
     return(
       <div className="container">
-        <p>Program {this.props.match.params.p_id}</p>
+        <p className="left-align heading">Program {this.props.match.params.p_id}</p>
         {
           program.modules.map((items, id) => {
             return (
               <div key={id}>
                 {/* the status in card is for achivements and favourites */}
-                  <Card data={items} p_id={this.props.match.params.id} m_id = {program.id} status={true}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + program.id}>
-                      <p className="justify-content text-color-white">{items.shortDescription}</p>
+                  <Card data={items} p_id={this.props.match.params.id} m_id = {id} status={true}>
+                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + id}>
+                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
                     </Link>
                     <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}>Status: {program.status}</p>
+                      <p className="col right" style={{marginBottom:"0px"}}> {items.status} </p>
                       </div>
                   </Card>
               </div>

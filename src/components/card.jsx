@@ -43,7 +43,7 @@ class Card extends Component {
     return (
       <div className="col s12 m12 l6 offset-l3">
         <div className={"card-panel card_" + this.props.id}>
-          <div className="card-content white-text">
+          <div className="card-content white-text sub-heading">
             {this.checkTitle()}
           </div>
           {this.props.children}

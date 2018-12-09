@@ -28,20 +28,20 @@ class UserPrograms extends Component {
     if (data.length > 0) {
       return (
         <div>
-          <p>Your Programs</p>
+          <p className="heading">Your Programs</p>
             {
               data.map((items) => {
                 return (
                   <div key={items.id}>
                       <Card data={items} p_id={items.id}>
                         <Link to={'/programs/' + items.id}>
-                          <p className="justify-content text-color-white">{items.shortDescription}</p>
+                          <p className="justify-content text-color-white description">{items.shortDescription}</p>
                         </Link>
                         <div className="row" style={{marginBottom:"0px"}}>
-                          <p className="col right">Completed Modules {items.progress === ''? 0 : items.progress}/{items.total}</p>
+                          <p className="col right">Completed Modules {items.progress === '' ? 0 : items.progress}/{items.total}</p>
                         </div>
                         <div className="progress">
-                          <div className="determinate" style={{width: (items.progress === ''? 0 : items.progress) +"%"}}></div>
+                          <div className="determinate white" style={{width: (items.progress === '' ? 0 : ((items.progress*100)/items.total)) +"%"}}></div>
                         </div>
                       </Card>
                   </div>

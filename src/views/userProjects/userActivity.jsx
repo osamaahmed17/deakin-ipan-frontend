@@ -28,7 +28,15 @@ class UserActivity extends Component {
     if (!this.state.activity) return <LoadingComponent />;
     return(
       <div className="container">
-        <p>Activity {this.props.match.params.a_id}</p>
+        <p></p>
+        <div className="row">
+          <div className="col s11 m10 l10 left-align heading">
+            Activity {this.props.match.params.a_id}
+            <br/>
+            Weekly Planner Activity
+          </div>
+          <div className="col s1 m2 l2 right"> <i className="material-icons">favorite_border</i> </div>
+        </div>
         <div className="card section">
         {
           activity.section.map((items, i) => {

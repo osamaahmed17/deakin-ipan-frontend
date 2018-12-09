@@ -27,12 +27,17 @@ class UserTask extends Component {
     if (!this.state.tasks) return <LoadingComponent />;
     return(
       <div className="container">
+        <div className="title row padding-top">
+          <div className="col s10 m10 l10 left-align heading"> Quiz Title {this.props.title} </div>
+          <div className="col s2 m2 l2 right-align"> <i className="material-icons"> favorite_border </i> </div>
+          <div className="col s12 m12 l12 left-align"> Tasks {this.props.match.params.t_id} : Quiz</div>
+        </div>
       <form onSubmit={this.validationCheck} noValidate>
           {
             tasks.data.questionSet.map((items, i) => {
               return (
                 <div key={i+1} className="row card">
-                  <p>{items.question}</p>
+                  <p className="description">{items.question}</p>
                   <div className="col s12 options" id={i}>
                     {
                       items.options.map((items, i) => {
@@ -51,7 +56,7 @@ class UserTask extends Component {
               )
             })
           }
-          <button className="btn waves-effect waves-light" onClick= {this.validationCheck} > Submit </button>
+          <a className = "waves-effect waves-light btn" href = {'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id}> Submit </a>
         </form>
       </div>
     )
