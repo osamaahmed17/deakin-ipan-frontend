@@ -9,8 +9,9 @@ class Card extends Component {
     } else {
       return (
         <div className="card-title row margin-bot-rm">
-          <div className="col s8 left-align">{this.props.data.title}</div>
-          <div className="col s2">{this.checkFavourite ()}</div>
+          <div className="col s9 m10 l10 left-align">{this.props.data.title}</div>
+          <div className="col s1 l1">{this.checkFavourite()}</div>
+          <div className="goal col s1 l1">{this.goalIcon('hello', 'directions_run')}</div>
         </div>
       )
     }
@@ -18,9 +19,23 @@ class Card extends Component {
 
   checkFavourite  = (data) => {
     if (data) {
-      return (<p className="col margin-top-rm"><i className="material-icons md-light">favorite</i> </p>)
+      return (
+        <p className="col margin-top-rm"><i className="material-icons md-light">favorite</i> </p>
+      )
     } else {
       return (<p className="col margin-top-rm"><i className="material-icons md-light md-disabled md-inactive">favorite_border</i> </p>)
+    }
+  }
+
+  goalIcon = (status, goal) => {
+    if (status !== null) {
+      return (
+        <p className="col margin-top-rm"> <i className="material-icons"> {goal} </i> </p>
+      )
+    } else {
+      return (
+        <p className="col margin-top-rm"> <i className="material-icons">tv</i> </p>
+      )
     }
   }
 
