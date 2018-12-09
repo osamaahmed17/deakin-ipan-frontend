@@ -31,6 +31,7 @@ class Main extends Component {
             <Route exact path='/activity/:a_id' component={UserActivity} />
             <Route exaxt path='/tasks/:t_id' component={UserTask} />
             <Route exact path='/calender' component={ViewCalendar} />
+            <Route exact path='/calender/:p_id' component={ViewCalendar} />
             <Route render= {(props) => (
               <Error {...props} errorCode={401} />
             )} />
