@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 
@@ -41,10 +40,8 @@ class UserActivity extends Component {
           })
         }
         </div>
-        <div className="card calender">
-          <Link to={'/calender/' + this.props.match.params.p_id}>
-            <p className="text-color-black"> Add this activity to you calender </p>
-          </Link>
+        <div className="calendar">
+          <a className="waves-effect waves-light btn" href={'/calendar/' + this.props.match.params.p_id}> Add this activity to you calendar </a>
         </div>
       </div>
     )
