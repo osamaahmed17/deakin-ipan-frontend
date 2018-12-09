@@ -42,7 +42,7 @@ class UserActivity extends Component {
         }
         </div>
         <div className="card calender">
-          <Link to='/calender'>
+          <Link to={'/calender/' + this.props.match.params.p_id}>
             <p className="text-color-black"> Add this activity to you calender </p>
           </Link>
         </div>
