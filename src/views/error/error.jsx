@@ -10,6 +10,9 @@ class Error extends Component {
       case 401:
         msg = 'Not authorised';
         break;
+      default:
+        msg = 'Something went wrong. Please refresh the page.'
+        break;
     }
     return msg;
   }
