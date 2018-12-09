@@ -96,7 +96,7 @@ class Header extends Component {
           <nav>
             <div className="nav-wrapper">
               <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right"><i className="material-icons">menu</i></a>
-              <a href="#!" className="brand-logo center">{this.props.title}</a>
+              <a href="/home" className="brand-logo center">{this.props.title}</a>
               
               <ul>
                 <li>
@@ -104,11 +104,11 @@ class Header extends Component {
                 </li>
               </ul>
               <ul id="nav-mobile" className="right">
-                <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">dehaze</i></a></li>
-                <li className="hide-on-med-and-down"> <a href="/calendar"><i className="material-icons">event</i></a></li>
+                <li> <a href="/calendar"><i className="material-icons">event</i></a></li>
                 <li> <a href="#!" data-target="modal" className="modal-trigger"> <i className="material-icons">notifications</i> </a> </li>
                 <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                 <li className="hide-on-med-and-down header-username">{this.state.name}</li>
+                <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">Menu</i></a></li>
               </ul>
             </div>
           </nav>
