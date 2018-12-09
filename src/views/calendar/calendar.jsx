@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import { type } from 'os';
 
 class ViewCalender extends Component {
   constructor(props) {
@@ -24,12 +25,28 @@ class ViewCalender extends Component {
     this.setState({ selectedDays });
   }
 
+  btnRedirect = (data) => {
+    if(data == null || data === "undefined") {
+      return (
+        <a className="waves-effect waves-light btn" href={'/home'}> Home </a>
+      )
+    } else {
+      return (
+        <a className="waves-effect waves-light btn" href={'/programs/' + this.props.match.params.p_id}> Back To Programs </a>
+      )
+    }
+  }
+
   render () {
     return (
       <div className="container">
         <p className="left-align">Schedule</p>
-        <DayPicker selectedDays = {this.state.selectedDays} onDayClick = {this.handleDayClick} />
-        <a className="waves-effect waves-light btn" href={'/programs/' + this.props.match.params.p_id}> Back to programs </a>
+        <div className="calendar row">
+          <DayPicker selectedDays = {this.state.selectedDays} onDayClick = {this.handleDayClick} />
+        </div>
+        <div>
+          {this.btnRedirect(this.props.match.params.p_id)}  
+        </div> 
       </div>
     )
   }
