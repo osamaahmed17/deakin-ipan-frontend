@@ -28,8 +28,8 @@ class UserTask extends Component {
     return(
       <div className="container">
         <div className="title row padding-top">
-          <div className="col s10 m10 l10 left-align heading"> Quiz Title {this.props.title} </div>
-          <div className="col s2 m2 l2 right-align"> <i className="material-icons"> favorite_border </i> </div>
+          <div className="col s11 m11 l11 left-align heading"> Quiz Title {this.props.title} </div>
+          <div className="col s1 m1 l1 right-align"> <i className="material-icons"> favorite_border </i> </div>
           <div className="col s12 m12 l12 left-align"> Tasks {this.props.match.params.t_id} : Quiz</div>
         </div>
       <form onSubmit={this.validationCheck} noValidate>
