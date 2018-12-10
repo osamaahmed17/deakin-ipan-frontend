@@ -49,7 +49,7 @@ class Login extends Component {
             <div className='col s6 offset-s3'>
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              <a className="waves-effect waves-light btn" onClick={this.performLogin} href="#!">
+              <a className="waves-effect waves-light btn" id='loginButton' onClick={this.performLogin} href="#!">
                 <i className="material-icons left">cloud</i>Login
               </a>
             </div>
