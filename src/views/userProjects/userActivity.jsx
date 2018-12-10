@@ -7,8 +7,16 @@ class UserActivity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activity: null
-    } 
+      activity: null,
+      toggleFavourite: '',
+    }
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
+  }
+
+  handleFavouriteClick() {
+    this.setState(state => ({
+      toggleFavourite: !state.toggleFavourite
+    }))
   }
 
   componentDidMount() {
@@ -30,12 +38,12 @@ class UserActivity extends Component {
       <div className="container">
         <p></p>
         <div className="row">
-          <div className="col s11 m10 l10 left-align heading">
+          <div className="col s11 m11 l11 left-align heading">
             Activity {this.props.match.params.a_id}
             <br/>
             Weekly Planner Activity
           </div>
-          <div className="col s1 m2 l2 right"> <i className="material-icons">favorite_border</i> </div>
+          <div className="col s1 m1 l1 right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons iconBox">favorite</i> </div>
         </div>
         <div className="card section">
         {
