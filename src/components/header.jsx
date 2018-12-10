@@ -17,6 +17,10 @@ class Header extends Component {
   }
 
   createBackURL = (subStr, str) => {
+    // Next 2 line code is for /programs path back button
+    if(((str.split('/').length -1) === 2) && (str.split('programs').length)) {
+      return '/programs'
+    }
     let location = []
     let i = -1
     while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
