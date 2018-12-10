@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: "[BUG] My pesky bug title with a capital letter and space before starting the
-  sentence"
+name: Production bug report
+about: Create a report for production environment
+title: "[PRODUCTION][BUG] My pesky bug title with a capital letter and space before
+  starting the sentence"
 labels: ''
 assignees: ''
 
