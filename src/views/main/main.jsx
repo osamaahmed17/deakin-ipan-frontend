@@ -33,7 +33,7 @@ class Main extends Component {
             <Route exact path='/calendar' component={ViewCalendar} />
             <Route exact path='/calendar/:p_id' component={ViewCalendar} />
             <Route render= {(props) => (
-              <Error {...props} errorCode={401} />
+              <Error {...props} errorCode={404} />
             )} />
           </Switch>
         </div>
