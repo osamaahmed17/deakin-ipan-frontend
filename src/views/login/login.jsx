@@ -9,8 +9,18 @@ class Login extends Component {
     this.state = {
       emailId: '',
       password: '',
-      developerMode: false // Change this to false to contact API
+      developerMode: false, // Change this to false to contact API
+      error: false,
+      errorMsg: ''
     };
+  }
+
+  errorMessage = () => {
+    if(this.state.error) {
+      return (
+        <p><b>{this.state.errorMsg}</b></p>
+      )
+    }
   }
 
   handleEmailChange = (e) => {
@@ -25,6 +35,20 @@ class Login extends Component {
     });
   }
 
+  validationCheck = () => {
+    let email = this.state.emailId
+    let password = this.state.password
+    if ((email.length > 0) && (password.length > 0)) {
+      return true
+    } else {
+      this.setState({
+        error: true,
+        errorMsg: "Email or password must not be empty!"
+      })
+      return false
+    }
+  }
+
   performLogin = (e) => {
     e.preventDefault();
     if (this.state.developerMode) {
@@ -32,9 +56,20 @@ class Login extends Component {
       AppHelper.developerModeLoginUser(true);
       return;
     }
+    if (!this.validationCheck()) return;
     this.props.dispatchLogin(this.state).then((response) => {
-      const accessToken = response.payload.data.data.accessToken;
-      AppHelper.loginUser(true, accessToken);
+      if (
+      response && response.payload && response.payload.data &&
+      response.payload.data.data && response.payload.data.data.accessToken
+      ) {
+        const accessToken = response.payload.data.data.accessToken;
+        AppHelper.loginUser(true, accessToken);
+      } else {
+        this.setState({
+          error: true,
+          errorMsg: "Invalid credentials!"
+        })
+      }
     });
   }
 
@@ -49,9 +84,14 @@ class Login extends Component {
             <div className='col s6 offset-s3'>
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              <a className="waves-effect waves-light btn" id='loginButton' onClick={this.performLogin} href="#!">
-                <i className="material-icons left">cloud</i>Login
-              </a>
+              {this.errorMessage()}
+              {
+                this.props.loginLoading ? 
+                  "Loading..." : 
+                  <a className="waves-effect waves-light btn" id="loginButton" onClick={this.performLogin} href="#!">
+                    <i className="material-icons left">cloud</i>Login
+                  </a>
+              }
             </div>
           </div>
         </div>
@@ -67,4 +107,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapStateToProps = (state) => {
+  return {
+    loginLoading : state.loginStatus.loginLoading
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
