@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from 'components/card.jsx'
+import Card from 'components/cards/card.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading';
