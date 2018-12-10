@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-import Card from 'components/card.jsx'
+import ModuleCard from 'components/cards/moduleCard.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading';
@@ -9,8 +9,24 @@ class UserModule extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      module: null
-    } 
+      module: null,
+      toggleGoal: '',
+      toggleFavourite: '',
+    }
+    this.handleGoalClick = this.handleGoalClick.bind(this)
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
+  }
+
+  handleGoalClick() {
+    this.setState(state => ({
+      toggleGoal: !state.toggleGoal
+    }))
+  }
+
+  handleFavouriteClick() {
+    this.setState(state => ({
+      toggleFavourite: !state.toggleFavourite
+    }))
   }
 
   componentDidMount() {
@@ -30,16 +46,18 @@ class UserModule extends Component {
     if (!this.state.module) return <LoadingComponent />;
     return(
       <div className="container">
-        <div className="icons row">
-          <p className="col s8 m10 l10 left-align sub-heading">{module.title}</p>
-          <p className="col s2 m2 l2 right"> <i className="material-icons">favorite_border</i> </p>
-          <p className="col s2 m2 l2 right"> <i className="material-icons md-light">directions_run</i> </p>
+        <div className="icons">
+          <p className="col right" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <i className="material-icons iconBox">{module.goal.type}</i> </p>
+          <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light iconBox">{module.favourite.type}</i> </p>
+        </div>
+        <div className="row">
+          <p className="col s12 m12 l12 left-align sub-heading">{module.title}</p>
         </div>
         <p>Module {this.props.match.params.m_id}: Module Name will come here</p>
           {
-            module.section.map((items) => {
+            module.section.map((items, k) => {
               return (
-                <div className="section" key={module.id}>
+                <div className="section" key={'section_' + k}>
                   <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
                 </div>
               )
@@ -49,15 +67,12 @@ class UserModule extends Component {
           {
             module.activities.map((items, x) => {
               return (
-                <div className="activity-card" key={x}>  
-                  <Card data={items} p_id={items.id} status= {false}>
+                <div className="activity-card" key={'activity_' + x}>  
+                  <ModuleCard data={items} p_id={items.id} status= {false}>
                     <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + items.id}>
-                      <p className="justify-content text-color-white">{items.shortDescription}</p>
+                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
                     </Link>
-                    <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}>Status: {items.status}</p>
-                    </div>
-                  </Card>
+                  </ModuleCard>
                 </div>
               )
             })
@@ -67,28 +82,23 @@ class UserModule extends Component {
           {
             module.tasks.map((items, i) => {
               return (
-                <div className="activity-card" key={i}>  
-                  <Card data={items} p_id={items.id} status= {false}>
+                <div className="activity-card" key={'task_' + i}>  
+                  <ModuleCard data={items} p_id={items.id} status= {false}>
                     <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + items.id}>
-                      <p className="justify-content text-color-white">{items.shortDescription}</p>
+                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
                     </Link>
-                    <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}>Status: {items.status}</p>
-                    </div>
-                  </Card>
+                  </ModuleCard>
                 </div>
               )
             })
           }
         </div>
         <div className="resources">
-          <Card data={'Resources'} status= {false}>
-          {/* requires redirect of resources to url */}
-          {/* Remove hard coded description */}
+          <ModuleCard data={{title:'Resources'}}>
             <Link to={'/'}>
-              <p className="justify-content text-color-white">Module specific external resources</p>
+              <div className="justify-content text-color-white description">Module specific external resources</div>
             </Link>
-          </Card>
+          </ModuleCard>
         </div>
       </div>
     )
