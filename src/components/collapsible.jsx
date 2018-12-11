@@ -17,7 +17,7 @@ class Collapsible extends Component {
               return (
                 <li key = {i}>
                   <div className="collapsible-header"> {item.title} </div>
-                  <div className="collapsible-body"> <span> {item.desc} </span> </div>
+                  <div className="collapsible-body"> {this.props.children} </div>
                 </li>
               )
             })
