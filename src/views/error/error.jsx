@@ -11,7 +11,7 @@ class Error extends Component {
         msg = 'Not authorised';
         break;
       default:
-        msg = 'Something went wrong. Please refresh the page.'
+        msg = 'Something went wrong. Please contact support.'
         break;
     }
     return msg;
