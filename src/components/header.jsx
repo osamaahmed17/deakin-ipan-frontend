@@ -17,19 +17,24 @@ class Header extends Component {
   }
 
   createBackURL = (subStr, str) => {
-    // Next 2 line code is for /programs path back button
+    // Next 2 line code is for special case path back button like Programs, and other cases in future
     if(((str.split('/').length -1) === 2) && (str.split('programs').length)) {
       return '/programs'
     }
+    // Rest of the code is trimming URL till last 2nd '/' from behind
+    // Location is array which is used to store position of '/'
     let location = []
     let i = -1
     while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    // Store the last second '/' position
     location = location.splice(0,location.length-1)
     location = location.splice(-1)
+    // newLocation will store location from 0 to location
     let newLocation = str.substring(0, location)
     return newLocation;
   }
 
+  // If URL is empty then Back button is not diplayed
   checkURL = (data) => {
     if (data === '') {
       return {display:"none"}
@@ -57,7 +62,7 @@ class Header extends Component {
     M.Sidenav.init(sidenav, { edge: 'right'});
   }
 
-  modalClick = () => {
+  handleModalClick = () => {
     var data = {
       title: 'Activity Pill 1',
       description: 'You should try to put your kids to sleep to achieve maximum efficency' 
@@ -116,7 +121,7 @@ class Header extends Component {
               </ul>
             </div>
           </nav>
-          {this.modalClick()}
+          {this.handleModalClick()}
         </div>
       </div>
     );

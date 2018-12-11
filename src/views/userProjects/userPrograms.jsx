@@ -24,6 +24,8 @@ class UserPrograms extends Component {
     API.getPrograms(this.stateHandler);
   }
 
+  // CheckProgram function will check the programs length. If data.length = 0 then show + sign to add new programs
+  // Otherwise Programs will be displayed
   checkPrograms = (data) => {
     if (data.length > 0) {
       return (

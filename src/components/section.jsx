@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-function content(data) {
+function displayContent(data) {
   if (data.type === 'image') {
     return (
       <img className="responsive-img" src={data.src} alt={data.altName} />
@@ -24,7 +24,7 @@ class Section extends Component {
   render () {
     return (
       <div>
-        {content(this.props.data)}
+        {displayContent(this.props.data)}
       </div>
     )
   }
