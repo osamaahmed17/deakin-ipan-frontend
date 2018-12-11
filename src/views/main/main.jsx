@@ -12,6 +12,7 @@ import Profile from 'views/profile/profile.jsx'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHelper from 'helpers/AppHelper'
 import Error from 'views/error/error.jsx'
+import Resources from 'views/resources/resources.jsx'
 
 class Main extends Component {
   render() {
@@ -32,6 +33,7 @@ class Main extends Component {
             <Route exaxt path='/tasks/:t_id' component={UserTask} />
             <Route exact path='/calendar' component={ViewCalendar} />
             <Route exact path='/calendar/:p_id' component={ViewCalendar} />
+            <Route exact path='/resources' component={Resources} />
             <Route render= {(props) => (
               <Error {...props} errorCode={404} />
             )} />
