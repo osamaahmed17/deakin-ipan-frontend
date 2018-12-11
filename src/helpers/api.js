@@ -68,6 +68,13 @@ class API {
       stateHandler({tasks: response.data.tasks});
     })
   }
+
+  getResources = (stateHandler) => {
+    axiosClient.get("resources")
+    .then((response) => {
+      stateHandler({resources: response.data.data});
+    })
+  }
 }
 
 const instance = new API();
