@@ -54,17 +54,17 @@ class UserModule extends Component {
           <p className="col s12 m12 l12 left-align sub-heading">{module.title}</p>
           <p className="col s12 m12 l12 left-align">Module {this.props.match.params.m_id}: Module Name will come here</p>
         </div>
-          <div className="article">
-            {
-              module.section.map((items, k) => {
-                return (
-                  <div className="section" key={'section_' + k}>
-                    <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
-                  </div>
-                )
-              })
-            }
-          </div>
+        <div className="article">
+          {
+            module.section.map((items, k) => {
+              return (
+                <div className="section" key={'section_' + k}>
+                  <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                </div>
+              )
+            })
+          }
+        </div>
         <div className="activites">
           {
             module.activities.map((items, x) => {
