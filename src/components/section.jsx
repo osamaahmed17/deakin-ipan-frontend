@@ -7,9 +7,9 @@ function content(data) {
       )
   } else if (data.type === 'video') {
     return (
-      <video className="reponsive-video" controls>
-        <source src={data.src} type="video/mp4" />
-      </video>
+      <div className="video-container">
+        <iframe src={data.value} frameBorder="0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+      </div>
     )
   } else if (data.type === 'text') {
     return (
