@@ -72,8 +72,8 @@ class ViewCalender extends Component {
         <div className="row">
             <div className="col s12">
               <ul className="tabs">
-                <li className="tab col s4"><a className="active" href="#range-select">Range Select</a></li>
-                <li className="tab col s4"><a href="#multi-select">Multi Select</a></li>
+                <li className="tab col s4"><a href="#range-select">Range Select</a></li>
+                <li className="tab col s4"><a className="active" href="#multi-select">Multi Select</a></li>
               </ul>
             </div>
             <div id="range-select" className="col s12">
