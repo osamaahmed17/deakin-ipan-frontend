@@ -3,7 +3,7 @@ import Section from 'components/section.jsx'
 import ModuleCard from 'components/cards/moduleCard.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
-import LoadingComponent from 'components/loading/loading';
+import LoadingComponent from 'components/loading/loading'
 
 class UserModule extends Component {
   constructor(props) {
@@ -50,19 +50,21 @@ class UserModule extends Component {
           <p className="col right" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <i className="material-icons iconBox">{module.goal.type}</i> </p>
           <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light iconBox">{module.favourite.type}</i> </p>
         </div>
-        <div className="row">
+        <div className="title row">
           <p className="col s12 m12 l12 left-align sub-heading">{module.title}</p>
+          <p className="col s12 m12 l12 left-align">Module {this.props.match.params.m_id}: Module Name will come here</p>
         </div>
-        <p>Module {this.props.match.params.m_id}: Module Name will come here</p>
-          {
-            module.section.map((items, k) => {
-              return (
-                <div className="section" key={'section_' + k}>
-                  <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
-                </div>
-              )
-            })
-          }
+          <div className="article">
+            {
+              module.section.map((items, k) => {
+                return (
+                  <div className="section" key={'section_' + k}>
+                    <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                  </div>
+                )
+              })
+            }
+          </div>
         <div className="activites">
           {
             module.activities.map((items, x) => {
@@ -94,9 +96,9 @@ class UserModule extends Component {
           }
         </div>
         <div className="resources">
-          <ModuleCard data={{title:'Resources'}}>
-            <Link to={'/'}>
-              <div className="justify-content text-color-white description">Module specific external resources</div>
+          <ModuleCard data={module.resources}>
+            <Link to={'/resources'}>
+              <div className="justify-content text-color-white description">{module.resources.shortDescription}</div>
             </Link>
           </ModuleCard>
         </div>
