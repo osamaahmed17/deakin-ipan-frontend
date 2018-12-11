@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import M from "materialize-css";
 
+// Modal is used for delivering notifications where title and description are passed as props and rest of content passed as children
 class Modal extends Component {
   componentDidMount() {
     const options = {
