@@ -36,7 +36,6 @@ class UserActivity extends Component {
     if (!this.state.activity) return <LoadingComponent />;
     return(
       <div className="container">
-        <p></p>
         <div className="row">
           <div className="col s11 m11 l11 left-align heading">
             Activity {this.props.match.params.a_id}
