@@ -4,6 +4,7 @@ import ModuleCard from 'components/cards/moduleCard.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
+import Collapsible from 'components/collapsible.jsx'
 
 class UserModule extends Component {
   constructor(props) {
@@ -51,8 +52,8 @@ class UserModule extends Component {
           <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light iconBox">{module.favourite.type}</i> </p>
         </div>
         <div className="title row">
-          <p className="col s12 m12 l12 left-align sub-heading">{module.title}</p>
-          <p className="col s12 m12 l12 left-align">Module {this.props.match.params.m_id}: Module Name will come here</p>
+          <p className="col s12 m12 l12 left-align heading">{module.title}</p>
+          <p className="col s12 m12 l12 left-align sub-heading">Module {module.id}</p>
         </div>
         <div className="article">
           {
@@ -65,35 +66,25 @@ class UserModule extends Component {
             })
           }
         </div>
-        <div className="activites">
-          {
-            module.activities.map((items, x) => {
-              return (
-                <div className="activity-card" key={'activity_' + x}>  
-                  <ModuleCard data={items} p_id={items.id} status= {false}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/activities/' + items.id}>
-                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
-                    </Link>
-                  </ModuleCard>
-                </div>
-              )
-            })
-          }
+        <div className="activity">
+          <div className="row">
+            <div className="col s12 left-align heading">
+              Activities
+            </div>
+            <div className="col s12">
+              <Collapsible data={module.activities}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
+            </div>
+          </div>
         </div>
-        <div className="tasks">
-          {
-            module.tasks.map((items, i) => {
-              return (
-                <div className="activity-card" key={'task_' + i}>  
-                  <ModuleCard data={items} p_id={items.id} status= {false}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id + '/tasks/' + items.id}>
-                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
-                    </Link>
-                  </ModuleCard>
-                </div>
-              )
-            })
-          }
+        <div className="task">
+          <div className="row">
+            <div className="col s12 left-align heading">
+              Tasks
+            </div>
+            <div className="col s12">
+              <Collapsible data={module.tasks}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
+            </div>
+          </div>
         </div>
         <div className="resources">
           <ModuleCard data={module.resources}>
