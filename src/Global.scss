@@ -8,99 +8,101 @@ $primary-text:#3D3E3E;
 // HEADER AND MOBILE MENU
 
 .Header{
-    .name-profile{
-        margin-top: 10px;
-        border: none;
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        padding: 16px 30px 18px !important;
-        min-width: 230px;
-        max-height: 55px;
-        color:$primary !important;
-        text-decoration: none !important;
-        text-align: center;
-        font-size: 14px;
-        font-size: 1.4rem;
-        line-height: 14px;
-        line-height: 1.4rem;
-        border-color: 5px solid $primary; 
-        border-radius: 30px;
-        font-family: Arial,sans-serif;
-        font-weight: bold;
-        font-style: normal;
-        background-color:white;
-    }
-    .logout-button{
-        margin-top: 60px;
-        border: none;
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        padding: 16px 30px 18px !important;
-        min-width: 230px;
-        max-height: 55px;
-        color: white !important;
-        text-decoration: none !important;
-        text-align: center;
-        font-size: 14px;
-        font-size: 1.4rem;
-        line-height: 14px;
-        line-height: 1.4rem;
-        border-radius: 30px;
-        -webkit-transition: all .15s ease-out;
-        transition: all .15s ease-out;
-        font-family: Arial,sans-serif;
-        font-weight: 600;
-        font-style: normal;
-        background-color: #c74298;
-        margin-left: 30px;
-    }
-    li{
-        color: $primary
-    }
+  .name-profile{
+    margin-top: 10px;
+    border: none;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 16px 30px 18px !important;
+    min-width: 230px;
+    max-height: 55px;
+    color:$primary !important;
+    text-decoration: none !important;
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 14px;
+    line-height: 1.4rem;
+    border-color: 5px solid $primary; 
+    border-radius: 30px;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    background-color:white;
+  }
+  .logout-button{
+    margin-top: 60px;
+    border: none;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 16px 30px 18px !important;
+    min-width: 230px;
+    max-height: 55px;
+    color: white !important;
+    text-decoration: none !important;
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 14px;
+    line-height: 1.4rem;
+    border-radius: 30px;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+    font-family: Arial,sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: #c74298;
+    margin-left: 30px;
+  }
+  li{
+    color: $primary
+  }
 
-    .deakin-burger-title{
-        float: left;
-        padding-left: 16px;
-    }
-    .material-icons{
-        margin: 0 10px 0 0 !important;
-        color:$primary !important;
-        font-weight: bold !important;
-    }
+  .deakin-burger-title{
+    float: left;
+    padding-left: 16px;
+  }
+  .material-icons{
+    margin: 0 10px 0 0 !important;
+    color:$primary !important;
+    font-weight: bold !important;
+  }
 
-    .sidenav li>a{
-        font-size: 24px;
-        padding: 0 10px;
-        color:$primary
-    }
+  .sidenav li>a{
+    font-size: 24px;
+    padding: 0 10px;
+    color:$primary
+  }
 
 
 .sidenav{
-    text-align: left
+  text-align: left
 }
 .profile-div{
-    margin-top: 0px;
-    text-align: center;
-    background-color:$primary;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  margin-top: 0px;
+  text-align: center;
+  background-color:$primary;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 }
 
 .Footer{
-  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .page-footer{
-    padding-top: 0px !important;
+  padding-top: 0px !important;
 }
 
 h2{
-    font-weight: bold !important;
-    color:#3D3E3E;
-    font-size: 2.56rem !important; 
+  font-weight: bold !important;
+  color:#3D3E3E;
+  font-size: 2.56rem !important; 
 }
 
 
@@ -109,36 +111,36 @@ h2{
 
 ///// LOGIN
 .Login{
-    h2{
-        margin-top: 100px;
-        color:$primary
-    }
+  h2{
+      margin-top: 100px;
+      color:$primary
+  }
 
-    .login-credentials-div{
-        margin-top: 200px
-    }
-    #loginButton{
-        margin-top: 80px;
-        border: none;
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        padding: 10px 30px 18px;
-        min-width: 230px;
-        max-height: 55px;
-        color:$secondary;
-        text-decoration: none!important;
-        text-align: center;
-        font-size: 14px;
-        font-size: 1.4rem;
-        line-height: 14px;
-        line-height: 1.4rem;
-        border-radius: 30px;
-        transition: all .15s ease-out;
-        font-family: Arial,sans-serif;
-        font-weight: 600;
-        font-style: normal;
-        background-color: $tertiary;
-        
-    }
+  .login-credentials-div{
+      margin-top: 200px
+  }
+
+  #loginButton{
+    margin-top: 80px;
+    border: none;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 30px 18px;
+    min-width: 230px;
+    max-height: 55px;
+    color:$secondary;
+    text-decoration: none!important;
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 14px;
+    line-height: 1.4rem;
+    border-radius: 30px;
+    transition: all .15s ease-out;
+    font-family: Arial,sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    background-color: $tertiary;
+  }
 }
