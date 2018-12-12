@@ -42,7 +42,7 @@ class UserActivity extends Component {
             <br/>
             Weekly Planner Activity
           </div>
-          <div className="col s1 m1 l1 right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons iconBox">favorite</i> </div>
+          <div className="col s1 m1 l1 right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons">favorite</i> </div>
         </div>
         <div className="card section">
         {

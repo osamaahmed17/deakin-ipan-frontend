@@ -48,8 +48,8 @@ class UserModule extends Component {
     return(
       <div className="container">
         <div className="icons">
-          <p className="col right" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <i className="material-icons iconBox">{module.goal.type}</i> </p>
-          <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light iconBox">{module.favourite.type}</i> </p>
+          <p className="col right" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <i className="material-icons">{module.goal.type}</i> </p>
+          <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light">{module.favourite.type}</i> </p>
         </div>
         <div className="title row">
           <p className="col s12 m12 l12 left-align heading">{module.title}</p>
