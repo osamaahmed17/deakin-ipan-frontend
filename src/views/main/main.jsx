@@ -8,6 +8,8 @@ import UserModule from 'views/userProjects/userModule.jsx'
 import UserActivity from 'views/userProjects/userActivity.jsx'
 import UserTask from 'views/userProjects/userTasks.jsx'
 import ViewCalendar from 'views/calendar/calendar.jsx'
+import FavouriteModules from 'views/userProjects/favouriteModules.jsx'
+import FavouriteActivities from 'views/userProjects/favouriteActivities.jsx'
 import Profile from 'views/profile/profile.jsx'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHelper from 'helpers/AppHelper'
@@ -34,6 +36,8 @@ class Main extends Component {
             <Route exact path='/calendar' component={ViewCalendar} />
             <Route exact path='/calendar/:p_id' component={ViewCalendar} />
             <Route exact path='/resources' component={Resources} />
+            <Route exact path='/favouriteActivities' component={FavouriteActivities} />
+            <Route exact path='/favouriteModules' component={FavouriteModules} />
             <Route render= {(props) => (
               <Error {...props} errorCode={404} />
             )} />
