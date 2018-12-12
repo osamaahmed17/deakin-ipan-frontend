@@ -6,8 +6,13 @@ class UserTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: null
-    } 
+      tasks: null,
+      current: 1,
+      popUpMessage: null,
+      boxTicked: false,
+      toggleFavourite: '',
+    }
+    this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
   }
 
   componentDidMount() {
@@ -22,42 +27,129 @@ class UserTask extends Component {
     API.getTasks(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id);
   }
 
+  // Onclick favourite icon toggle true and false state
+  handleFavouriteClick() {
+    this.setState(state => ({
+      toggleFavourite: !state.toggleFavourite
+    }))
+  }
+
+  // GenerateQuiz Function will take array as data and map them
+  generateQuiz(quiz) {
+    return (
+      <div className="questions">
+        {
+          quiz.questionSet.map((question, i) => {
+            if(question.id === this.state.current) {
+              return this.questionList(question, i)
+            }
+          })
+        }
+      </div>
+    )
+  }
+
+  // Each Questions are mapped and unique key is assigned
+  questionList(data, key) {
+    return (
+      <div key={key}>
+        <p> Question {key+1}: {data.question}</p>
+        {this.checkBoxOption(data.options, data.popup)}
+        <div className="row">
+        {this.displayPopUpMessage()}
+        </div>
+        <div className="row">
+          {this.previousQuestion()}
+          {this.nextQuestion()}
+        </div>
+      </div>
+    )
+  }
+
+  // The answers for questions are mapped from array
+  // Onclick of box popup message is displayed at bottom
+  // options = [answers array] and popUpMessage = [popup message array]
+  checkBoxOption(options, popUpMessage) {
+    return (
+      options.map((items, k) => {
+        return (
+          <p className="left-align">
+            <label>
+              <input type="checkbox" key={k} onClick={() => this.answerPopUp(popUpMessage, k)} />
+              <span>{items}</span>
+            </label>
+          </p>
+        )
+      })
+    )
+  }
+
+  // Popup message array and option clicked is passed in function to display correct message
+  // If box is unticked then popup message is removed
+  // Onclick of box pop message is displayed immediately
+  // Popup message state is set in this function
+  answerPopUp = (popUpMessage, optionNumberCLicked) => {
+    this.setState(state => ({
+      boxTicked: !state.boxTicked
+    }))
+    if(this.state.boxTicked === null || this.state.boxTicked === false) {
+      return (
+        this.setState({
+          popUpMessage: popUpMessage[optionNumberCLicked]
+        })
+      )
+    } else {
+      this.setState({
+        popUpMessage: ''
+      })
+    }
+  }
+
+  // Function will display message if popUpMessage state is not empty
+  // Otherwise dont display popup message
+  displayPopUpMessage() {
+    if(!(this.state.popUpMessage === null || this.state.popUpMessage === '')) {
+      return (
+        <div className="row">
+          <div className="row s12">
+            {this.state.popUpMessage}
+          </div>
+        </div>
+      )
+    } 
+  }
+
+  // Function show Finish if user is at last question
+  // Otherwise Next question button is displayed
+  nextQuestion = () => {
+    if(this.state.current === this.state.tasks.data.questionSet.length) {
+      return (<button className="btn right"> Finish </button>)
+    } else {
+      return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1})}> Next Question </button>)
+    }
+  }
+
+  // If user is not at first question then Previous button will display
+  // Using back button user can check previosu question
+  // If user is attmepting 1st question of quiz then previous button wont be displayed
+  previousQuestion = () => {
+    if(!(this.state.current === 1)) {
+      return (<button className="btn left" onClick={() => this.setState({ current: this.state.current - 1})}> Previous Question </button>)
+    }
+  }
+
   render () {
     let tasks = this.state.tasks;
     if (!this.state.tasks) return <LoadingComponent />;
     return(
       <div className="container">
         <div className="title row padding-top">
-          <div className="col s11 m11 l11 left-align heading"> Quiz Title {this.props.title} </div>
-          <div className="col s1 m1 l1 right-align"> <i className="material-icons"> favorite_border </i> </div>
+          <div className="col s11 m11 l11 left-align heading"> <i className="material-icons" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i> Quiz Title {this.props.title} </div>
           <div className="col s12 m12 l12 left-align"> Tasks {this.props.match.params.t_id} : Quiz</div>
         </div>
-      <form onSubmit={this.validationCheck} noValidate>
-          {
-            tasks.data.questionSet.map((items, i) => {
-              return (
-                <div key={i+1} className="row card">
-                  <p className="description">{items.question}</p>
-                  <div className="col s12 options" id={i}>
-                    {
-                      items.options.map((items, i) => {
-                        return (
-                          <p key={i+1} className="left-align">
-                            <label>
-                              <input type="checkbox" className="filled-in" />
-                              <span>{items}</span>
-                            </label>
-                          </p>
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-              )
-            })
-          }
-          <a className = "waves-effect waves-light btn" href = {'/programs/' + this.props.match.params.p_id + '/modules/' + this.props.match.params.m_id}> Submit </a>
-        </form>
+        <div>
+          {this.generateQuiz(tasks.data)}
+        </div>
       </div>
     )
   }
