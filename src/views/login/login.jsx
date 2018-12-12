@@ -76,20 +76,22 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1>
+        <h2>
           {this.props.parentState.title}
-        </h1>
+        </h2>
         <div className='row'>
           <div className='row'>
-            <div className='col s6 offset-s3'>
+            <div className='col s8 offset-s2 login-credentials-div'>
               <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
               <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
               {this.errorMessage()}
+            </div>
+            <div className='button-container'>
               {
                 this.props.loginLoading ? 
                   "Loading..." : 
-                  <a className="waves-effect waves-light btn" id="loginButton" onClick={this.performLogin} href="#!">
-                    <i className="material-icons left">cloud</i>Login
+                  <a className="col s8 offset-s2 waves-effect waves-light btn" id="loginButton" onClick={this.performLogin} href="#!">
+                    Login
                   </a>
               }
             </div>

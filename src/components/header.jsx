@@ -87,8 +87,11 @@ class Header extends Component {
     return (
       <div>
         <ul className="sidenav slide-out" id="side-nav">
+          <div className="profile-div">
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
           <h5>{this.state.name}</h5>
+          </div>
+          
           <li><a href="#!">My progress</a></li>
           <li><a href="/programs">My programs</a></li>
           <li><a href="/favouriteModules">Favorite Modules</a></li>
@@ -108,9 +111,9 @@ class Header extends Component {
 
           <nav>
             <div className="nav-wrapper">
-              <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right"><i className="material-icons">menu</i></a>
-              <a href="/home" className="brand-logo center">{this.props.title}</a>
+              <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
               
+              {/*<a href="/home" className="brand-logo center">{this.props.title}</a>*/}
               <ul>
                 <li>
                   <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>

@@ -1,7 +1,11 @@
 @import './variables';
+@import './Global.scss';
+$primary:#0c8573;
+$secondary:white;
+$primary-text:#3D3E3E;
 
 nav, footer {
-  background-color: get-color(green, darkest) !important;
+  background-color: $primary !important;
 }
 
 .App {
@@ -9,6 +13,7 @@ nav, footer {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family:Open Sans,Arial,sans-serif
 }
 
 .App-logo {
@@ -17,16 +22,26 @@ nav, footer {
 }
 
 .App-header {
-  background-color: #0C8573;
+  background-color:$primary;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:$secondary;
 }
+.deakin-burger{
+  background-color: $secondary;
+  color:$primary;
+  border-radius: 70px 0 0 70px;
+  margin: 0 0px !important;
+  width: 100px;
+  i{
+    display: inline !important;
+  }
 
+}
 .App-link {
   color: #61dafb;
 }
@@ -90,7 +105,7 @@ main {
 }
 
 .text-color-black {
-  color: black !important;
+  color:$primary-text !important;
 }
 
 .heading {
@@ -114,4 +129,10 @@ main {
   -ms-transform: rotate(180deg); /* IE 9 */
   -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
   transform: rotate(180deg);
+}
+
+
+.Login{
+  min-height: 100vh;
+  background-image: url("images/ipan2.png");
 }

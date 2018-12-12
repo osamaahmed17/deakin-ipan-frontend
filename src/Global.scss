@@ -1,0 +1,51 @@
+$primary:#0c8573;
+$secondary:white;
+$primary-text:#3D3E3E;
+
+
+// HEADER AND MOBILE MENU
+
+.deakin-burger-title{
+    float: left;
+    padding-left: 16px;
+}
+.Footer{
+  
+}
+.page-footer{
+    padding-top: 0px !important;
+}
+
+.sidenav{
+    text-align: left
+}
+.profile-div{
+    margin-top: 25px;
+    text-align: center
+}
+
+h2{
+    font-weight: bold !important;
+    color:#3D3E3E;
+    font-size: 2.56rem !important; 
+}
+
+
+///////// PROGRAM CARDS
+
+
+///// LOGIN
+.Login{
+    h2{
+        margin-top: 100px;
+        color:$primary
+    }
+
+    .login-credentials-div{
+        margin-top: 200px
+    }
+    #loginButton{
+        margin-top: 80px
+        
+    }
+}
