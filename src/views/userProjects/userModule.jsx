@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-import ModuleCard from 'components/cards/moduleCard.jsx'
+import ResourcesCard from 'components/cards/resourcesCard.jsx'
 import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
@@ -87,11 +87,11 @@ class UserModule extends Component {
           </div>
         </div>
         <div className="resources">
-          <ModuleCard data={module.resources}>
+          <ResourcesCard data={module.resources}>
             <Link to={'/resources'}>
               <div className="justify-content text-color-white description">{module.resources.shortDescription}</div>
             </Link>
-          </ModuleCard>
+          </ResourcesCard>
         </div>
       </div>
     )
