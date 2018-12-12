@@ -30,7 +30,7 @@ class UserProgram extends Component {
     if (!this.state.program) return <LoadingComponent />;
     return(
       <div className="container">
-        <p className="left-align"><h2>Program {this.props.match.params.p_id}</h2></p>
+        <h2 className="left-align">Program {this.props.match.params.p_id}</h2>
         {
           program.modules.map((items, id) => {
             return (
