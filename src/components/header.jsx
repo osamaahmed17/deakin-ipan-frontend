@@ -85,19 +85,19 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
+      <div className='Header'>
         <ul className="sidenav slide-out" id="side-nav">
           <div className="profile-div">
           <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
-          <h5>{this.state.name}</h5>
+          <span className='name-profile'>{this.state.name}</span>
           </div>
           
-          <li><a href="#!">My progress</a></li>
-          <li><a href="/programs">My programs</a></li>
-          <li><a href="/favouriteModules">Favorite Modules</a></li>
-          <li><a href="/favouriteActivities">Favorite Activities</a></li>
-          <li><a href="/profile">Profile</a></li>
-          <li><a onClick={this.logout} href="#!">Logout</a></li>
+          <li><a href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
+          <li><a href="/programs"><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
+          <li><a href="/favouriteModules"><i className="material-icons">favorite_border</i> <span>Modules</span> </a></li>
+          <li><a href="/favouriteActivities"><i className="material-icons">favorite_border</i> <span>Activities</span> </a></li>
+          <li><a href="/profile"><i className="material-icons">face</i> <span>Profile</span></a></li>
+          <li><a className='logout-button' onClick={this.logout} href="#!">Logout</a></li>
         </ul>
         <div className="navbar-fixed">
           <ul id="dropdown1" className="dropdown-content">
@@ -106,7 +106,7 @@ class Header extends Component {
             <li><a href="/favouriteModules">Favourite Modules</a></li>
             <li><a href="/favouriteActivities">Favourite Activities</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a onClick={this.logout} href="#!">Logout</a></li>
+            <li><a  onClick={this.logout} href="#!">Logout</a></li>
           </ul>
 
           <nav>

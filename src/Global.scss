@@ -1,27 +1,100 @@
 $primary:#0c8573;
 $secondary:white;
+$tertiary:#c74298;
 $primary-text:#3D3E3E;
+
 
 
 // HEADER AND MOBILE MENU
 
-.deakin-burger-title{
-    float: left;
-    padding-left: 16px;
-}
-.Footer{
-  
-}
-.page-footer{
-    padding-top: 0px !important;
-}
+.Header{
+    .name-profile{
+        margin-top: 10px;
+        border: none;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 16px 30px 18px !important;
+        min-width: 230px;
+        max-height: 55px;
+        color:$primary !important;
+        text-decoration: none !important;
+        text-align: center;
+        font-size: 14px;
+        font-size: 1.4rem;
+        line-height: 14px;
+        line-height: 1.4rem;
+        border-color: 5px solid $primary; 
+        border-radius: 30px;
+        font-family: Arial,sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        background-color:white;
+    }
+    .logout-button{
+        margin-top: 60px;
+        border: none;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 16px 30px 18px !important;
+        min-width: 230px;
+        max-height: 55px;
+        color: white !important;
+        text-decoration: none !important;
+        text-align: center;
+        font-size: 14px;
+        font-size: 1.4rem;
+        line-height: 14px;
+        line-height: 1.4rem;
+        border-radius: 30px;
+        -webkit-transition: all .15s ease-out;
+        transition: all .15s ease-out;
+        font-family: Arial,sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        background-color: #c74298;
+        margin-left: 30px;
+    }
+    li{
+        color: $primary
+    }
+
+    .deakin-burger-title{
+        float: left;
+        padding-left: 16px;
+    }
+    .material-icons{
+        margin: 0 10px 0 0 !important;
+        color:$primary !important;
+        font-weight: bold !important;
+    }
+
+    .sidenav li>a{
+        font-size: 24px;
+        padding: 0 10px;
+        color:$primary
+    }
+
 
 .sidenav{
     text-align: left
 }
 .profile-div{
-    margin-top: 25px;
-    text-align: center
+    margin-top: 0px;
+    text-align: center;
+    background-color:$primary;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+}
+
+.Footer{
+  
+}
+.page-footer{
+    padding-top: 0px !important;
 }
 
 h2{
@@ -45,7 +118,27 @@ h2{
         margin-top: 200px
     }
     #loginButton{
-        margin-top: 80px
+        margin-top: 80px;
+        border: none;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 10px 30px 18px;
+        min-width: 230px;
+        max-height: 55px;
+        color:$secondary;
+        text-decoration: none!important;
+        text-align: center;
+        font-size: 14px;
+        font-size: 1.4rem;
+        line-height: 14px;
+        line-height: 1.4rem;
+        border-radius: 30px;
+        transition: all .15s ease-out;
+        font-family: Arial,sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        background-color: $tertiary;
         
     }
 }

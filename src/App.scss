@@ -2,6 +2,7 @@
 @import './Global.scss';
 $primary:#0c8573;
 $secondary:white;
+$tertiary:#c74298;
 $primary-text:#3D3E3E;
 
 nav, footer {
@@ -72,7 +73,7 @@ main {
 
 .card-panel {
   color : get-color(white, color);
-  background-color: get-color(green, darkest) !important;
+  background-color: $primary !important;
 }
 
 .flat-btn {
