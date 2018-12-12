@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import M from "materialize-css";
+import { Link } from 'react-router-dom'
 
 class Collapsible extends Component {
   componentDidMount() {
@@ -8,6 +9,14 @@ class Collapsible extends Component {
     };
     M.Collapsible.init(this.Collapsible, options);
   }
+  checkContentType = (data) => {
+    if(data === 'activity') {
+      return true
+    } else if (data === 'task') {
+      return false
+    }
+  }
+  
   render () {
     return(
       <div className="container">
@@ -16,8 +25,15 @@ class Collapsible extends Component {
             this.props.data.map((item, i) => {
               return (
                 <li key = {i}>
-                  <div className="collapsible-header"> {item.title} </div>
-                  <div className="collapsible-body"> {this.props.children} </div>
+                  <div className="collapsible-header">
+                    {item.title}
+                    <i className="material-icons right-align">expand_less</i> 
+                  </div>
+                  <div className="collapsible-body justify-content">
+                    <Link to={'/programs/' + this.props.p_id + '/modules/' + this.props.m_id + '/' + this.props.contentType + '/' + item.id}>
+                        {item.shortDescription}
+                      </Link>
+                  </div>
                 </li>
               )
             })
