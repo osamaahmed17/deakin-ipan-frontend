@@ -60,7 +60,7 @@ class UserTask extends Component {
         </div>
         <div className="row">
           {this.previousQuestion()}
-          {this.nextQuestion()}
+          {this.nextQuestionButton()}
         </div>
       </div>
     )
@@ -121,9 +121,9 @@ class UserTask extends Component {
 
   // Function show Finish if user is at last question
   // Otherwise Next question button is displayed
-  nextQuestion = () => {
+  nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<button className="btn right"> Finish </button>)
+      return (<a className="waves-effect waves-light btn right" href="/home"> Finish </a>)
     } else {
       return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1})}> Next Question </button>)
     }
