@@ -123,7 +123,7 @@ class UserTask extends Component {
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<a className="waves-effect waves-light btn right" href="/home"> Finish </a>)
+      return (<a className="waves-effect waves-light btn right" href="/programs"> Finish </a>)
     } else {
       return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1})}> Next Question </button>)
     }
