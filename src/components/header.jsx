@@ -18,20 +18,24 @@ class Header extends Component {
 
   createBackURL = (subStr, str) => {
     // Next 2 line code is for special case path back button like Programs, and other cases in future
-    if(((str.split('/').length -1) === 2) && (str.split('programs').length)) {
+    if(((str.split('/').length -1) === 2) && (str.split('resources').length)) {
       return '/programs'
+    } else if(str === '/resources') {
+      return '/home'
+    } else {
+      let location = []
+      let i = -1
+      while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+      // Store the last second '/' position
+      location = location.splice(0,location.length-1)
+      location = location.splice(-1)
+      // newLocation will store location from 0 to location
+      let newLocation = str.substring(0, location)
+      return newLocation;
     }
     // Rest of the code is trimming URL till last 2nd '/' from behind
     // Location is array which is used to store position of '/'
-    let location = []
-    let i = -1
-    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
-    // Store the last second '/' position
-    location = location.splice(0,location.length-1)
-    location = location.splice(-1)
-    // newLocation will store location from 0 to location
-    let newLocation = str.substring(0, location)
-    return newLocation;
+    
   }
 
   // If URL is empty then Back button is not diplayed
@@ -87,8 +91,8 @@ class Header extends Component {
           <h5>{this.state.name}</h5>
           <li><a href="#!">My progress</a></li>
           <li><a href="/programs">My programs</a></li>
-          <li><a href="#!">Favorite Modules</a></li>
-          <li><a href="#!">Favorite Activities</a></li>
+          <li><a href="/favouriteModules">Favorite Modules</a></li>
+          <li><a href="/favouriteActivities">Favorite Activities</a></li>
           <li><a href="/profile">Profile</a></li>
           <li><a onClick={this.logout} href="#!">Logout</a></li>
         </ul>
@@ -96,8 +100,8 @@ class Header extends Component {
           <ul id="dropdown1" className="dropdown-content">
             <li><a href="#!">My progress</a></li>
             <li><a href="/programs">My programs</a></li>
-            <li><a href="#!">Favourite Modules</a></li>
-            <li><a href="#!">Favourite Activities</a></li>
+            <li><a href="/favouriteModules">Favourite Modules</a></li>
+            <li><a href="/favouriteActivities">Favourite Activities</a></li>
             <li><a href="/profile">Profile</a></li>
             <li><a onClick={this.logout} href="#!">Logout</a></li>
           </ul>
