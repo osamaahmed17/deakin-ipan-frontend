@@ -75,6 +75,19 @@ class API {
       stateHandler({resources: response.data.data});
     })
   }
+  getFavouriteModules = (stateHandler) => {
+    axiosClient.get("favouriteModules")
+    .then((response) => {
+      stateHandler({favouriteModules: response.data.favouriteModules});
+    })
+  }
+
+  getFavouriteActivities = (stateHandler) => {
+    axiosClient.get("favouriteActivities")
+    .then((response) => {
+      stateHandler({favouriteActivities: response.data.favouriteActivities});
+    })
+  }
 }
 
 const instance = new API();
