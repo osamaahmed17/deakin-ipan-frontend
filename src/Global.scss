@@ -31,6 +31,7 @@ $primary-text:#3D3E3E;
     font-style: normal;
     background-color:white;
   }
+
   .logout-button{
     margin-top: 60px;
     border: none;
@@ -56,6 +57,7 @@ $primary-text:#3D3E3E;
     background-color: #c74298;
     margin-left: 30px;
   }
+
   li{
     color: $primary
   }
@@ -76,18 +78,17 @@ $primary-text:#3D3E3E;
     color:$primary
   }
 
+  .sidenav{
+    text-align: left
+  }
 
-.sidenav{
-  text-align: left
-}
-.profile-div{
-  margin-top: 0px;
-  text-align: center;
-  background-color:$primary;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
+  .profile-div{
+    margin-top: 0px;
+    text-align: center;
+    background-color:$primary;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .Footer{
@@ -95,6 +96,7 @@ $primary-text:#3D3E3E;
   bottom: 0;
   width: 100%;
 }
+
 .page-footer{
   padding-top: 0px !important;
 }
