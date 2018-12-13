@@ -49,8 +49,8 @@ class UserModule extends Component {
       <div className="container">
         <div className="title row">
           <h2 className="col s9 m9 l9 left-align">{module.title}</h2>
-          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>{module.goal.type}</i>
-          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>{module.favourite.type}</i>
+          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>directions_run</i>
+          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
           <p className="col s12 m12 l12 left-align sub-heading">Module {module.id}</p>
         </div>
         <div className="article">
@@ -86,7 +86,7 @@ class UserModule extends Component {
         </div>
         <div className="resources">
           <ResourcesCard data={module.resources}>
-            <Link to={'/resources'}>
+            <Link to={'/programs/' + this.props.match.params.p_id + '/module/' + this.props.match.params.m_id + '/resources'}>
               <div className="justify-content text-color-white description">{module.resources.shortDescription}</div>
             </Link>
           </ResourcesCard>

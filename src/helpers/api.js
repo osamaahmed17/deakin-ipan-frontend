@@ -42,36 +42,43 @@ class API {
   }
 
   getProgram = (stateHandler, p_id) => {
-    axiosClient.get("program/" + p_id)
+    axiosClient.get("programs/" + p_id)
     .then((response) => {
       stateHandler({program: response.data.program});
     })
   }
 
   getModule = (stateHandler, p_id, m_id) => {
-    axiosClient.get("program/" + p_id + "/module/" + m_id)
+    axiosClient.get("programs/" + p_id + "/modules/" + m_id)
     .then((response) => {
       stateHandler({module: response.data.module});
     })
   }
 
   getActivity = (stateHandler, p_id, m_id, a_id) => {
-    axiosClient.get("program/" + p_id + "/module/" + m_id + "/activity/" + a_id)
+    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/activities/" + a_id)
     .then((response) => {
-      stateHandler({activity: response.data.activity});
+      stateHandler({
+        activity: response.data.activity,
+        toggleFavourite: response.data.activity.favouriteStatus
+      });
     })
   }
 
   getTasks = (stateHandler, p_id, m_id, t_id) => {
-    axiosClient.get("program/" + p_id + "/module/" + m_id + "/tasks/" + t_id)
+    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/tasks/" + t_id)
     .then((response) => {
-      stateHandler({tasks: response.data.tasks});
+      stateHandler({
+        tasks: response.data.tasks,
+        toggleFavourite: response.data.tasks.favouriteStatus
+      });
     })
   }
 
-  getResources = (stateHandler) => {
-    axiosClient.get("resources")
+  getResources = (stateHandler, p_id, m_id) => {
+    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/resources")
     .then((response) => {
+      console.log("Response:",response)
       stateHandler({resources: response.data.data});
     })
   }

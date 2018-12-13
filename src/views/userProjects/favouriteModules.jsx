@@ -24,14 +24,9 @@ class FavouriteModule extends Component {
   }
 
   mapCard = (data) => {
-    if(data.favourite.status === "true") {
+    if(data.favouriteStatus === true) {
       return (
-        <ModuleCard data={data}>
-          <p className="justify-content text-color-white description">{data.shortDescription}</p>
-          <div className="row margin-bot-rm">
-            <p className="col right" style={{marginBottom:"0px"}}> {data.status} </p>
-          </div>
-        </ModuleCard>
+        <ModuleCard data={data} p_id={1} />
       )
     }
   }
@@ -44,17 +39,7 @@ class FavouriteModule extends Component {
         <h2 className="heading center">My Favourite Modules</h2>
         {
           favouriteModules.map((array, i) => {
-            return (
-              <div key={i}>
-                {
-                  array.modules.map((item, j) => {
-                    return (
-                      <div key={j}> {this.mapCard(item)} </div>
-                    )
-                  })
-                }
-              </div>
-            )
+            return <div key={i}> {this.mapCard(array)} </div>
           })
         }
       </div>

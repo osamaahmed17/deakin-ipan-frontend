@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ProgramCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleGoal: '',
-      toggleFavourite: '',
+      toggleGoal: this.props.data.goalStatus,
+      toggleFavourite: this.props.data.favouriteStatus,
     }
     this.handleGoalClick = this.handleGoalClick.bind(this)
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
@@ -31,10 +32,15 @@ class ProgramCard extends Component {
             <div className="row">
               <div className="col card-title sub-heading s9 m10 l10 left-align"> {this.props.data.title} </div>
               <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
-              <i className="material-icons" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+              <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          {this.props.children}
+          <Link to={'/programs/' + this.props.p_id + '/modules/' + this.props.data.id }>
+            <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
+          </Link>
+          <div className="row margin-bot-rm">
+            <p className="col right" style={{marginBottom:"0px"}}> {this.props.data.status} </p>
+          </div>
         </div>
       </div>
     )

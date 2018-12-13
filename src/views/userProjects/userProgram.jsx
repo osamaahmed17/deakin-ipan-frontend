@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ModuleCard from 'components/cards/moduleCard.jsx'
-import { Link } from 'react-router-dom'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 
@@ -36,14 +35,7 @@ class UserProgram extends Component {
             return (
               <div key={id}>
                 {/* the status in card is for achivements and favourites */}
-                  <ModuleCard data={items} p_id={this.props.match.params.id} m_id = {id} status={true} goal={items.goal} favourite={items.favourite}>
-                    <Link to={'/programs/' + this.props.match.params.p_id + '/modules/' + id}>
-                      <p className="justify-content text-color-white description">{items.shortDescription}</p>
-                    </Link>
-                    <div className="row margin-bot-rm">
-                      <p className="col right" style={{marginBottom:"0px"}}> {items.status} </p>
-                    </div>
-                  </ModuleCard>
+                  <ModuleCard data={items} p_id={this.props.match.params.p_id} />
               </div>
             )
           })

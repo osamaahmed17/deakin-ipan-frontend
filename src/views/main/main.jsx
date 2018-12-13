@@ -22,7 +22,7 @@ class Main extends Component {
       <main>
         <div className="Main">
           <Switch>
-            <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/'/> : <div></div> )} />
+            <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/programs'/> : <div></div> )} />
             <Route exact path='/team' component={Team}/>
             <Route exact path='/home' component={Home}/>
             <Route exact path='/profile' component={Profile}/>
@@ -35,7 +35,7 @@ class Main extends Component {
             <Route exaxt path='/tasks/:t_id' component={UserTask} />
             <Route exact path='/calendar' component={ViewCalendar} />
             <Route exact path='/calendar/:p_id' component={ViewCalendar} />
-            <Route exact path='/resources' component={Resources} />
+            <Route exact path='/programs/:p_id/module/:m_id/resources' component={Resources} />
             <Route exact path='/favouriteActivities' component={FavouriteActivities} />
             <Route exact path='/favouriteModules' component={FavouriteModules} />
             <Route render= {(props) => (

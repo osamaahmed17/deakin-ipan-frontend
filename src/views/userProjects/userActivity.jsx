@@ -8,15 +8,14 @@ class UserActivity extends Component {
     super(props);
     this.state = {
       activity: null,
-      toggleFavourite: '',
+      toggleFavourite: false,
     }
-    this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
   }
 
-  handleFavouriteClick() {
-    this.setState(state => ({
-      toggleFavourite: !state.toggleFavourite
-    }))
+  handleFavouriteClick = () => {
+    this.setState({
+    toggleFavourite: !this.state.toggleFavourite
+    })
   }
 
   componentDidMount() {

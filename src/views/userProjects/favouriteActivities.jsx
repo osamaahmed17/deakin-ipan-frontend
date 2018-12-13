@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Card from 'components/cards/card.jsx'
+import FavouriteActivitiesCard from 'components/cards/favouriteActivitiesCard.jsx'
 
 class FavouriteActivity extends Component {
   constructor(props) {
@@ -23,6 +24,14 @@ class FavouriteActivity extends Component {
   API.getFavouriteActivities(this.stateHandler);
   }
 
+  mapCard = (data) => {
+    if(data.favourite === true) {
+      return (
+        <FavouriteActivitiesCard data={data} />
+      )
+    }
+  }
+
   render() {
     let favouriteActivities = this.state.favouriteActivities;
     if (!this.state.favouriteActivities) return <LoadingComponent />;
@@ -31,14 +40,7 @@ class FavouriteActivity extends Component {
         <h2 className="heading center">My Favourite Activities</h2>
         {
           favouriteActivities.map((data, i) => {
-            return (
-              <Card data={data}>
-                <div className="row">
-                  <div className="col s9 left-align"> {data.shortDescription} </div>
-                  <div className="col s3"> {data.status} </div>
-                </div>
-              </Card>
-            )
+            return <div key={i}> {this.mapCard(data)} </div>
           })
         }
       </div>

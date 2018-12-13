@@ -10,9 +10,8 @@ class UserTask extends Component {
       current: 1,
       popUpMessage: null,
       boxTicked: false,
-      toggleFavourite: '',
+      toggleFavourite: false,
     }
-    this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
   }
 
   componentDidMount() {
@@ -28,10 +27,10 @@ class UserTask extends Component {
   }
 
   // Onclick favourite icon toggle true and false state
-  handleFavouriteClick() {
-    this.setState(state => ({
-      toggleFavourite: !state.toggleFavourite
-    }))
+  handleFavouriteClick = () => {
+    this.setState({
+      toggleFavourite: !this.state.toggleFavourite
+    })
   }
 
   // GenerateQuiz Function will take array as data and map them
@@ -144,7 +143,8 @@ class UserTask extends Component {
     return(
       <div className="container">
         <div className="title row">
-          <h2 className="col s11 m11 l11 left-align"> <i className="material-icons btn-flat padding-rmv right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i> Quiz Title {this.props.title} </h2>
+          <h2 className="col s11 m11 l11 left-align"> Quiz Title {this.props.title} </h2>
+          <i className="col s1 m1 l1 material-icons btn-flat margin-top right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
           <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id} : Quiz</div>
         </div>
         <div className="quiz">
