@@ -27,7 +27,7 @@ class Collapsible extends Component {
                 <li key = {i}>
                   <div className="collapsible-header">
                     <span className="left-align sub-heading"> {item.title} </span>
-                    {/* <i className="material-icons right">expand_more</i> */}
+                    <i className="material-icons right">expand_more</i>
                     <span className="right"> {item.status} </span>
                   </div>
                   <div className="collapsible-body justify-content description">
