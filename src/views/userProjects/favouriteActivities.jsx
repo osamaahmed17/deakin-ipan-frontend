@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
-import Card from 'components/cards/card.jsx'
 import FavouriteActivitiesCard from 'components/cards/favouriteActivitiesCard.jsx'
 
 class FavouriteActivity extends Component {

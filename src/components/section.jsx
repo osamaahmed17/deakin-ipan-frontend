@@ -8,12 +8,12 @@ function displayContent(data) {
   } else if (data.type === 'video') {
     return (
       <div className="video-container">
-        <iframe src={data.value} frameBorder="0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+        <iframe src={data.value} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       </div>
     )
   } else if (data.type === 'text') {
     return (
-      <p>
+      <p className="container description">
         {data.value}
       </p>
     )

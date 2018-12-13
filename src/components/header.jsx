@@ -114,7 +114,7 @@ class Header extends Component {
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
                 
-                {/*<a href="/home" className="brand-logo center">{this.props.title}</a>*/}
+                {/* <a href="/home" className="brand-logo left">{this.props.title}</a> */}
                 <ul>
                   <li>
                     <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>

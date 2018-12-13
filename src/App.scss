@@ -68,6 +68,7 @@ nav, footer {
 }
 
 main {
+  margin-bottom: 33.227px;
   flex: 1 0 auto;
 }
 
@@ -108,12 +109,12 @@ main {
   color:$primary-text !important;
 }
 
-.message{
-  display: block;
-  width: 100%;
-  height: 100px;
-  overflow: hidden;
-}
+// .message{
+//   display: block;
+//   width: 100%;
+//   height: 100px;
+//   overflow: hidden;
+// }
 
 .heading {
   font-size: 30px;
@@ -140,4 +141,9 @@ main {
 .Login{
   min-height: 100vh;
   background-image: url("images/ipan2.png");
+}
+
+.collapsible-header {
+  display: block !important;
+  text-align: left;
 }

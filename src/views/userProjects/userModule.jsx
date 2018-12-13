@@ -69,7 +69,7 @@ class UserModule extends Component {
             <div className="col s12 left-align heading">
               Activities
             </div>
-            <div className="col s12">
+            <div className="col s12 padding-rmv">
               <Collapsible data={module.activities}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
             </div>
           </div>
@@ -79,7 +79,7 @@ class UserModule extends Component {
             <div className="col s12 left-align heading">
               Tasks
             </div>
-            <div className="col s12">
+            <div className="col s12 padding-rmv">
               <Collapsible data={module.tasks}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
             </div>
           </div>

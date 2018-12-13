@@ -58,17 +58,13 @@ $primary-text:#3D3E3E;
     margin-left: 30px;
   }
 
-  li{
-    color: $primary
-  }
-
   .deakin-burger-title{
     float: left;
     padding-left: 16px;
   }
   .material-icons{
     margin: 0 10px 0 0 !important;
-    color:$primary !important;
+    // color:$primary !important;
     font-weight: bold !important;
   }
 
@@ -92,9 +88,9 @@ $primary-text:#3D3E3E;
 }
 
 .page-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  // position: fixed;
+  // bottom: 0;
+  // width: 100%;
   padding-top: 0px !important;
 }
 

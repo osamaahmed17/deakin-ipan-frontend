@@ -99,7 +99,7 @@ class UserTask extends Component {
       )
     } else {
       this.setState({
-        popUpMessage: ''
+        popUpMessage: null,
       })
     }
   }
@@ -122,9 +122,9 @@ class UserTask extends Component {
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<a className="waves-effect waves-light btn right" href="/programs"> Finish </a>)
+      return (<a className="waves-effect waves-light btn right" href="/programs" onClick={() => this.setState({ popUpMessage: null, boxTicked: false})}> Finish </a>)
     } else {
-      return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1})}> Next Question </button>)
+      return (<button className="btn right" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current+1})}> Next Question </button>)
     }
   }
 
@@ -133,7 +133,7 @@ class UserTask extends Component {
   // If user is attmepting 1st question of quiz then previous button wont be displayed
   previousQuestion = () => {
     if(!(this.state.current === 1)) {
-      return (<button className="btn left" onClick={() => this.setState({ current: this.state.current - 1})}> Previous Question </button>)
+      return (<button className="btn left" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current - 1})}> Previous Question </button>)
     }
   }
 

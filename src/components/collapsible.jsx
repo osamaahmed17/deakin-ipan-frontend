@@ -19,17 +19,18 @@ class Collapsible extends Component {
   
   render () {
     return(
-      <div className="container">
+      <div>
         <ul className="collapsible expandable" ref={Collapsible => { this.Collapsible = Collapsible; }}>
           {
             this.props.data.map((item, i) => {
               return (
                 <li key = {i}>
                   <div className="collapsible-header">
-                    {item.title}
-                    <i className="material-icons right-align">expand_less</i> 
+                    <span className="left-align sub-heading"> {item.title} </span>
+                    {/* <i className="material-icons right">expand_more</i> */}
+                    <span className="right"> {item.status} </span>
                   </div>
-                  <div className="collapsible-body justify-content">
+                  <div className="collapsible-body justify-content description">
                     <Link to={'/programs/' + this.props.p_id + '/modules/' + this.props.m_id + '/' + this.props.contentType + '/' + item.id}>
                         {item.shortDescription}
                       </Link>
