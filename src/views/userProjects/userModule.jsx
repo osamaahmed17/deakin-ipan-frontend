@@ -47,12 +47,10 @@ class UserModule extends Component {
     if (!this.state.module) return <LoadingComponent />;
     return(
       <div className="container">
-        <div className="icons">
-          <p className="col right" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <i className="material-icons">{module.goal.type}</i> </p>
-          <p className="col right" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons md-light">{module.favourite.type}</i> </p>
-        </div>
         <div className="title row">
-          <p className="col s12 m12 l12 left-align heading">{module.title}</p>
+          <h2 className="col s9 m9 l9 left-align">{module.title}</h2>
+          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>{module.goal.type}</i>
+          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>{module.favourite.type}</i>
           <p className="col s12 m12 l12 left-align sub-heading">Module {module.id}</p>
         </div>
         <div className="article">

@@ -30,8 +30,8 @@ class ProgramCard extends Component {
           <div className="card-content white-text">
             <div className="row">
               <div className="col card-title sub-heading s9 m10 l10 left-align"> {this.props.data.title} </div>
-              <div className="col s1 m1 l1" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> <p className="col margin-top-rm"> <i className="material-icons"> directions_run </i> </p> </div>
-              <div className="col s1 m1 l1" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <p className="col margin-top-rm"> <i className="material-icons"> favorite </i> </p> </div>
+              <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
+              <i className="material-icons" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
           {this.props.children}

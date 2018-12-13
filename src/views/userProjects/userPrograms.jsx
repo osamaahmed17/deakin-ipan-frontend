@@ -30,7 +30,7 @@ class UserPrograms extends Component {
     if (data.length > 0) {
       return (
         <div>
-          <p className="heading">Your Programs</p>
+          <h2>Your Programs</h2>
             {
               data.map((items) => {
                 return (
@@ -54,7 +54,7 @@ class UserPrograms extends Component {
       )
     } else {
       return (
-        <div className="row padding-top">
+        <div className="container row">
           <i className="material-icons md-light large">add_circle_outline</i>
           <p>Add New Program</p>
         </div>

@@ -27,7 +27,7 @@ class Collapsible extends Component {
                 <li key = {i}>
                   <div className="collapsible-header">
                     {item.title}
-                    <i className="material-icons right-align">expand_more</i> 
+                    <i className="material-icons right-align btn-flat padding-rmv">expand_more</i> 
                   </div>
                   <div className="collapsible-body justify-content">
                     <Link to={'/programs/' + this.props.p_id + '/modules/' + this.props.m_id + '/' + this.props.contentType + '/' + item.id}>

@@ -37,12 +37,12 @@ class UserActivity extends Component {
     return(
       <div className="container">
         <div className="row">
-          <div className="col s11 m11 l11 left-align heading">
+          <h2 className="col s11 m11 l11 left-align heading">
             Activity {this.props.match.params.a_id}
             <br/>
             Weekly Planner Activity
-          </div>
-          <div className="col s1 m1 l1 right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> <i className="material-icons">favorite</i> </div>
+          </h2>
+          <i className="material-icons margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         <div className="card section">
         {
@@ -56,7 +56,7 @@ class UserActivity extends Component {
         }
         </div>
         <div className="calendar">
-          <a className="waves-effect waves-light btn" href={'/calendar/' + this.props.match.params.p_id}> Add this activity to you calendar </a>
+          <a className="waves-effect waves-light btn btn-width-100" href={'/calendar/' + this.props.match.params.p_id}> Add this activity to you calendar </a>
         </div>
       </div>
     )

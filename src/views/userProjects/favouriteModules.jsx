@@ -41,7 +41,7 @@ class FavouriteModule extends Component {
     if (!this.state.favouriteModules) return <LoadingComponent />;
     return (
       <div className="container">
-        <p className="heading center">My Favourite Modules</p>
+        <h2 className="heading center">My Favourite Modules</h2>
         {
           favouriteModules.map((array, i) => {
             return (

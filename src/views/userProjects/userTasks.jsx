@@ -37,7 +37,7 @@ class UserTask extends Component {
   // GenerateQuiz Function will take array as data and map them
   generateQuiz(quiz) {
     return (
-      <div className="questions">
+      <div>
         {
           quiz.questionSet.map((question, i) => {
             if(question.id === this.state.current) {
@@ -53,12 +53,12 @@ class UserTask extends Component {
   questionList(data, key) {
     return (
       <div key={key}>
-        <p> Question {key+1}: {data.question}</p>
+        <p className="questions"> Question {key+1}: {data.question}</p>
         {this.checkBoxOption(data.options, data.popup)}
-        <div className="row">
+        <div className="message">
         {this.displayPopUpMessage()}
         </div>
-        <div className="row">
+        <div className="button row">
           {this.previousQuestion()}
           {this.nextQuestionButton()}
         </div>
@@ -73,7 +73,7 @@ class UserTask extends Component {
     return (
       options.map((items, k) => {
         return (
-          <p className="left-align">
+          <p className={"options_" + k + " left-align"}>
             <label>
               <input type="checkbox" key={k} onClick={() => this.answerPopUp(popUpMessage, k)} />
               <span>{items}</span>
@@ -143,11 +143,11 @@ class UserTask extends Component {
     if (!this.state.tasks) return <LoadingComponent />;
     return(
       <div className="container">
-        <div className="title row padding-top">
-          <div className="col s11 m11 l11 left-align heading"> <i className="material-icons" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i> Quiz Title {this.props.title} </div>
-          <div className="col s12 m12 l12 left-align"> Tasks {this.props.match.params.t_id} : Quiz</div>
+        <div className="title row">
+          <h2 className="col s11 m11 l11 left-align"> <i className="material-icons btn-flat padding-rmv right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i> Quiz Title {this.props.title} </h2>
+          <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id} : Quiz</div>
         </div>
-        <div>
+        <div className="quiz">
           {this.generateQuiz(tasks.data)}
         </div>
       </div>

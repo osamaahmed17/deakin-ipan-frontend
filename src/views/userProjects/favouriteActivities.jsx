@@ -28,7 +28,7 @@ class FavouriteActivity extends Component {
     if (!this.state.favouriteActivities) return <LoadingComponent />;
     return (
       <div className="container">
-        <p className="heading center">My Favourite Activities</p>
+        <h2 className="heading center">My Favourite Activities</h2>
         {
           favouriteActivities.map((data, i) => {
             return (
