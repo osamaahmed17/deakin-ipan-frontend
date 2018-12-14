@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 function displayContent(data) {
   if (data.type === 'image') {
     return (
-      <img className="responsive-img" src={data.src} alt={data.altName} />
+      <img className="responsive-img" src={data.value} altname="img"/>
       )
   } else if (data.type === 'video') {
     return (
