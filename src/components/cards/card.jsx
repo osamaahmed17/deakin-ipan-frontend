@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Card extends Component {
   render() {
@@ -8,7 +9,15 @@ class Card extends Component {
           <div className="card-content white-text">
             <span className="card-title sub-heading"> {this.props.data.title} </span>
           </div>
-          {this.props.children}
+          <Link to={'/programs/' + this.props.data.id}>
+            <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
+          </Link>
+          <div className="row" style={{marginBottom:"0px"}}>
+            <p className="col right">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>
+          </div>
+          <div className="progress">
+            <div className="determinate white" style={{width: (this.props.data.progress === '' ? 0 : ((this.props.data.progress*100)/this.props.data.total)) +"%"}}></div>
+          </div>
         </div>
       </div>
     )
