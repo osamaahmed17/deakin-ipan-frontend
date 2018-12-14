@@ -59,7 +59,9 @@ class UserTask extends Component {
         <p className="questions"> Question {key+1}: {data.question}</p>
         {this.checkBoxOption(data.options, data.popup)}
         <div className="message">
-        {this.state.popUpMessage}
+        <blink>
+          {this.state.popUpMessage}
+        </blink>
         </div>
       </div>
     )
@@ -145,9 +147,9 @@ class UserTask extends Component {
       <div className="tasks-quiz container">
         <div className="tasks-quiz-main">
           <div className="title row">
-            <h2 className="col s11 m11 l11 left-align"> Quiz Title {this.props.title} </h2>
+            <h2 className="col s11 m11 l11 left-align"> Quiz </h2>
             <i className="col s1 m1 l1 material-icons btn-flat margin-top right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
-            <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id} : Quiz</div>
+            <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id}</div>
           </div>
           <div className="quiz">
             {this.generateQuiz(tasks.data)}
