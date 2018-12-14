@@ -11,6 +11,7 @@ class UserTask extends Component {
       popUpMessage: null,
       boxTicked: false,
       toggleFavourite: false,
+      disableBox: null,
     }
   }
 
@@ -74,7 +75,7 @@ class UserTask extends Component {
         return (
           <p className={"options_" + k + " left-align"}>
             <label>
-              <input type="checkbox" key={k} onClick={() => this.answerPopUp(popUpMessage, k)} />
+              <input type="checkbox" key={k} onClick={() => this.answerPopUp(popUpMessage, k)} disabled={this.state.disableBox}/>
               <span>{items}</span>
             </label>
           </p>
@@ -88,6 +89,9 @@ class UserTask extends Component {
   // Onclick of box pop message is displayed immediately
   // Popup message state is set in this function
   answerPopUp = (popUpMessage, optionNumberCLicked) => {
+    this.setState({
+      disableBox: 'disabled'
+    })
     this.setState(state => ({
       boxTicked: !state.boxTicked
     }))
@@ -124,7 +128,7 @@ class UserTask extends Component {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
       return (<a className="waves-effect waves-light btn right" href="/programs" onClick={() => this.setState({ popUpMessage: null, boxTicked: false})}> Finish </a>)
     } else {
-      return (<button className="btn right" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current+1})}> Next Question </button>)
+      return (<button className="btn right" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current+1})}> Next </button>)
     }
   }
 
@@ -133,7 +137,7 @@ class UserTask extends Component {
   // If user is attmepting 1st question of quiz then previous button wont be displayed
   previousQuestion = () => {
     if(!(this.state.current === 1)) {
-      return (<button className="btn left" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current - 1})}> Previous Question </button>)
+      return (<button className="btn left" onClick={() => this.setState({ popUpMessage: null, boxTicked: false, current: this.state.current - 1})}> Previous </button>)
     }
   }
 
