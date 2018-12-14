@@ -47,10 +47,9 @@ class UserModule extends Component {
     return(
       <div className="container">
         <div className="title row">
-          <h2 className="col s9 m9 l9 left-align">{module.title}</h2>
+          <h2 className="col s9 m9 l9 left-align">Module {this.props.match.params.m_id}: {module.title}</h2>
           <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>directions_run</i>
           <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
-          <p className="col s12 m12 l12 left-align sub-heading">Module {module.id}</p>
         </div>
         {
           module.section.map((items, k) => {
