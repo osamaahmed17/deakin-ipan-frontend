@@ -86,9 +86,9 @@ class UserModule extends Component {
         </div>
         <div className="resources">
           <ResourcesCard data={module.resources}>
-            <Link to={'/programs/' + this.props.match.params.p_id + '/module/' + this.props.match.params.m_id + '/resources'}>
+            {/* <Link to={'/programs/' + this.props.match.params.p_id + '/module/' + this.props.match.params.m_id + '/resources'}> */}
               <div className="justify-content text-color-white description">{module.resources.shortDescription}</div>
-            </Link>
+            {/* </Link> */}
           </ResourcesCard>
         </div>
       </div>
