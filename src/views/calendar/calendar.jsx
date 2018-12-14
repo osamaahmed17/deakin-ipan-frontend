@@ -54,7 +54,7 @@ class ViewCalender extends Component {
   btnRedirect = (data) => {
     if(data == null || data === "undefined") {
       return (
-        <a className="waves-effect waves-light btn" href={'/home'}> Home </a>
+        <a className="waves-effect waves-light btn" href={'/programs'}> Programs </a>
       )
     } else {
       return (
@@ -68,7 +68,7 @@ class ViewCalender extends Component {
     const modifiers = { start: from, end: to };
     return (
       <div className="container">
-        <p className="left-align heading">Schedule</p>
+        <h2 className="left-align heading col s12">Schedule</h2>
         <div className="row">
             <div className="col s12">
               <ul className="tabs">
@@ -79,15 +79,19 @@ class ViewCalender extends Component {
             <div id="range-select" className="col s12">
             <div className="RangeExample">
               <p>
-                {!from && !to && 'Please select the first day.'}
-                {from && !to && 'Please select the last day.'}
-                {from &&
-                  to &&
-                  `Selected from ${from.toLocaleDateString()} to
-                      ${to.toLocaleDateString()}`}{' '}
+                <b>
+                  {!from && !to && 'Please select the first day.'}
+                  {from && !to && 'Please select the last day.'}
+                </b>
+                <b>
+                  {from &&
+                    to &&
+                    `Selected from ${from.toLocaleDateString()} to
+                        ${to.toLocaleDateString()}`}{' '}
+                </b>
                 {from &&
                   to && (
-                    <button className="link" onClick={this.handleResetClick}>
+                    <button className="link btn-small waves-effect waves-light" onClick={this.handleResetClick}>
                       Reset
                     </button>
                   )}
