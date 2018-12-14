@@ -30,7 +30,7 @@ class ProgramCard extends Component {
         <div className="card-panel">
           <div className="card-content white-text">
             <div className="row">
-              <div className="col card-title sub-heading s9 m10 l10 left-align"> {this.props.data.title} </div>
+              <div className="col card-title sub-heading s9 m10 l10 left-align"> <b>{this.props.data.title}</b> </div>
               <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
               <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
