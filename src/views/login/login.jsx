@@ -81,20 +81,20 @@ class Login extends Component {
         </h2>
         <div className='row'>
           <div className='row'>
-            <div className='col s8 offset-s2 login-credentials-div'>
-              <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
-              <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              {this.errorMessage()}
-            </div>
-            <div className='button-container'>
-              {
-                this.props.loginLoading ? 
-                  "Loading..." : 
-                  <a className="col s8 offset-s2 waves-effect waves-light btn" id="loginButton" onClick={this.performLogin} href="#!">
-                    Login
-                  </a>
-              }
-            </div>
+            <form >
+              <div className='col s8 offset-s2 login-credentials-div'>
+                <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
+                <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
+                {this.errorMessage()}
+              </div>
+              <div className='button-container'>
+                {
+                  this.props.loginLoading ? 
+                    "Loading..." :
+                    <button className="col s8 offset-s2 btn waves-effect waves-light" id="loginButton" onClick={this.performLogin}>Login</button>
+                }
+              </div>
+            </form>
           </div>
         </div>
       </div>
