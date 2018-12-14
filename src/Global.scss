@@ -3,7 +3,37 @@ $secondary:white;
 $tertiary:#c74298;
 $primary-text:#3D3E3E;
 
+// Main layout start
 
+.App {
+  display: grid;
+  text-align: center;
+  grid-template-rows: 8% auto 8%;
+  height: 100vh;
+  font-family: Open Sans, Arial, sans-serif
+}
+
+header {
+  // Don't need anything here
+}
+
+.main {
+  display: flex;
+  overflow: hidden;
+  padding: 2% 0;
+}
+
+.main-content {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+}
+
+footer {
+  // Don't need anything here
+}
+
+// Main layout end
 
 // HEADER AND MOBILE MENU
 
@@ -85,13 +115,6 @@ $primary-text:#3D3E3E;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-}
-
-.page-footer {
-  // position: fixed;
-  // bottom: 0;
-  // width: 100%;
-  padding-top: 0px !important;
 }
 
 h2{
