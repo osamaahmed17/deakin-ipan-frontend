@@ -91,9 +91,11 @@ class ViewCalender extends Component {
                 </b>
                 {from &&
                   to && (
-                    <button className="link btn-small waves-effect waves-light" onClick={this.handleResetClick}>
+                    <div className="col s12">
+                      <button className="link btn-small waves-effect waves-light" onClick={this.handleResetClick}>
                       Reset
                     </button>
+                    </div>
                   )}
               </p>
               <DayPicker
