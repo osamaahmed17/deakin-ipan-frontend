@@ -58,10 +58,6 @@ class UserTask extends Component {
         <div className="message">
         {this.displayPopUpMessage()}
         </div>
-        <div className="button row">
-          {this.previousQuestion()}
-          {this.nextQuestionButton()}
-        </div>
       </div>
     )
   }
@@ -73,12 +69,12 @@ class UserTask extends Component {
     return (
       options.map((items, k) => {
         return (
-          <p className={"options_" + k + " left-align"}>
+          <div className={"options_" + k + " left-align"}>
             <label>
               <input type="checkbox" key={k} onClick={() => this.answerPopUp(popUpMessage, k)} disabled={this.state.disableBox}/>
               <span>{items}</span>
             </label>
-          </p>
+          </div>
         )
       })
     )
@@ -145,14 +141,22 @@ class UserTask extends Component {
     let tasks = this.state.tasks;
     if (!this.state.tasks) return <LoadingComponent />;
     return(
-      <div className="container">
-        <div className="title row">
-          <h2 className="col s11 m11 l11 left-align"> Quiz Title {this.props.title} </h2>
-          <i className="col s1 m1 l1 material-icons btn-flat margin-top right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
-          <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id} : Quiz</div>
+      <div className="tasks-quiz container">
+        <div className="tasks-quiz-main">
+          <div className="title row">
+            <h2 className="col s11 m11 l11 left-align"> Quiz Title {this.props.title} </h2>
+            <i className="col s1 m1 l1 material-icons btn-flat margin-top right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+            <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id} : Quiz</div>
+          </div>
+          <div className="quiz">
+            {this.generateQuiz(tasks.data)}
+          </div>
         </div>
-        <div className="quiz">
-          {this.generateQuiz(tasks.data)}
+        <div className="tasks-quiz-footer">
+          <div className="row">
+            {this.previousQuestion()}
+            {this.nextQuestionButton()}
+          </div>
         </div>
       </div>
     )
