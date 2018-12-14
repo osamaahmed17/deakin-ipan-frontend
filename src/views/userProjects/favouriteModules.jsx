@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import API from 'helpers/api.js'
-import ModuleCard from 'components/cards/moduleCard.jsx'
+import FavouriteModulesCard from 'components/cards/favouriteModulesCard.jsx'
 import LoadingComponent from 'components/loading/loading'
 
 class FavouriteModule extends Component {
@@ -26,7 +26,7 @@ class FavouriteModule extends Component {
   mapCard = (data) => {
     if(data.favouriteStatus === true) {
       return (
-        <ModuleCard data={data} p_id={1} />
+        <FavouriteModulesCard Card data={data} p_id={1} />
       )
     }
   }
