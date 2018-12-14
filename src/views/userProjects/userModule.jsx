@@ -52,17 +52,15 @@ class UserModule extends Component {
           <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
           <p className="col s12 m12 l12 left-align sub-heading">Module {module.id}</p>
         </div>
-        <div className="article">
-          {
-            module.section.map((items, k) => {
-              return (
-                <div className="section" key={'section_' + k}>
-                  <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
-                </div>
-              )
-            })
-          }
-        </div>
+        {
+          module.section.map((items, k) => {
+            return (
+              <div className="section" key={'section_' + k}>
+                <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+              </div>
+            )
+          })
+        }
         <div className="activity">
           <div className="row">
             <div className="col s12 left-align heading">
