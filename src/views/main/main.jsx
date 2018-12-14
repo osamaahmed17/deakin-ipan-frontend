@@ -19,31 +19,31 @@ import Resources from 'views/resources/resources.jsx'
 class Main extends Component {
   render() {
     return (
-      <main>
-        <div className="Main">
-          <Switch>
-            <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/programs'/> : <div></div> )} />
-            <Route exact path='/team' component={Team}/>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/profile' component={Profile}/>
-            <Route exact path='/programs' component={UserPrograms} />
-            <Route exact path='/programs/:p_id' component={UserProgram} />
-            <Route exact path='/programs/:p_id/modules/:m_id' component={UserModule} />
-            <Route exact path='/programs/:p_id/modules/:m_id/activities/:a_id' component={UserActivity} />
-            <Route exact path='/programs/:p_id/modules/:m_id/tasks/:t_id' component={UserTask} />
-            <Route exact path='/activity/:a_id' component={UserActivity} />
-            <Route exaxt path='/tasks/:t_id' component={UserTask} />
-            <Route exact path='/calendar' component={ViewCalendar} />
-            <Route exact path='/calendar/:p_id' component={ViewCalendar} />
-            <Route exact path='/programs/:p_id/module/:m_id/resources' component={Resources} />
-            <Route exact path='/favouriteActivities' component={FavouriteActivities} />
-            <Route exact path='/favouriteModules' component={FavouriteModules} />
-            <Route render= {(props) => (
-              <Error {...props} errorCode={404} />
-            )} />
-          </Switch>
+        <div className="main">
+          <div className="main-content">
+            <Switch>
+              <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/programs'/> : <div></div> )} />
+              <Route exact path='/team' component={Team}/>
+              <Route exact path='/home' component={Home}/>
+              <Route exact path='/profile' component={Profile}/>
+              <Route exact path='/programs' component={UserPrograms} />
+              <Route exact path='/programs/:p_id' component={UserProgram} />
+              <Route exact path='/programs/:p_id/modules/:m_id' component={UserModule} />
+              <Route exact path='/programs/:p_id/modules/:m_id/activities/:a_id' component={UserActivity} />
+              <Route exact path='/programs/:p_id/modules/:m_id/tasks/:t_id' component={UserTask} />
+              <Route exact path='/activity/:a_id' component={UserActivity} />
+              <Route exaxt path='/tasks/:t_id' component={UserTask} />
+              <Route exact path='/calendar' component={ViewCalendar} />
+              <Route exact path='/calendar/:p_id' component={ViewCalendar} />
+              <Route exact path='/programs/:p_id/module/:m_id/resources' component={Resources} />
+              <Route exact path='/favouriteActivities' component={FavouriteActivities} />
+              <Route exact path='/favouriteModules' component={FavouriteModules} />
+              <Route render= {(props) => (
+                <Error {...props} errorCode={404} />
+              )} />
+            </Switch>
+          </div>
         </div>
-      </main>
     );
   }
 }
