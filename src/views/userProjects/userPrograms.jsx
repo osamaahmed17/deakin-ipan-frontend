@@ -29,7 +29,7 @@ class UserPrograms extends Component {
     if (data.length > 0) {
       return (
         <div>
-          <h2>Your Programs</h2>
+          <h2 className="left-align">Your Programs</h2>
             {
               data.map((items) => {
                 return (
