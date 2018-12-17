@@ -117,6 +117,24 @@ footer {
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
+  ///// Notification CSS 
+  #notification-dropdown {
+    width: 300px !important;
+  }
+
+  .notification-badge {
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    right: 5px;
+    top: -20px;
+    color: get-color(white, color);
+    background-color: #00bcd4;
+    margin: 0 -.8em;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.5em;
+  }
 }
 
 h2{
