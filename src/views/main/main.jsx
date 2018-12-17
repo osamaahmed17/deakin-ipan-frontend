@@ -15,6 +15,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import AppHelper from 'helpers/AppHelper'
 import Error from 'views/error/error.jsx'
 import Resources from 'views/resources/resources.jsx'
+import Notifications from 'views/notifications/notification.jsx'
 
 class Main extends Component {
   render() {
@@ -38,6 +39,7 @@ class Main extends Component {
               <Route exact path='/programs/:p_id/module/:m_id/resources' component={Resources} />
               <Route exact path='/favouriteActivities' component={FavouriteActivities} />
               <Route exact path='/favouriteModules' component={FavouriteModules} />
+              <Route exact path='/notifications' component={Notifications} />
               <Route render= {(props) => (
                 <Error {...props} errorCode={404} />
               )} />
