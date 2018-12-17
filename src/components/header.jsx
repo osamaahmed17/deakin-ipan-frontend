@@ -62,6 +62,8 @@ class Header extends Component {
   componentDidMount() {
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
+    let elem = document.querySelectorAll('.notification-dropdown');
+    M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
     let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav, { edge: 'right'});
   }
@@ -109,7 +111,12 @@ class Header extends Component {
               <li><a href="/profile">Profile</a></li>
               <li><a  onClick={this.logout} href="#!">Logout</a></li>
             </ul>
-
+            <ul id='notification-dropdown' className='dropdown-content collection'>
+              <li><a href="#!">Program 1</a></li>
+              <li><a href="#!">Program 2</a></li>
+              <li className="divider" tabIndex="-1"></li>
+              <li><a href="#!">See all</a></li>
+            </ul>
             <nav>
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
@@ -122,14 +129,14 @@ class Header extends Component {
                 </ul>
                 <ul id="nav-mobile" className="right">
                   <li> <a href="/calendar"><i className="material-icons">event</i></a></li>
-                  <li> <a href="#!" data-target="modal" className="modal-trigger"> <i className="material-icons">notifications</i> </a> </li>
+                  <li className="hide-on-med-and-down"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge">5</small></i> </a></li>
+                  <li className="hide-on-large-only"><Link to="/notifications"> <i className="material-icons">notifications<small className="notification-badge">1</small></i> </Link> </li>
                   <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
                 </ul>
               </div>
             </nav>
-            {this.handleModalClick()}
           </div>
         </div>
       </header>
