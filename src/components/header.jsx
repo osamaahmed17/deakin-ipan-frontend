@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { requestLogout } from 'actions';
 import M from "materialize-css";
 import API from 'helpers/api.js';
-import Modal from 'components/modal.jsx'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -66,23 +65,6 @@ class Header extends Component {
     M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
     let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav, { edge: 'right'});
-  }
-
-  handleModalClick = () => {
-    var data = {
-      title: 'Activity Pill 1',
-      description: 'You should try to put your kids to sleep to achieve maximum efficency' 
-    }
-    return (
-      <Modal data={data}>
-        <div className="modal-footer">
-        <Link to="/programs/1/modules/1/activities/1">
-          <button className="btn waves-effect waves-light modal-close">Go To Activity</button>
-        </Link>
-        <button className="btn waves-effect waves-light modal-close">Dismiss</button>
-        </div>
-      </Modal>
-    )
   }
 
   render() {
