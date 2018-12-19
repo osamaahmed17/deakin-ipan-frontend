@@ -30,6 +30,7 @@ class UserProgram extends Component {
     return(
       <div className="container">
         <h2 className="left-align">Program {this.props.match.params.p_id}</h2>
+        <p> {program.programDescription} </p>
         {
           program.modules.map((items, id) => {
             return (
