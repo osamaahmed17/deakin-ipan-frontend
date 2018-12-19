@@ -9,6 +9,7 @@ class Card extends Component {
           <div className="card-content white-text">
             <span className="card-title sub-heading"> <b>{this.props.data.title}</b> </span>
           </div>
+          <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image-" + this.props.id}/>
           <Link to={'/programs/' + this.props.data.id}>
             <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
           </Link>
