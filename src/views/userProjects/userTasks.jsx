@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
+import { CONSTANTS } from 'helpers/urlConstants.js'
 
 class UserTask extends Component {
   constructor(props) {
@@ -46,10 +47,6 @@ class UserTask extends Component {
         }
       </div>
     )
-  }
-
-  displayPopUpMessage = () => {
-    return this.state.popUpMessage ? this.state.popUpMessage : "makichoo"
   }
 
   // Each Questions are mapped and unique key is assigned
@@ -125,7 +122,7 @@ class UserTask extends Component {
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<a className="waves-effect waves-light btn right" href="/programs"> Finish </a>)
+      return (<a className="waves-effect waves-light btn right" href={CONSTANTS.PROGRAMS}> Finish </a>)
     } else {
       return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>)
     }

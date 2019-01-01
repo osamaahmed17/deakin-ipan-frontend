@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Section from 'components/section.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
+import { CONSTANTS } from 'helpers/urlConstants.js'
 
 class UserActivity extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class UserActivity extends Component {
         }
         </div>
         <div className="calendar">
-          <a className="waves-effect waves-light btn btn-width-100" href={'/calendar/' + this.props.match.params.p_id}> Add this activity to you calendar </a>
+          <a className="waves-effect waves-light btn btn-width-100" href={CONSTANTS.CALENDAR}> Add this activity to you calendar </a>
         </div>
       </div>
     )

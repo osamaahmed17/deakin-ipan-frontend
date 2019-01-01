@@ -1,12 +1,14 @@
 import AppHelper from "helpers/AppHelper.js";
 import { axiosClient } from 'index.js';
+import { CONSTANTS } from 'helpers/urlConstants.js'
+import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
 class API {
 
   // POST requests
 
   registerUser (data) {
-    axiosClient.post("user/register", {
+    axiosClient.post(CONSTANTS.REGISTER_USER, {
       firstName: data.firstName,
       lastName: data.lastName,
       emailId: data.emailId,
@@ -35,28 +37,29 @@ class API {
 
   // Get User Programs
   getPrograms = (stateHandler) => {
-    axiosClient.get("programs")
+    axiosClient.get(CONSTANTS.PROGRAMS)
     .then((response) => {
+      console.log(response)
       stateHandler({programs: response.data.programs});
     })
   }
 
   getProgram = (stateHandler, p_id) => {
-    axiosClient.get("programs/" + p_id)
+    axiosClient.get(replacePlaceHolder(CONSTANTS.PROGRAM, [p_id]))
     .then((response) => {
       stateHandler({program: response.data.program});
     })
   }
 
   getModule = (stateHandler, p_id, m_id) => {
-    axiosClient.get("programs/" + p_id + "/modules/" + m_id)
+    axiosClient.get(replacePlaceHolder(CONSTANTS.MODULES, [p_id, m_id]))
     .then((response) => {
       stateHandler({module: response.data.module});
     })
   }
 
   getActivity = (stateHandler, p_id, m_id, a_id) => {
-    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/activities/" + a_id)
+    axiosClient.get(replacePlaceHolder(CONSTANTS.ACTIVITIES, [p_id, m_id, a_id]))
     .then((response) => {
       stateHandler({
         activity: response.data.activity,
@@ -66,7 +69,7 @@ class API {
   }
 
   getTasks = (stateHandler, p_id, m_id, t_id) => {
-    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/tasks/" + t_id)
+    axiosClient.get(replacePlaceHolder(CONSTANTS.TASKS, [p_id, m_id, t_id]))
     .then((response) => {
       stateHandler({
         tasks: response.data.tasks,
@@ -83,14 +86,14 @@ class API {
     })
   }
   getFavouriteModules = (stateHandler) => {
-    axiosClient.get("favouriteModules")
+    axiosClient.get(CONSTANTS.FAVOURITE_MODULES)
     .then((response) => {
       stateHandler({favouriteModules: response.data.favouriteModules});
     })
   }
 
   getFavouriteActivities = (stateHandler) => {
-    axiosClient.get("favouriteActivities")
+    axiosClient.get(CONSTANTS.FAVOURITE_ACTIVITIES)
     .then((response) => {
       stateHandler({favouriteActivities: response.data.favouriteActivities});
     })

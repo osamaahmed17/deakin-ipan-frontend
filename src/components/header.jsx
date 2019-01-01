@@ -5,6 +5,7 @@ import { requestLogout } from 'actions';
 import M from "materialize-css";
 import API from 'helpers/api.js';
 import { Link } from 'react-router-dom'
+import { CONSTANTS } from 'helpers/urlConstants.js'
 
 class Header extends Component {
   constructor(props) {
@@ -18,9 +19,9 @@ class Header extends Component {
   createBackURL = (subStr, str) => {
     // Next 2 line code is for special case path back button like Programs, and other cases in future
     if(((str.split('/').length -1) === 2) && (str.split('resources').length)) {
-      return '/programs'
-    } else if(str === '/resources') {
-      return '/home'
+      return CONSTANTS.PROGRAMS
+    } else if(str === CONSTANTS.RESOURCES) {
+      return CONSTANTS.BASE_URL
     } else {
       let location = []
       let i = -1
@@ -59,8 +60,10 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    // Drop down for menu
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
+    // Drop down for notification desktop view
     let elem = document.querySelectorAll('.notification-dropdown');
     M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
     let sidenav = document.querySelectorAll('.sidenav');
@@ -78,19 +81,19 @@ class Header extends Component {
             </div>
             
             <li><a href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
-            <li><a href="/programs"><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
-            <li><a href="/favouriteModules"><i className="material-icons">favorite_border</i> <span>Modules</span> </a></li>
-            <li><a href="/favouriteActivities"><i className="material-icons">favorite_border</i> <span>Activities</span> </a></li>
-            <li><a href="/profile"><i className="material-icons">face</i> <span>Profile</span></a></li>
+            <li><a href={CONSTANTS.PROGRAMS}><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
+            <li><a href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
+            <li><a href={CONSTANTS.FAVOURITE_ACTIVITIES}><i className="material-icons">favorite_border</i> <span>Favourite Activities</span> </a></li>
+            <li><a href={CONSTANTS.PROFILE}><i className="material-icons">face</i> <span>Profile</span></a></li>
             <li><a className='logout-button' onClick={this.logout} href="#!">Logout</a></li>
           </ul>
           <div className="navbar-fixed">
             <ul id="dropdown1" className="dropdown-content">
               <li><a href="#!">My progress</a></li>
-              <li><a href="/programs">My programs</a></li>
-              <li><a href="/favouriteModules">Favourite Modules</a></li>
-              <li><a href="/favouriteActivities">Favourite Activities</a></li>
-              <li><a href="/profile">Profile</a></li>
+              <li><a href={CONSTANTS.PROGRAMS}>My programs</a></li>
+              <li><a href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li>
+              <li><a href={CONSTANTS.FAVOURITE_ACTIVITIES}>Favourite Activities</a></li>
+              <li><a href={CONSTANTS.PROFILE}>Profile</a></li>
               <li><a  onClick={this.logout} href="#!">Logout</a></li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
@@ -112,7 +115,7 @@ class Header extends Component {
                 <ul id="nav-mobile" className="right">
                   <li> <a href="/calendar"><i className="material-icons">event</i></a></li>
                   <li className="hide-on-med-and-down"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge">5</small></i> </a></li>
-                  <li className="hide-on-large-only"><Link to="/notifications"> <i className="material-icons">notifications<small className="notification-badge">1</small></i> </Link> </li>
+                  <li className="hide-on-large-only"><Link to={CONSTANTS.NOTIFICATIONS}> <i className="material-icons">notifications<small className="notification-badge">1</small></i> </Link> </li>
                   <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>

@@ -16,6 +16,8 @@ import AppHelper from 'helpers/AppHelper'
 import Error from 'views/error/error.jsx'
 import Resources from 'views/resources/resources.jsx'
 import Notifications from 'views/notifications/notification.jsx'
+import { CONSTANTS } from 'helpers/urlConstants.js'
+import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
 class Main extends Component {
   render() {
@@ -24,22 +26,21 @@ class Main extends Component {
           <div className="main-content">
             <Switch>
               <Route exact path='/' render={ (props) => ( AppHelper.isUserLocalStorageLoggedIn() ? <Redirect to='/programs'/> : <div></div> )} />
-              <Route exact path='/team' component={Team}/>
-              <Route exact path='/home' component={Home}/>
-              <Route exact path='/profile' component={Profile}/>
-              <Route exact path='/programs' component={UserPrograms} />
-              <Route exact path='/programs/:p_id' component={UserProgram} />
-              <Route exact path='/programs/:p_id/modules/:m_id' component={UserModule} />
-              <Route exact path='/programs/:p_id/modules/:m_id/activities/:a_id' component={UserActivity} />
-              <Route exact path='/programs/:p_id/modules/:m_id/tasks/:t_id' component={UserTask} />
-              <Route exact path='/activity/:a_id' component={UserActivity} />
-              <Route exaxt path='/tasks/:t_id' component={UserTask} />
-              <Route exact path='/calendar' component={ViewCalendar} />
-              <Route exact path='/calendar/:p_id' component={ViewCalendar} />
-              <Route exact path='/programs/:p_id/module/:m_id/resources' component={Resources} />
-              <Route exact path='/favouriteActivities' component={FavouriteActivities} />
-              <Route exact path='/favouriteModules' component={FavouriteModules} />
-              <Route exact path='/notifications' component={Notifications} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.TEAM)} component={Team}/>
+              <Route exact path= {replacePlaceHolder(CONSTANTS.HOME)} component={Home}/>
+              <Route exact path= {replacePlaceHolder(CONSTANTS.PROFILE)} component={Profile}/>
+              <Route exact path= {replacePlaceHolder(CONSTANTS.PROGRAMS)} component={UserPrograms} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.PROGRAM, [":p_id"])} component={UserProgram} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.MODULES, [":p_id", ":m_id"])} component={UserModule} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.ACTIVITIES, [":p_id", ":m_id", ":a_id"])} component={UserActivity} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.TASKS, [":p_id", ":m_id", ":t_id"])} component={UserTask} />
+              {/* <Route exact path= {replacePlaceHolder(CONSTANTS.} component={UserActivity} />
+              <Route exaxt path= {replacePlaceHolder(CONSTANTS.} component={UserTask} /> */}
+              <Route exact path= {CONSTANTS.CALENDAR} component={ViewCalendar} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.RESOURCES)} component={Resources} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.FAVOURITE_ACTIVITIES)} component={FavouriteActivities} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.FAVOURITE_MODULES)} component={FavouriteModules} />
+              <Route exact path= {replacePlaceHolder(CONSTANTS.NOTIFICATIONS)} component={Notifications} />
               <Route render= {(props) => (
                 <Error {...props} errorCode={404} />
               )} />

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { CONSTANTS } from 'helpers/urlConstants.js'
+import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
 class ModuleCard extends Component {
   constructor(props) {
@@ -35,7 +37,7 @@ class ModuleCard extends Component {
               <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          <Link to={'/programs/' + this.props.p_id + '/modules/' + this.props.data.id }>
+          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
             <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
           </Link>
           <div className="row margin-bot-rm">

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { CONSTANTS } from 'helpers/urlConstants.js'
+import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
 class Card extends Component {
   render() {
@@ -10,7 +12,7 @@ class Card extends Component {
             <span className="card-title sub-heading"> <b>{this.props.data.title}</b> </span>
           </div>
           <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image-" + this.props.id}/>
-          <Link to={'/programs/' + this.props.data.id}>
+          <Link to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
             <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
           </Link>
           <div className="row" style={{marginBottom:"0px"}}>
