@@ -56,9 +56,7 @@ class UserTask extends Component {
         <p className="questions"> Question {key+1}: {data.question}</p>
         {this.checkBoxOption(data.options, data.popup)}
         <div className="message">
-        <blink>
           {this.state.popUpMessage}
-        </blink>
         </div>
       </div>
     )
