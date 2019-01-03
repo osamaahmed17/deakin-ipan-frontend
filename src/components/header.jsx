@@ -108,8 +108,11 @@ class Header extends Component {
                 
                 {/* <a href="/home" className="brand-logo left">{this.props.title}</a> */}
                 <ul>
-                  <li>
-                    <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a>
+                  <li style={this.checkURL(this.createBackURL('/', this.props.location.pathname))}>
+                    <Link to={this.createBackURL('/', this.props.location.pathname)}>
+                      <i className="material-icons">arrow_back</i>
+                    </Link>
+                    {/* <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a> */}
                   </li>
                 </ul>
                 <ul id="nav-mobile" className="right">
