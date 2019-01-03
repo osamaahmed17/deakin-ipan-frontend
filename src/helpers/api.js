@@ -1,4 +1,4 @@
-import AppHelper from "helpers/AppHelper.js";
+// import AppHelper from "helpers/AppHelper.js";
 import { axiosClient } from 'index.js';
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
@@ -39,7 +39,6 @@ class API {
   getPrograms = (stateHandler) => {
     axiosClient.get(CONSTANTS.PROGRAMS)
     .then((response) => {
-      console.log(response)
       stateHandler({programs: response.data.programs});
     })
   }

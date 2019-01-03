@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
-class Card extends Component {
+class ProgramCard extends Component {
   render() {
     return (
       <div className="col s12 m12 l6 offset-l3">
-        <div className={"card-panel card_" + this.props.id}>
+        <div className={"card-panel card_" + this.props.data.id}>
           <div className="card-content white-text">
-            <span className="card-title sub-heading"> <b>{this.props.data.title}</b> </span>
+            <span className="card-title sub-heading"> {this.props.data.title} </span>
           </div>
-          <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image-" + this.props.id}/>
+          <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id}/>
           <Link to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
-            <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
+            <p className="text-color-white program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.shortDescription}</p>
           </Link>
           <div className="row" style={{marginBottom:"0px"}}>
-            <p className="col right">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>
+            <p className="col right program-progress">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>
           </div>
           <div className="progress">
             <div className="determinate white" style={{width: (this.props.data.progress === '' ? 0 : ((this.props.data.progress*100)/this.props.data.total)) +"%"}}></div>
@@ -27,4 +27,4 @@ class Card extends Component {
   } 
 }
 
-export default Card;
+export default ProgramCard;

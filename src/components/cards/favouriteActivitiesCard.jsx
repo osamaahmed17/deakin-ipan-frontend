@@ -27,18 +27,21 @@ class FavouriteActivitiesCard extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="col s12 m12 l6 offset-l3">
-        <div className={"card-panel card_" + this.props.id}>
-          <div className="card-content white-text title row">
-            <div className="col sub-heading s11 m10 l10 left-align"> <b>Module {this.props.data.moduleId}: {this.props.data.title}</b> </div>
-            <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+        <div className="card-panel">
+          <div className="card-content">
+            <div className="row">
+              <div className="col s11 m11 l11 card-title left-align"> Module {this.props.data.moduleId}: {this.props.data.title} </div>
+              <i className="col s1 m1 l1 material-icons btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+            </div>
           </div>
           <Link to={replacePlaceHolder(CONSTANTS.ACTIVITIES,[this.props.p_id, this.props.data.moduleId, this.props.data.id])}>
-            <p className="col s12 justify-content text-color-white "> {this.props.data.shortDescription} </p>
+            <p className="col s12 favourite-activity-description"> {this.props.data.shortDescription} </p>
           </Link>
-          <div className="row right-align status"> {this.completionStatus(this.props.favourite)}</div>
+          <div className="row right-align favourite-activity-status">
+            {this.completionStatus(this.props.favourite)}
+          </div>
         </div>
       </div>
     )

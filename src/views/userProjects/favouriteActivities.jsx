@@ -35,8 +35,8 @@ class FavouriteActivity extends Component {
     let favouriteActivities = this.state.favouriteActivities;
     if (!this.state.favouriteActivities) return <LoadingComponent />;
     return (
-      <div className="container">
-        <h2 className="heading center">My Favourite Activities</h2>
+      <div className="FavouriteActivities container">
+        <p className="main-title left-align">My Favourite Activities</p>
         {
           favouriteActivities.map((data, i) => {
             return <div key={i}> {this.mapCard(data)} </div>

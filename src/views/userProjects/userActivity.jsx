@@ -3,6 +3,7 @@ import Section from 'components/section.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
+import { Link } from 'react-router-dom'
 
 class UserActivity extends Component {
   constructor(props) {
@@ -32,21 +33,24 @@ class UserActivity extends Component {
   }
 
   render () {
-    let activity = this.state.activity;
     if (!this.state.activity) return <LoadingComponent />;
     return(
-      <div className="container">
-        <div className="row">
-          <h2 className="col s11 m11 l11 left-align heading">
-            Activity {this.props.match.params.a_id}
+      <div className="Activity container">
+        <div className="main-title row">
+          <p className="col s11 m11 l11 left-align title">
+            <span>
+              Activity {this.props.match.params.a_id}
+            </span>
             <br/>
-            Weekly Planner Activity
-          </h2>
-          <i className="material-icons margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
+            <span className="sub-title">
+              Weekly Planner Activity
+            </span>
+          </p>
+          <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"activity_" + this.state.activity.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
-        <div className="card section">
+        <div className="card activity-image">
         {
-          activity.section.map((items, i) => {
+          this.state.activity.section.map((items, i) => {
             return (
               <div key={i+1} className="section">
                 <Section data = {items} />
@@ -56,7 +60,11 @@ class UserActivity extends Component {
         }
         </div>
         <div className="calendar">
-          <a className="waves-effect waves-light btn btn-width-100" href={CONSTANTS.CALENDAR}> Add this activity to you calendar </a>
+        <Link to={CONSTANTS.CALENDAR}>
+          <button className="waves-effect waves-light btn add-activity-to-calendar-btn" id="add-activity-to-calendar-btn">
+            Add this activity to you calendar
+          </button>
+        </Link>
         </div>
       </div>
     )

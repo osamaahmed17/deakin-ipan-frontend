@@ -5,26 +5,38 @@ $secondary:white;
 $tertiary:#c74298;
 $primary-text:#3D3E3E;
 
+
+// ==========================================================================
+// Table of Contents:
+// ==========================================================================
+//
+//  1. Color header & footer
+//  2. Header
+//  3. Login
+//  4. Calendar
+//  5. Views
+//  6. Profile
+//  7. Section
+//  8. Home.jsx -> Logo spin, app-link-color
+//
+// ==========================================================================
+//  End
+// ==========================================================================
+
+
+// ==========================================================================
+// 1. Color header & footer
+// ==========================================================================
+
 nav, footer {
   background-color: $primary !important;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
 
-// .App-header {
-//   background-color:$primary;
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   font-size: calc(10px + 2vmin);
-//   color:$secondary;
-// }
-
+// ==========================================================================
+// 2. header
+// ==========================================================================
+//  Menu Icon (Deakin Burger)
 .deakin-burger{
   background-color: $secondary;
   color:$primary;
@@ -34,15 +46,248 @@ nav, footer {
   i{
     display: inline !important;
   }
-
 }
 
-// Used in home.jsx.. useless
-.App-link {
-  color: #61dafb;
+//  Avatar image
+.header-avatar {
+  max-height: 56px;
+  width: auto;
+  margin-top: 4px;
 }
 
+// Username
+.header-username {
+  padding: 0 15px;
+  font-weight: 600;
+}
+
+
+// ==========================================================================
+// 3. Login
+// ==========================================================================
+.Login{
+  min-height: 100vh;
+  background-image: url("images/ipan2.png");
+}
+
+// ==========================================================================
+// 4. Calendar
+// ==========================================================================
+.DayPicker-Day {
+  padding: 0.8em;
+}
+
+// ==========================================================================
+// 5. Views
+// ==========================================================================
+// Main title
+.main-title {
+  font-size: 2.14rem;
+  margin: 2.3733571428571425rem 0 1rem 0;
+}
+
+// Card title
+.card-title {
+  font-size: 1.42rem;
+}
+.card-panel {
+  color : get-color(white, color);
+  background-color: $primary !important;
+}
+// .card-content {
+//   padding-bottom: 10px;
+// }
+
+// Goal and Favourite Icon
+.goal-icon, .favourite-icon {
+  padding: 0px !important;
+}
+
+// Description
+.program-description, .module-description, .favourite-module-description, .favourite-activity-description{
+  text-align: justify;
+  font-size: 1rem;
+  color : get-color(white, color);
+}
+
+// Programs View
+.Programs {
+  // Progress bar
+  .progress {
+    margin: .5rem 0 0!important;
+  }
+
+  .program-progress {
+    margin: 0px;
+  }
+}
+
+// Program List View
+.Program {
+  .card-content {
+    padding: 0;
+  }
+
+  .module-description {
+    margin-top: 0px; 
+  }
+
+  .status {
+    margin-bottom: 0 !important;
+  }
+
+  .module-status {
+    margin-top: 0px;
+  }
+}
+
+// Module View
+.Module {
+  .title {
+    padding: 0px !important;
+    margin: 0;
+  }
+
+  // Collapsible
+  .collaps-title {
+    font-size: 1.8rem;
+  }
+
+  //  Dropdown icon rotate on click 180deg
+  .collapsible li.active i {
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+  }
+
+  //  Title css
+  .collapsible-header {
+    display: block !important;
+    text-align: left;
+  }
+  
+  .collapsible-body {
+    text-align: justify;
+  }
+}
+
+// Activity View
+.Activity {
+  .title {
+    padding: 0px !important;
+    margin: 0;
+  }
+
+  .sub-title {
+    font-size: 1.2rem;
+  }
+
+  .add-activity-to-calendar-btn {
+    width: 100%;
+  }
+}
+
+// Tasks View
+.Tasks {
+  .title {
+    padding: 0px !important;
+    margin: 0;
+  }
+
+  .sub-title {
+    font-size: 1.2rem;
+    padding: 0px !important;
+    margin: 0px;
+  }
+
+  .question {
+    margin-bottom: 0 0 20px;
+    text-align: justify;
+  }
+
+  .popup-message {
+    padding: 20px 0 20px 0;
+  }
+
+  .next-btn, .previous-btn, .finish-btn {
+    margin-top: 20px;
+  }
+
+  // Tasks Grid Template
+  .tasks-quiz {
+    display: grid;
+    grid-template-rows: auto 8%;
+    height: 100%;
+
+    .message{
+      padding: 15px;
+    }
+  }
+}
+
+// Favourite Modules View
+.FavouriteModule {
+  .favourite-module-description {
+    margin-top: 0px;
+  }
+  .favourite-module-status {
+    margin-bottom: 0px;
+  }
+}
+
+// Favourite Activities View
+.FavouriteActivities {
+  .favourite-activity-description {
+    margin-top: 0px;
+  }
+  .favourite-activity-status {
+    margin-bottom: 0px;
+  }
+}
+
+// Resources View
+.resources {
+  .description {
+    text-align: justify;
+  }
+
+  // Temporary delete below code for justify content
+  // When resources page is ready
+  .justify-content {
+    text-align: justify;
+  }
+}
+
+
+// ==========================================================================
+// 6. Profile
+// ==========================================================================
+.profile {
+  font-size: 1.1em
+}
+
+
+// ==========================================================================
+// 7. Section
+// ==========================================================================
+.section {
+  text-align: justify;
+
+  .description {
+    font-size: 1rem;
+  }
+}
+
+
+// ==========================================================================
+// 8. Home.jsx -> Logo spin, app-link-color
+// ==========================================================================
 // Used in home.jsx.. useless
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -52,127 +297,7 @@ nav, footer {
   }
 }
 
-.header-avatar {
-  max-height: 56px;
-  width: auto;
-  margin-top: 4px;
-}
-
-.header-username {
-  padding: 0 15px;
-  font-weight: 600;
-}
-
-.card-panel {
-  color : get-color(white, color);
-  background-color: $primary !important;
-}
-
-.padding-rmv {
-  padding: 0px !important;
-}
-
-.margin-bot-rm {
-  margin-bottom: 0 !important;
-}
-
-.margin-top-rm{
-  margin-top: 0;
-}
-
-.margin-top {
-  margin-top: 33.227px;
-}
-
-.justify-content {
-  text-align: justify;
-}
-
-.margin-rm {
-  margin: 0 !important;
-}
-
-.text-color-white {
-  color: white !important;
-}
-
-.text-color-black {
-  color:$primary-text !important;
-}
-
-// .message{
-//   display: block;
-//   width: 100%;
-//   height: 100px;
-//   overflow: hidden;
-// }
-
-.heading {
-  font-size: 30px;
-}
-
-.sub-heading {
-  font-size: 20px;
-}
-
-.description {
-  font-size: 15px;
-}
-
-.btn-width-100{
-  width: 100%;
-}
-
-.collapsible li.active i {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-}
-
-.Login{
-  min-height: 100vh;
-  background-image: url("images/ipan2.png");
-}
-
-.collapsible-header {
-  display: block !important;
-  text-align: left;
-}
-
-.button {
-  .btn {
-  width: 30%;
-  }
-}
-
-.tasks-quiz {
-  display: grid;
-  grid-template-rows: auto 8%;
-  height: 100%;
-
-  .message{
-    padding: 15px;
-  }
-}
-
-
-
-.tasks-quiz-main {
-  // Don't need anything here
-}
-
-.tasks-quiz-footer {
-  // Don't need anything here
-}
-
-.profile {
-  font-size: 1.1em
-}
-
-.section {
-  text-align: justify;
-}
-
-.DayPicker-Day {
-  padding: 0.8em;
+// Used in home.jsx.. useless
+.App-link {
+  color: #61dafb;
 }

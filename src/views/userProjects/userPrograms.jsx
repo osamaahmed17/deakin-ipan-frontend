@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from 'components/cards/card.jsx'
+import Card from 'components/cards/programCard.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading';
 
@@ -29,7 +29,7 @@ class UserPrograms extends Component {
     if (data.length > 0) {
       return (
         <div>
-          <h2 className="left-align">Your Programs</h2>
+          <p className="left-align main-title">Your Programs</p>
             {
               data.map((items) => {
                 return (
@@ -44,7 +44,7 @@ class UserPrograms extends Component {
     } else {
       return (
         <div className="container row">
-          <i className="material-icons md-light large">add_circle_outline</i>
+          <i className="material-icons large" id="add-program">add_circle_outline</i>
           <p>Add New Program</p>
         </div>
       )
@@ -52,11 +52,13 @@ class UserPrograms extends Component {
   }
 
   render() {
-    let programs = this.state.programs;
+    // return (
+    //   <p>hello</p>
+    // )
     if (!this.state.programs) return <LoadingComponent />;
     return (
-      <div className="container">
-        {this.checkPrograms(programs)}
+      <div className="Programs container">
+        {this.checkPrograms(this.state.programs)}
       </div>
     )
   }

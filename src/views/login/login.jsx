@@ -18,7 +18,7 @@ class Login extends Component {
   errorMessage = () => {
     if(this.state.error) {
       return (
-        <p><b>{this.state.errorMsg}</b></p>
+        <p className="error-message" id="error-message"><b>{this.state.errorMsg}</b></p>
       )
     }
   }
@@ -80,22 +80,20 @@ class Login extends Component {
           {this.props.parentState.title}
         </h2>
         <div className='row'>
-          <div className='row'>
-            <form >
-              <div className='col s8 offset-s2 login-credentials-div'>
-                <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
-                <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-                {this.errorMessage()}
-              </div>
-              <div className='button-container'>
-                {
-                  this.props.loginLoading ? 
-                    "Loading..." :
-                    <button className="col s8 offset-s2 btn waves-effect waves-light" id="loginButton" onClick={this.performLogin}>Login</button>
-                }
-              </div>
-            </form>
-          </div>
+          <form id="login-form">
+            <div className='col s8 offset-s2 login-credentials-div'>
+              <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
+              <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
+              {this.errorMessage()}
+            </div>
+            <div className='button-container'>
+              {
+                this.props.loginLoading ? 
+                  "Loading..." :
+                  <button className="col s8 offset-s2 btn waves-effect waves-light login-button" id="login-button" onClick={this.performLogin}>Login</button>
+              }
+            </div>
+          </form>
         </div>
       </div>
     );

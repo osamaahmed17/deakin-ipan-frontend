@@ -37,7 +37,7 @@ class UserTask extends Component {
   // GenerateQuiz Function will take array as data and map them
   generateQuiz(quiz) {
     return (
-      <div>
+      <div className="quiz">
         {
           quiz.questionSet.map((question, i) => {
             if(question.id === this.state.current) {
@@ -50,12 +50,12 @@ class UserTask extends Component {
   }
 
   // Each Questions are mapped and unique key is assigned
-  questionList(data, key) {
+  questionList(data) {
     return (
-      <div key={key}>
-        <p className="questions"> Question {key+1}: {data.question}</p>
+      <div key={data.id}>
+        <p className="question"> Question {data.id}: {data.question}</p>
         {this.checkBoxOption(data.options, data.popup)}
-        <div className="message">
+        <div className="popup-message">
           {this.state.popUpMessage}
         </div>
       </div>
@@ -83,7 +83,7 @@ class UserTask extends Component {
         return (
           <div className={"checkbox_" + k + " left-align"} key={k}>
             <label>
-              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)}  id={"checkbox" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k)}/>
+              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)}  id={"checkbox_" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k)}/>
               <span>{items}</span>
             </label>
           </div>
@@ -120,9 +120,9 @@ class UserTask extends Component {
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<a className="waves-effect waves-light btn right" href={CONSTANTS.PROGRAMS}> Finish </a>)
+      return (<a className="waves-effect waves-light btn right finish-btn" id="finish-btn" href={CONSTANTS.PROGRAMS}> Finish </a>)
     } else {
-      return (<button className="btn right" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>)
+      return (<button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>)
     }
   }
 
@@ -131,27 +131,24 @@ class UserTask extends Component {
   // If user is attmepting 1st question of quiz then previous button wont be displayed
   previousQuestion = () => {
     if(!(this.state.current === 1)) {
-      return (<button className="btn left" onClick={() => this.setState({ current: this.state.current - 1, popUpMessage: '' })}> Previous </button>)
+      return (<button className="btn previous-btn left" id="previous-btn" onClick={() => this.setState({ current: this.state.current - 1, popUpMessage: '' })}> Previous </button>)
     }
   }
 
   render () {
-    let tasks = this.state.tasks;
     if (!this.state.tasks) return <LoadingComponent />;
     return(
-      <div className="tasks-quiz container">
+      <div className="Tasks container">
         <div className="tasks-quiz-main">
-          <div className="title row">
-            <h2 className="col s11 m11 l11 left-align"> Quiz </h2>
-            <i className="col s1 m1 l1 material-icons btn-flat margin-top right-align" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
-            <div className="col s12 m12 l12 left-align sub-heading"> Tasks {this.props.match.params.t_id}</div>
+          <div className="main-title row">
+            <p className="col s11 m11 l11 left-align title"> Quiz </p>
+            <i className="col s1 m1 l1 material-icons btn-flat right-align favourite-icon" id={"tasks_" + this.state.tasks.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+            <p className="col s12 m12 l12 left-align sub-title"> Tasks {this.props.match.params.t_id}</p>
           </div>
-          <div className="quiz">
-            {this.generateQuiz(tasks.data)}
-          </div>
+          {this.generateQuiz(this.state.tasks.data)}
         </div>
         <div className="tasks-quiz-footer">
-          <div className="row">
+          <div className="buttons row">
             {this.previousQuestion()}
             {this.nextQuestionButton()}
           </div>

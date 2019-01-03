@@ -42,17 +42,16 @@ class UserModule extends Component {
   }
 
   render () {
-    let module = this.state.module;
     if (!this.state.module) return <LoadingComponent />;
     return(
-      <div className="container">
-        <div className="title row">
-          <h2 className="col s9 m9 l9 left-align">Module {this.props.match.params.m_id}: {module.title}</h2>
-          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>directions_run</i>
-          <i className="material-icons col right s1 margin-top btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
+      <div className="Module container">
+        <div className="main-title row">
+          <p className="col s10 m10 l10 left-align title">Module {this.props.match.params.m_id}: {this.state.module.title}</p>
+          <i className="col s1 m1 l1 material-icons goal-icon btn-flat" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>directions_run</i>
+          <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         {
-          module.section.map((items, k) => {
+          this.state.module.section.map((items, k) => {
             return (
               <div className="section" key={'section_' + k}>
                 <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
@@ -60,28 +59,28 @@ class UserModule extends Component {
             )
           })
         }
-        <div className="activity">
+        <div className="activities">
           <div className="row">
-            <div className="col s12 left-align heading">
+            <div className="left-align collaps-title">
               Activities
             </div>
-            <div className="col s12 padding-rmv">
-              <Collapsible data={module.activities}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
+            <div className="container">
+              <Collapsible data={this.state.module.activities}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
             </div>
           </div>
         </div>
-        <div className="task">
+        <div className="tasks">
           <div className="row">
-            <div className="col s12 left-align heading">
+            <div className="left-align collaps-title">
               Tasks
             </div>
-            <div className="col s12 padding-rmv">
-              <Collapsible data={module.tasks}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
+            <div className="container">
+              <Collapsible data={this.state.module.tasks}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
             </div>
           </div>
         </div>
         <div className="resources">
-          <ResourcesCard data={module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
+          <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
       </div>
     )

@@ -30,18 +30,18 @@ class FavouriteModuleCard extends Component {
     return (
       <div className="col s12 m12 l6 offset-l3">
         <div className="card-panel">
-          <div className="card-content white-text">
+          <div className="card-content">
             <div className="row">
-              <div className="col card-title sub-heading s9 m10 l10 left-align"> <b>Program {this.props.data.programId}: {this.props.data.title}</b> </div>
-              <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
-              <i className="material-icons btn-flat padding-rmv" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+              <div className="col s10 m10 l10 card-title left-align"> Program {this.props.data.programId}: {this.props.data.title} </div>
+              <i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
+              <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"favourite-module_" + this.props.data.programId + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
           <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
-            <p className="justify-content text-color-white description">{this.props.data.shortDescription}</p>
+            <p className="favourite-module-description" id={"favourite-module_" + this.props.data.programId + "-description"}>{this.props.data.shortDescription}</p>
           </Link>
-          <div className="row margin-bot-rm">
-            <p className="col right" style={{marginBottom:"0px"}}> {this.props.data.status} </p>
+          <div className="row right-align favourite-module-status">
+            {this.props.data.status}
           </div>
         </div>
       </div>

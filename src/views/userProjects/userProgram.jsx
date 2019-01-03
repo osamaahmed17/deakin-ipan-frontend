@@ -12,29 +12,34 @@ class UserProgram extends Component {
   }
 
   componentDidMount() {
+    console.log('componentDidMount ' + Date.now())
     this.getProgram();
+    // console.log('componentDidMount ' + Date.now())
+    // if(!this.state.program) this.getProgram();
+    // else console.log('program already exists in state :DDDDDD')
   }
 
   stateHandler = (state) => {
+    console.log('stateHandler ' + Date.now())
     this.setState(state);
   }
 
   getProgram = () => {
+    console.log('getProgram ' + Date.now())
     API.getProgram(this.stateHandler, this.props.match.params.p_id);
   }
 
 
   render () {
-    let program = this.state.program;
     if (!this.state.program) return <LoadingComponent />;
     return(
-      <div className="container">
-        <h2 className="left-align">Program {this.props.match.params.p_id}</h2>
-        <p> {program.programDescription} </p>
+      <div className="Program container">
+        <p className="left-align main-title">Program {this.props.match.params.p_id}</p>
+        <p> {this.state.program.programDescription} </p>
         {
-          program.modules.map((items, id) => {
+          this.state.program.modules.map((items) => {
             return (
-              <div key={id}>
+              <div key={items.id}>
                 {/* the status in card is for achivements and favourites */}
                   <ModuleCard data={items} p_id={this.props.match.params.p_id} />
               </div>
