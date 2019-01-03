@@ -3,6 +3,7 @@ import DayPicker, { DateUtils } from 'react-day-picker';
 import Helmet from 'react-helmet';
 import 'react-day-picker/lib/style.css';
 import M from "materialize-css";
+import { Link } from 'react-router-dom'
 
 class ViewCalender extends Component {
   static defaultProps = {
@@ -52,13 +53,14 @@ class ViewCalender extends Component {
   }
 
   btnRedirect = (data) => {
-    if(data == null || data === "undefined") {
+    if(data == null || data == "undefined") {
       return (
-        <a className="waves-effect waves-light btn" href={'/programs'}> Programs </a>
+        <button className="waves-effect waves-light btn"> <Link to='/programs'> Programs </Link> </button>
       )
     } else {
       return (
-        <a className="waves-effect waves-light btn" href={'/programs/' + this.props.match.params.p_id}> Back To Programs </a>
+        <button className="waves-effect waves-light btn"> <Link to={'/programs/' + this.props.match.params.p_id}> Back To Programs </Link> </button>
+        // <a className="waves-effect waves-light btn" href={'/programs/' + this.props.match.params.p_id}> Back To Programs </a>
       )
     }
   }
@@ -67,7 +69,7 @@ class ViewCalender extends Component {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
-      <div className="container">
+      <div className="Calendar container">
         <h2 className="left-align heading col s12">Schedule</h2>
         <div className="row">
             <div className="col s12">
@@ -91,7 +93,7 @@ class ViewCalender extends Component {
                 </b>
                 {from &&
                   to && (
-                    <div className="col s12">
+                    <div className="reset-btn col s12">
                       <button className="link btn-small waves-effect waves-light" onClick={this.handleResetClick}>
                       Reset
                     </button>
@@ -131,7 +133,7 @@ class ViewCalender extends Component {
               <DayPicker selectedDays = {this.state.selectedDays} onDayClick = {this.handleMultiDayClick} />
             </div>
           </div>
-        <div>
+        <div className="redirect-btn">
           {this.btnRedirect(this.props.match.params.p_id)}  
         </div> 
       </div>
