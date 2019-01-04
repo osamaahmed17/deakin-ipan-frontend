@@ -11,8 +11,8 @@ class ProgramCard extends Component {
           <div className="card-content">
             <span className="card-title"> {this.props.data.title} </span>
           </div>
-          <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id}/>
           <Link to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
+            <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id}/>
             <p className="text-color-white program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.shortDescription}</p>
           </Link>
           <div className="row" style={{marginBottom:"0px"}}>
