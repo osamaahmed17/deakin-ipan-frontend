@@ -16,8 +16,10 @@ $primary-text:#3D3E3E;
 //  4. Calendar
 //  5. Views
 //  6. Profile
-//  7. Section
-//  8. Home.jsx -> Logo spin, app-link-color
+//  7. Footer
+//  8. Section
+//  9. Dropdown Menu
+//  10. Home.jsx -> Logo spin, app-link-color
 //
 // ==========================================================================
 //  End
@@ -127,6 +129,10 @@ nav, footer {
 
   .program-progress {
     margin: 0px;
+  }
+  
+  .card-content {
+    margin-bottom: 10px;
   }
 }
 
@@ -276,7 +282,19 @@ nav, footer {
 
 
 // ==========================================================================
-// 7. Section
+// 7. Footer
+// ==========================================================================
+.Footer {
+  padding-top: 3% !important;
+
+  .app-name {
+    font-size: 1.5rem;
+  }
+}
+
+
+// ==========================================================================
+// 8. Section
 // ==========================================================================
 .section {
   text-align: justify;
@@ -288,7 +306,20 @@ nav, footer {
 
 
 // ==========================================================================
-// 8. Home.jsx -> Logo spin, app-link-color
+// 9. Dropdrown Menu
+// ==========================================================================
+  // Notification dropdown Desktop
+  #notification-dropdown {
+    width: 300px !important;
+  }
+
+  // Menu Dropdown Desktop
+  #dropdown1 {
+    width: 150px !important;
+  }
+
+// ==========================================================================
+// 10. Home.jsx -> Logo spin, app-link-color
 // ==========================================================================
 // Used in home.jsx.. useless
 .App-logo {
