@@ -62,7 +62,7 @@ class Header extends Component {
   componentDidMount() {
     // Drop down for menu
     let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
+    M.Dropdown.init(elems, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
     // Drop down for notification desktop view
     let elem = document.querySelectorAll('.notification-dropdown');
     M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
@@ -80,21 +80,21 @@ class Header extends Component {
             <span className='name-profile'>{this.state.name}</span>
             </div>
             
-            <li><a href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
-            <li><a href={CONSTANTS.PROGRAMS}><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
-            <li><a href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
-            <li><a href={CONSTANTS.FAVOURITE_ACTIVITIES}><i className="material-icons">favorite_border</i> <span>Favourite Activities</span> </a></li>
-            <li><a href={CONSTANTS.PROFILE}><i className="material-icons">face</i> <span>Profile</span></a></li>
-            <li><a className='logout-button' onClick={this.logout} href="#!">Logout</a></li>
+            <li><a className="progress-sidenav" id="progress-sidenav" href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
+            <li><a className="programs-sidenav" id="programs-sidenav" href={CONSTANTS.PROGRAMS}><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
+            <li><a className="fav-modules-sidenav" id="fav-modules-sidenav" href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
+            <li><a className="fav-activities-sidenav" id="fav-activities-sidenav" href={CONSTANTS.FAVOURITE_ACTIVITIES}><i className="material-icons">favorite_border</i> <span>Favourite Activities</span> </a></li>
+            <li><a className="profile-sidenav" id="profile-sidenav" href={CONSTANTS.PROFILE}><i className="material-icons">face</i> <span>Profile</span></a></li>
+            <li><a className='logout-button' id="logout-btn-sidenav" onClick={this.logout} href="#!">Logout</a></li>
           </ul>
           <div className="navbar-fixed">
             <ul id="dropdown1" className="dropdown-content">
               <li><a href="#!">My progress</a></li>
-              <li><a href={CONSTANTS.PROGRAMS}>My programs</a></li>
-              <li><a href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li>
-              <li><a href={CONSTANTS.FAVOURITE_ACTIVITIES}>Favourite Activities</a></li>
-              <li><a href={CONSTANTS.PROFILE}>Profile</a></li>
-              <li><a  onClick={this.logout} href="#!">Logout</a></li>
+              <li><a id="my-programs" href={CONSTANTS.PROGRAMS}>My programs</a></li>
+              <li><a id="fav-modules" href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li>
+              <li><a id="fav-activities" href={CONSTANTS.FAVOURITE_ACTIVITIES}>Favourite Activities</a></li>
+              <li><a id="profile" href={CONSTANTS.PROFILE}>Profile</a></li>
+              <li><a id="nav-logout-btn" className="nav-logout-btn" onClick={this.logout} href="#!">Logout</a></li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
               <li><a href="#!">Program 1</a></li>
@@ -110,18 +110,17 @@ class Header extends Component {
                 <ul>
                   <li style={this.checkURL(this.createBackURL('/', this.props.location.pathname))}>
                     <Link to={this.createBackURL('/', this.props.location.pathname)}>
-                      <i className="material-icons">arrow_back</i>
+                      <i className="material-icons back-btn" id="back-btn">arrow_back</i>
                     </Link>
-                    {/* <a style={this.checkURL(this.createBackURL('/', this.props.location.pathname))} href={this.createBackURL('/', this.props.location.pathname)}><i className="material-icons">arrow_back</i></a> */}
                   </li>
                 </ul>
                 <ul id="nav-mobile" className="right">
-                  <li> <a href="/calendar"><i className="material-icons">event</i></a></li>
-                  <li className="hide-on-med-and-down"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge">5</small></i> </a></li>
-                  <li className="hide-on-large-only"><Link to={CONSTANTS.NOTIFICATIONS}> <i className="material-icons">notifications<small className="notification-badge">1</small></i> </Link> </li>
-                  <li className="hide-on-med-and-down"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
+                  <li> <a href="/calendar"><i className="material-icons calendar" id="calendar" >event</i></a></li>
+                  <li className="hide-on-med-and-down notification" id="notification"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">5</small></i> </a></li>
+                  <li className="hide-on-large-only notification" id="notification"><Link to={CONSTANTS.NOTIFICATIONS}> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">1</small></i> </Link> </li>
+                  <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
-                  <li className="hide-on-med-and-down"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
+                  <li className="hide-on-med-and-down menu-dropdown" id="menu-dropdown"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
                 </ul>
               </div>
             </nav>
