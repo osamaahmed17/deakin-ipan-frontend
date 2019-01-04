@@ -10,17 +10,9 @@ class UserModule extends Component {
     super(props);
     this.state = {
       module: null,
-      toggleGoal: '',
       toggleFavourite: '',
     }
-    this.handleGoalClick = this.handleGoalClick.bind(this)
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
-  }
-
-  handleGoalClick() {
-    this.setState(state => ({
-      toggleGoal: !state.toggleGoal
-    }))
   }
 
   handleFavouriteClick() {
@@ -41,13 +33,24 @@ class UserModule extends Component {
     API.getModule(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id);
   }
 
+  // Display goal icon
+  // If true opacity:1 else opacity: 0.2
+  goalIcon = () => {
+    if(this.state.module.goalStatus) {
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '1.0'}} onClick={this.handleGoalClick}> directions_run </i> )
+    } else {
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '0.2'}} onClick={this.handleGoalClick}> directions_run </i> )
+    }
+  }
+
   render () {
     if (!this.state.module) return <LoadingComponent />;
+    console.log(this.state.module.goalStatus)
     return(
       <div className="Module container">
         <div className="main-title row">
           <p className="col s10 m10 l10 left-align title">Module {this.props.match.params.m_id}: {this.state.module.title}</p>
-          <i className="col s1 m1 l1 material-icons goal-icon btn-flat" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}>directions_run</i>
+          { this.goalIcon() }
           <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         {

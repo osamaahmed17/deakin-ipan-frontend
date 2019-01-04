@@ -7,23 +7,25 @@ class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleGoal: this.props.data.goalStatus,
       toggleFavourite: this.props.data.favouriteStatus,
     }
-    this.handleGoalClick = this.handleGoalClick.bind(this)
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
-  }
-
-  handleGoalClick() {
-    this.setState(state => ({
-      toggleGoal: !state.toggleGoal
-    }))
   }
 
   handleFavouriteClick() {
     this.setState(state => ({
       toggleFavourite: !state.toggleFavourite
     }))
+  }
+
+  // Display goal icon
+  // If true opacity:1 else opacity: 0.2
+  goalIcon = () => {
+    if(this.props.data.goalStatus) {
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '1.0'}} onClick={this.handleGoalClick}> directions_run </i> )
+    } else {
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '0.2'}} onClick={this.handleGoalClick}> directions_run </i> )
+    }
   }
 
   render() {
@@ -35,7 +37,7 @@ class ModuleCard extends Component {
               <div className="col s10 m10 l10 card-title left-align">
                 {this.props.data.title}
               </div>
-              <i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: this.state.toggleGoal ? '1.0' : '0.2'}} onClick={this.handleGoalClick}> directions_run </i>
+              { this.goalIcon() }
               <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"module_" + this.props.data.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
