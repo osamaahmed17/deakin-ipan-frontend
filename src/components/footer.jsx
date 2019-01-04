@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <footer className="Footer page-footer footer-fixed">
         <div className="container">
-          IPAN
+          <span className="app-name center" id="app-name"> IPAN </span>
         </div>
       </footer>
     )
