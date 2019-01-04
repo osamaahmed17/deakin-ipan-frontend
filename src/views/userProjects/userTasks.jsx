@@ -108,7 +108,7 @@ class UserTask extends Component {
     }
     let currentQuestionIndex = quizRecord.indexOf(currentQuestion)
     const previouslySelectedOptions = currentQuestion.selectedOptions
-    const item = document.getElementById("checkbox" + previouslySelectedOptions)
+    const item = document.getElementById("checkbox_" + previouslySelectedOptions)
     item.checked = false
     currentQuestion.selectedOptions = k
     quizRecord[currentQuestionIndex] = currentQuestion;
