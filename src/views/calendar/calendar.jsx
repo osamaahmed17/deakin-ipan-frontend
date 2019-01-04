@@ -53,14 +53,17 @@ class ViewCalender extends Component {
   }
 
   btnRedirect = (data) => {
-    if(data == null || data == "undefined") {
+    if(data === null || data === "undefined") {
       return (
-        <button className="waves-effect waves-light btn"> <Link to='/programs'> Programs </Link> </button>
+        <Link to='/programs'>
+          <button className="waves-effect waves-light btn"> Programs </button>
+        </Link>
       )
     } else {
       return (
-        <button className="waves-effect waves-light btn"> <Link to={'/programs/' + this.props.match.params.p_id}> Back To Programs </Link> </button>
-        // <a className="waves-effect waves-light btn" href={'/programs/' + this.props.match.params.p_id}> Back To Programs </a>
+        <Link to={'/programs/' + this.props.match.params.p_id}> 
+          <button className="waves-effect waves-light btn"> Back To Programs </button>
+        </Link>
       )
     }
   }
@@ -94,7 +97,7 @@ class ViewCalender extends Component {
                 {from &&
                   to && (
                     <div className="reset-btn col s12">
-                      <button className="link btn-small waves-effect waves-light" onClick={this.handleResetClick}>
+                      <button className="link btn-small waves-effect waves-light calendar-reset-btn" id="calendar-reset-btn" onClick={this.handleResetClick}>
                       Reset
                     </button>
                     </div>
