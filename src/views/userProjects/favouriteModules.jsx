@@ -26,7 +26,7 @@ class FavouriteModule extends Component {
   mapCard = (data) => {
     if(data.favouriteStatus === true) {
       return (
-        <FavouriteModulesCard Card data={data} p_id={data.programId} />
+        <FavouriteModulesCard Card data={data} />
       )
     }
   }
