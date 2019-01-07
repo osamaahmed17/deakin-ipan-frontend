@@ -35,7 +35,6 @@ class Header extends Component {
     }
     // Rest of the code is trimming URL till last 2nd '/' from behind
     // Location is array which is used to store position of '/'
-    
   }
 
   // If URL is empty then Back button is not diplayed
@@ -85,7 +84,7 @@ class Header extends Component {
             <li><a className="fav-modules-sidenav" id="fav-modules-sidenav" href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
             <li><a className="fav-activities-sidenav" id="fav-activities-sidenav" href={CONSTANTS.FAVOURITE_ACTIVITIES}><i className="material-icons">favorite_border</i> <span>Favourite Activities</span> </a></li>
             <li><a className="profile-sidenav" id="profile-sidenav" href={CONSTANTS.PROFILE}><i className="material-icons">face</i> <span>Profile</span></a></li>
-            <li><a className='logout-button' id="logout-btn-sidenav" onClick={this.logout} href="#!">Logout</a></li>
+            <li><a className="logout-button sidenav-close" id="logout-btn-sidenav" onClick={this.logout} href="#!">Logout</a></li>
           </ul>
           <div className="navbar-fixed">
             <ul id="dropdown1" className="dropdown-content">
@@ -115,7 +114,7 @@ class Header extends Component {
                   </li>
                 </ul>
                 <ul id="nav-mobile" className="right">
-                  <li> <a href="/calendar"><i className="material-icons calendar" id="calendar" >event</i></a></li>
+                  <li> <Link to="/calendar"> <i className="material-icons calendar" id="calendar" >event</i> </Link></li>
                   <li className="hide-on-med-and-down notification" id="notification"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">5</small></i> </a></li>
                   <li className="hide-on-large-only notification" id="notification"><Link to={CONSTANTS.NOTIFICATIONS}> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">1</small></i> </Link> </li>
                   <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
