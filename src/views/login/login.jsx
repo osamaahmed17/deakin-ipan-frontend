@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppHelper from "helpers/AppHelper.js";
 import { connect } from 'react-redux';
 import { requestLogin, developerModeLogin } from 'actions';
+import LoadingComponent from 'components/loading/loading';
 
 class Login extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class Login extends Component {
             <div className='button-container'>
               {
                 this.props.loginLoading ? 
-                  "Loading..." :
+                  <LoadingComponent /> :
                   <button className="col s8 offset-s2 btn waves-effect waves-light login-button" id="login-button" onClick={this.performLogin}>Login</button>
               }
             </div>
