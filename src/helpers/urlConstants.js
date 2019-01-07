@@ -4,6 +4,13 @@ export const CONSTANTS = {
     INCOMPLETED: "INCOMPLETE"
   },
 
+  // Tasks answers flag
+  ANSWERS: {
+    ANSWER_POPUP: "ANSWER_POPUP",
+    ANSWER_SUMMARY: "ANSWER_SUMMARY",
+    ANSWER_BOTH: "ANSWER_BOTH"
+  },
+
   // URL constants
   PROGRAMS:                   "/programs",
   PROGRAM:                    "/programs/?",
@@ -21,6 +28,7 @@ export const CONSTANTS = {
   BASE_URL:                   "/",
   TEAM:                       "/team",
   NOTIFICATIONS:              "/notifications",
+  TASK_SUMMARY:               "/programs/?/modules/?/tasks/?/summary",
 
 
   // User register
