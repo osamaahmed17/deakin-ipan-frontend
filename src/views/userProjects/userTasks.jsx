@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
+import { Link } from 'react-router-dom'
+import { replacePlaceHolder } from 'helpers/urlHelper.js'
 
 class UserTask extends Component {
   constructor(props) {
@@ -35,7 +37,7 @@ class UserTask extends Component {
   }
 
   // GenerateQuiz Function will take array as data and map them
-  generateQuiz(quiz) {
+  generateQuiz = (quiz) => {
     return (
       <div className="quiz">
         {
@@ -50,16 +52,31 @@ class UserTask extends Component {
   }
 
   // Each Questions are mapped and unique key is assigned
-  questionList(data) {
+  questionList = (data, answerType) => {
     return (
       <div key={data.id}>
         <p className="question"> Question {data.id}: {data.question}</p>
-        {this.checkBoxOption(data.options, data.popup)}
+        {this.checkBoxOption(data.options, data.popup, data.correct, data.question)}
         <div className="popup-message">
-          {this.state.popUpMessage}
+          { this.checkAnswerFlag(answerType) }
         </div>
       </div>
     )
+  }
+
+  // Check the answer flag for pop-up messages
+  // Popup, summary or both
+  checkAnswerFlag = (data) => {
+    switch(data) {
+      case CONSTANTS.ANSWERS.ANSWER_POPUP:
+        return this.state.popUpMessage
+      case CONSTANTS.ANSWERS.ANSWER_BOTH:
+        return this.state.popUpMessage
+      case CONSTANTS.ANSWERS.ANSWER_SUMMARY:
+        break
+      default:
+        break
+    }
   }
 
   isDefaultChecked = (k) => {
@@ -74,16 +91,15 @@ class UserTask extends Component {
     let val = currentQuestion.selectedOptions === k 
     return val
   }
+
   // The answers for questions are mapped from array
-  // Onclick of box popup message is displayed at bottom
-  // options = [answers array] and popUpMessage = [popup message array]
-  checkBoxOption(options, popUpMessage) {
+  checkBoxOption = (options, popUpMessage, correctAnswer, question) => {
     return (
       options.map((items, k) => {
         return (
           <div className={"checkbox_" + k + " left-align"} key={k}>
             <label>
-              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)}  id={"checkbox_" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k)}/>
+              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)}  id={"checkbox_" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k, correctAnswer, question, options[k])}/>
               <span>{items}</span>
             </label>
           </div>
@@ -94,16 +110,16 @@ class UserTask extends Component {
 
   // Function will display message if popUpMessage state is not empty
   // Otherwise dont display popup message
-  handleQuestionOptionClick = (message, k) => {
+  handleQuestionOptionClick = (message, k, correctAnswer, question, options) => {
     this.setState({ popUpMessage: message })
     let quizRecord = this.state.quizRecord;
     if (quizRecord.length === 0) {
-      quizRecord.push({questionId: this.state.current, selectedOptions: k})
+      quizRecord.push({questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question})
       return;
     }
     let currentQuestion = quizRecord.find(question => question.questionId === this.state.current)
     if (currentQuestion === undefined) {
-      quizRecord.push({questionId: this.state.current, selectedOptions: k})
+      quizRecord.push({questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question})
       return;
     }
     let currentQuestionIndex = quizRecord.indexOf(currentQuestion)
@@ -113,16 +129,21 @@ class UserTask extends Component {
     currentQuestion.selectedOptions = k
     quizRecord[currentQuestionIndex] = currentQuestion;
     this.setState({quizRecord: quizRecord})
-    
   }
 
   // Function show Finish if user is at last question
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
     if(this.state.current === this.state.tasks.data.questionSet.length) {
-      return (<a className="waves-effect waves-light btn right finish-btn" id="finish-btn" href={CONSTANTS.PROGRAMS}> Finish </a>)
+      return (
+      <Link to={{pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length}}}>
+        <button className="waves-effect waves-light btn right finish-btn" id="finish-btn" > Finish </button>
+        </Link>
+      )
     } else {
-      return (<button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>)
+      return (
+        <button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>
+        )
     }
   }
 
