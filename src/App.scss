@@ -101,7 +101,7 @@ nav, footer {
   font-size: 1.42rem;
 }
 .card-panel {
-  color : get-color(white, color);
+  color : $secondary;
   background-color: $primary !important;
 }
 // .card-content {
@@ -117,7 +117,7 @@ nav, footer {
 .program-description, .module-description, .favourite-module-description, .favourite-activity-description{
   text-align: justify;
   font-size: 1rem;
-  color : get-color(white, color);
+  color : $secondary;
 }
 
 // Programs View
@@ -161,25 +161,21 @@ nav, footer {
     padding: 0px !important;
     margin: 0;
   }
-
   // Collapsible
   .collaps-title {
     font-size: 1.8rem;
   }
-
   //  Dropdown icon rotate on click 180deg
   .collapsible li.active i {
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
   }
-
   //  Title css
   .collapsible-header {
     display: block !important;
     text-align: left;
   }
-  
   .collapsible-body {
     text-align: justify;
   }
@@ -191,11 +187,9 @@ nav, footer {
     padding: 0px !important;
     margin: 0;
   }
-
   .sub-title {
     font-size: 1.2rem;
   }
-
   .add-activity-to-calendar-btn {
     width: 100%;
   }
@@ -207,32 +201,26 @@ nav, footer {
     padding: 0px !important;
     margin: 0;
   }
-
   .sub-title {
     font-size: 1.2rem;
     padding: 0px !important;
     margin: 0px;
   }
-
   .question {
     margin-bottom: 0 0 20px;
     text-align: justify;
   }
-
   .popup-message {
     padding: 20px 0 20px 0;
   }
-
   .next-btn, .previous-btn, .finish-btn {
     margin-top: 20px;
   }
-
   // Tasks Grid Template
   .tasks-quiz {
     display: grid;
     grid-template-rows: auto 8%;
     height: 100%;
-
     .message{
       padding: 15px;
     }
@@ -272,6 +260,43 @@ nav, footer {
   // When resources page is ready
   .justify-content {
     text-align: justify;
+  }
+}
+
+// Tasks Summary
+.TaskSummary {
+  .summary {
+    font-size: 1.2rem
+  }
+  .title {
+    font-size: 1.5rem;
+    margin: 0px;
+  }
+  .question {
+    margin: 5px 0 5px 0;
+    text-align: justify;
+  }
+  .wrong-selection{
+    margin-top: 0px;
+    border: red;
+    border-left-style: solid;
+    background-color: rgb(255,177,177);
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+  }
+  .correct-answer {
+    margin-top: 0px;
+    border: $primary;
+    border-left-style: solid;
+    background-color: rgb(210,248,210);
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+  }
+  .text {
+    margin: 0px;
+  }
+  #back-to-module-btn {
+    width: 100%;
   }
 }
 
