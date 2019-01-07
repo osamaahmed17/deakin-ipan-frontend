@@ -8,7 +8,8 @@ $primary-text:#3D3E3E;
 .App {
   display: grid;
   text-align: center;
-  grid-template-rows: 8% auto 8%;
+  // grid layout: set header to auto otherwise 
+  grid-template-rows: 7% auto 8%;
   height: 100vh;
   font-family: Open Sans, Arial, sans-serif
 }
@@ -33,6 +34,17 @@ header {
 
 footer {
   // Don't need anything here
+}
+
+body {
+  // Next tline code will remove bouncy effect on website
+  // Works only for desktop
+  overscroll-behavior: none;
+  // Code will remove opacity from sidenav-overlay when user logouts
+  // .sidenav-overlay {
+  //   display: none !important;
+  //   opacity: 0 !important;
+  // }
 }
 
 // Main layout end
