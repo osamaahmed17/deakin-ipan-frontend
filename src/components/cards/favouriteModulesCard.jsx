@@ -29,7 +29,7 @@ class FavouriteModuleCard extends Component {
               <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"favourite-module_" + this.props.data.programId + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
+          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.data.programId, this.props.data.id])}>
             <p className="favourite-module-description" id={"favourite-module_" + this.props.data.programId + "-description"}>{this.props.data.shortDescription}</p>
           </Link>
           <div className="row right-align favourite-module-status">
