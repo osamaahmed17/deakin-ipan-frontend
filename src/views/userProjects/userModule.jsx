@@ -45,7 +45,6 @@ class UserModule extends Component {
 
   render () {
     if (!this.state.module) return <LoadingComponent />;
-    console.log(this.state.module.goalStatus)
     return(
       <div className="Module container">
         <div className="main-title row">
