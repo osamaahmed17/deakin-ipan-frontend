@@ -27,8 +27,7 @@ class TaskSummary extends Component{
   }
 
   render() {
-    // http://localhost:3000/programs/1/modules/1/tasks/1/summary
-    if(!_.isEqual(this.props.location, undefined)) return (
+    if(_.isEqual(this.props.location.state, undefined)) return (
       <div className="TaskSummary container">
         <div className="main-title left-align">
           Task Summary
