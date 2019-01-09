@@ -104,9 +104,6 @@ nav, footer {
   color : $secondary;
   background-color: $primary !important;
 }
-// .card-content {
-//   padding-bottom: 10px;
-// }
 
 // Goal and Favourite Icon
 .goal-icon, .favourite-icon {
@@ -218,6 +215,12 @@ nav, footer {
   }
   // Tasks Grid Template
   .tasks-quiz {
+    .message{
+      padding: 15px;
+    }
+  }
+  // Tasks Grid Template
+  .tasks-quiz {
     display: grid;
     grid-template-rows: auto 8%;
     height: 100%;
@@ -314,9 +317,12 @@ nav, footer {
 // ==========================================================================
 .Footer {
   padding-top: 3% !important;
-
   .app-name {
     font-size: 1.5rem;
+  }
+
+  .app-name {
+    color: white;
   }
 }
 
