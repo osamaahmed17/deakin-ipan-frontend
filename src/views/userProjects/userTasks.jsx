@@ -44,8 +44,9 @@ class UserTask extends Component {
         {
           quiz.questionSet.map((question, i) => {
             if(question.id === this.state.current) {
-              return this.questionList(question, i)
+              return this.questionList(question, quiz.answerType)
             }
+            return ''
           })
         }
       </div>
