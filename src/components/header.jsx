@@ -12,35 +12,53 @@ class Header extends Component {
     super(props);
     this.state = {
       name: '',
+      backButtonHide: false,
     }
     this.getName();
   }
 
-  createBackURL = (subStr, str) => {
-    // Next 2 line code is for special case path back button like Programs, and other cases in future
-    if(((str.split('/').length -1) === 2) && (str.split('resources').length)) {
-      return CONSTANTS.PROGRAMS
-    } else if(str === CONSTANTS.RESOURCES) {
-      return CONSTANTS.BASE_URL
+  // If path is /programs which is landing page for IPAN then hide back button
+  // Else show back button
+  backButton = () => {
+    // If consition for landing page to hide back button
+    if (this.props.location.pathname === '/programs') {
+      return null
     } else {
-      let location = []
-      let i = -1
-      while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
-      // Store the last second '/' position
-      location = location.splice(0,location.length-1)
-      location = location.splice(-1)
-      // newLocation will store location from 0 to location
-      let newLocation = str.substring(0, location)
-      return newLocation;
+      return (
+        <ul>
+          <li>
+            {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
+            <Link to={this.createBackURL('/', this.props.location.pathname)}>
+              <i className="material-icons back-btn" id="back-btn">arrow_back</i>
+            </Link>
+          </li>
+        </ul>
+      )
     }
-    // Rest of the code is trimming URL till last 2nd '/' from behind
-    // Location is array which is used to store position of '/'
   }
 
-  // If URL is empty then Back button is not diplayed
-  checkURL = (data) => {
-    if (data === '') {
-      return {display:"none"}
+  // Function will create url for last visited page
+  createBackURL = (subStr, str) => {
+    // Use document.referrer to get last visited location
+    let location = []
+    let i = -1
+    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    // If str last string on right after '/' is Number then slice 2 times else slice one 
+    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
+      location = location.splice(0,location.length)
+      location = location.splice(-1)
+      let newLocation = str.substring(0, location)
+      return newLocation;
+    } else {
+      location = location.splice(0,location.length-1)
+      location = location.splice(-1)
+      if(location.length === 1 && location[0] === 0) {
+        let newLocation = ''
+        return newLocation
+      } else {
+        let newLocation = str.substring(0, location)
+        return newLocation;
+      }
     }
   }
 
@@ -106,13 +124,7 @@ class Header extends Component {
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
                 
                 {/* <a href="/home" className="brand-logo left">{this.props.title}</a> */}
-                <ul>
-                  <li style={this.checkURL(this.createBackURL('/', this.props.location.pathname))}>
-                    <Link to={this.createBackURL('/', this.props.location.pathname)}>
-                      <i className="material-icons back-btn" id="back-btn">arrow_back</i>
-                    </Link>
-                  </li>
-                </ul>
+                { this.backButton() }
                 <ul id="nav-mobile" className="right">
                   <li> <Link to="/calendar"> <i className="material-icons calendar" id="calendar" >event</i> </Link></li>
                   <li className="hide-on-med-and-down notification" id="notification"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">5</small></i> </a></li>
