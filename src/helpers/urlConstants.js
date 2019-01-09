@@ -20,9 +20,9 @@ export const CONSTANTS = {
 
   // Views
   CALENDAR:                   "/calendar",
-  PROFILE:                    "/profile",
-  FAVOURITE_MODULES:          "/favouriteModules",
-  FAVOURITE_ACTIVITIES:       "/favouriteActivities",
+  PROFILE:                    "/user/profile",
+  FAVOURITE_MODULES:          "/user/favourites/modules",
+  FAVOURITE_ACTIVITIES:       "/user/favourites/activities",
   RESOURCES:                  "/resources",
   HOME:                       "/home",
   BASE_URL:                   "/",
