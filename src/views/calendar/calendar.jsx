@@ -53,7 +53,7 @@ class ViewCalender extends Component {
   }
 
   btnRedirect = (data) => {
-    if(data === null || data === "undefined") {
+    if(data === null || data === undefined) {
       return (
         <Link to='/programs'>
           <button className="waves-effect waves-light btn"> Programs </button>
@@ -74,11 +74,11 @@ class ViewCalender extends Component {
     return (
       <div className="Calendar container">
         <h2 className="left-align heading col s12">Schedule</h2>
-        <div className="row">
-            <div className="col s12">
-              <ul className="tabs">
-                <li className="tab col s4"><a href="#range-select">Range Select</a></li>
-                <li className="tab col s4"><a className="active" href="#multi-select">Multi Select</a></li>
+        <div className="row col s12 center-align">
+            <div className="">
+              <ul className="tabs center-align">
+                <li className="tab col s6"><a href="#range-select">Range Select</a></li>
+                <li className="tab col s6"><a className="active" href="#multi-select">Multi Select</a></li>
               </ul>
             </div>
             <div id="range-select" className="col s12">
@@ -136,7 +136,7 @@ class ViewCalender extends Component {
               <DayPicker selectedDays = {this.state.selectedDays} onDayClick = {this.handleMultiDayClick} />
             </div>
           </div>
-        <div className="redirect-btn">
+        <div className="redirect-btn center-align">
           {this.btnRedirect(this.props.match.params.p_id)}  
         </div> 
       </div>
