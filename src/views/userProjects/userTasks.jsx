@@ -4,6 +4,7 @@ import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
+var _ = require('underscore');
 
 class UserTask extends Component {
   constructor(props) {
@@ -134,13 +135,13 @@ class UserTask extends Component {
   // Function show Finish if user is at last question
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
-    if(this.state.current === this.state.tasks.data.questionSet.length) {
+    if(this.state.current === this.state.tasks.data.questionSet.length && (_.isEqual(this.state.quizRecord.length, this.state.tasks.data.questionSet.length))) {
       return (
       <Link to={{pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length}}}>
         <button className="waves-effect waves-light btn right finish-btn" id="finish-btn" > Finish </button>
         </Link>
       )
-    } else {
+    }  else if(this.state.current !== this.state.tasks.data.questionSet.length) {
       return (
         <button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>
         )
