@@ -36,7 +36,7 @@ class FavouriteActivitiesCard extends Component {
               <i className="col s1 m1 l1 material-icons btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          <Link to={replacePlaceHolder(CONSTANTS.ACTIVITIES,[this.props.p_id, this.props.data.moduleId, this.props.data.id])}>
+          <Link to={replacePlaceHolder(CONSTANTS.ACTIVITIES,[this.props.data.programId, this.props.data.moduleId, this.props.data.id])}>
             <p className="col s12 favourite-activity-description"> {this.props.data.shortDescription} </p>
           </Link>
           <div className="row right-align favourite-activity-status">
