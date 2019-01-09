@@ -12,7 +12,6 @@ class UserProgram extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount ' + Date.now())
     this.getProgram();
     // console.log('componentDidMount ' + Date.now())
     // if(!this.state.program) this.getProgram();
