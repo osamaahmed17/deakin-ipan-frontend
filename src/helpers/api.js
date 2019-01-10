@@ -73,7 +73,6 @@ class API {
     .then((response) => {
       stateHandler({
         activity: response.data.data.activity,
-        toggleFavourite: response.data.data.activity.favouriteStatus
       });
     })
   }
@@ -85,7 +84,6 @@ class API {
     .then((response) => {
       stateHandler({
         tasks: response.data.data.task,
-        // toggleFavourite: response.data.data.tasks.favouriteStatus
       });
     })
   }
