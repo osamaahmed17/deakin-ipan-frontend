@@ -50,7 +50,7 @@ class API {
   }
 
   getProgram = (stateHandler, p_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.PROGRAM, [p_id]), {
+    axiosClient.get('/user' + replacePlaceHolder(CONSTANTS.PROGRAM, [p_id]), {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
@@ -59,16 +59,17 @@ class API {
   }
 
   getModule = (stateHandler, p_id, m_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.MODULES, [p_id, m_id]), {
+    axiosClient.get('/user' + replacePlaceHolder(CONSTANTS.MODULES, [p_id, m_id]), {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
+      console.log(response)
       stateHandler({module: response.data.data.module});
     })
   }
 
   getActivity = (stateHandler, p_id, m_id, a_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.ACTIVITIES, [p_id, m_id, a_id]), {
+    axiosClient.get('/user' + replacePlaceHolder(CONSTANTS.ACTIVITIES, [p_id, m_id, a_id]), {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
@@ -80,7 +81,7 @@ class API {
   }
 
   getTasks = (stateHandler, p_id, m_id, t_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.TASKS, [p_id, m_id, t_id]), {
+    axiosClient.get('/user' + replacePlaceHolder(CONSTANTS.TASKS, [p_id, m_id, t_id]), {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {

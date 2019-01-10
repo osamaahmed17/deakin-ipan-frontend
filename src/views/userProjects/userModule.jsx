@@ -78,7 +78,7 @@ class UserModule extends Component {
           <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         {
-          this.state.module.section.map((items, k) => {
+          this.state.module.sections.map((items, k) => {
             return (
               <div className="section" key={'section_' + k}>
                 <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
@@ -106,7 +106,7 @@ class UserModule extends Component {
             </div>
           </div>
         </div>
-        <div className="resources">
+        {/* <div className="resources">
           <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
         {/* In app back button. Modules page to modules list page */}

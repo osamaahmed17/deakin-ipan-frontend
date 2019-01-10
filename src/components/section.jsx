@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 
 function displayContent(data) {
-  if (data.type === 'image') {
+  if (data.type === 'IMAGE') {
     return (
-      <img className="responsive-img" src={data.value} alt="section-img"/>
+      <img className="responsive-img" src={data.data.value} alt="section-img"/>
       )
-  } else if (data.type === 'video') {
+  } else if (data.type === 'VIDEO') {
+    console.log(data)
     return (
       <div className="video-container">
-        <iframe id="section-video" title="video" src={data.value} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+        <iframe id="section-video" title="video" src={data.data.value} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       </div>
     )
-  } else if (data.type === 'text') {
+  } else if (data.type === 'TEXT') {
     return (
       <p className="description">
-        {data.value}
+        {data.data.value}
       </p>
     )
   }
