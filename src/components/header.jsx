@@ -50,7 +50,7 @@ class Header extends Component {
     if(!(this.props.location.pathname === CONSTANTS.PROGRAMS)) {
       return (
         <ul>
-          <li>
+          <li className="back-to-programs-button" id="back-to-programs-button">
             {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
             <Link to={{pathname: CONSTANTS.PROGRAMS}}>
               PROGRAMS
@@ -88,10 +88,14 @@ class Header extends Component {
               <li><a id="nav-logout-btn" className="nav-logout-btn" onClick={this.logout} href="#!">Logout</a></li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
-              <li><a href="#!">Program 1</a></li>
-              <li><a href="#!">Program 2</a></li>
+              <li>
+                <a href="#!" className="left-align">Program 1</a>
+              </li>
+              <li>
+                <a href="#!" className="left-align">Program 2</a>
+              </li>
               <li className="divider" tabIndex="-1"></li>
-              <li><a href="#!">See all</a></li>
+              <li><a href="#!" className="center-align">See all</a></li>
             </ul>
             <ul id='calendar-dropdown' className='dropdown-content collection calendar-ul'>
               <li> <div className="calendar-view center-align"> <CalendarView /> </div> </li>
