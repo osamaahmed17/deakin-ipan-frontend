@@ -35,7 +35,6 @@ class API {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
-      console.log(response)
       stateHandler({name: `${response.data.data.profile.firstName} ${response.data.data.profile.lastName}`});
     })
   }
@@ -55,7 +54,7 @@ class API {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
-      stateHandler({program: response.data.data.program});
+      stateHandler({program: response.data.data.programs});
     })
   }
 
