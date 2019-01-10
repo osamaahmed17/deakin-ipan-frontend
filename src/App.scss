@@ -65,8 +65,11 @@ nav, footer {
 }
 
 // Button for programs page
-#back-to-programs-button {
+.back-to-programs-button {
   font-weight: $font-weight-bold;
+  a {
+    padding: 0 0 0 10px;
+  }
 }
 
 // ==========================================================================
