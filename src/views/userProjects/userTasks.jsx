@@ -43,7 +43,7 @@ class UserTask extends Component {
       <div className="quiz">
         {
           quiz.questionSet.map((question, i) => {
-            if(question.id === this.state.current) {
+            if (question.id === this.state.current) {
               return this.questionList(question, quiz.answerType)
             }
             return ''
@@ -60,7 +60,7 @@ class UserTask extends Component {
         <p className="question"> Question {data.id}: {data.question}</p>
         {this.checkBoxOption(data.options, data.popup, data.correct, data.question)}
         <div className="popup-message">
-          { this.checkAnswerFlag(answerType) }
+          {this.checkAnswerFlag(answerType)}
         </div>
       </div>
     )
@@ -69,7 +69,7 @@ class UserTask extends Component {
   // Check the answer flag for pop-up messages
   // Popup, summary or both
   checkAnswerFlag = (data) => {
-    switch(data) {
+    switch (data) {
       case CONSTANTS.ANSWERS.ANSWER_POPUP:
         return this.state.popUpMessage
       case CONSTANTS.ANSWERS.ANSWER_BOTH:
@@ -90,7 +90,7 @@ class UserTask extends Component {
     if (currentQuestion === undefined) {
       return false;
     }
-    let val = currentQuestion.selectedOptions === k 
+    let val = currentQuestion.selectedOptions === k
     return val
   }
 
@@ -101,7 +101,7 @@ class UserTask extends Component {
         return (
           <div className={"checkbox_" + k + " left-align"} key={k}>
             <label>
-              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)}  id={"checkbox_" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k, correctAnswer, question, options[k])}/>
+              <input type="checkbox" defaultChecked={this.isDefaultChecked(k)} id={"checkbox_" + k} key={k} onClick={() => this.handleQuestionOptionClick(popUpMessage[k], k, correctAnswer, question, options[k])} />
               <span>{items}</span>
             </label>
           </div>
@@ -116,12 +116,12 @@ class UserTask extends Component {
     this.setState({ popUpMessage: message })
     let quizRecord = this.state.quizRecord;
     if (quizRecord.length === 0) {
-      quizRecord.push({questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question})
+      quizRecord.push({ questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question })
       return;
     }
     let currentQuestion = quizRecord.find(question => question.questionId === this.state.current)
     if (currentQuestion === undefined) {
-      quizRecord.push({questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question})
+      quizRecord.push({ questionId: this.state.current, selectedOptions: k, selectedOptionsData: options, correctAnswer: correctAnswer, question: question })
       return;
     }
     let currentQuestionIndex = quizRecord.indexOf(currentQuestion)
@@ -130,22 +130,22 @@ class UserTask extends Component {
     item.checked = false
     currentQuestion.selectedOptions = k
     quizRecord[currentQuestionIndex] = currentQuestion;
-    this.setState({quizRecord: quizRecord})
+    this.setState({ quizRecord: quizRecord })
   }
 
   // Function show Finish if user is at last question
   // Otherwise Next question button is displayed
   nextQuestionButton = () => {
-    if(this.state.current === this.state.tasks.data.questionSet.length && (_.isEqual(this.state.quizRecord.length, this.state.tasks.data.questionSet.length))) {
+    if (this.state.current === this.state.tasks.data.questionSet.length && (_.isEqual(this.state.quizRecord.length, this.state.tasks.data.questionSet.length))) {
       return (
-      <Link to={{pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length}}}>
-        <button className="waves-effect waves-light btn right finish-btn" id="finish-btn" > Finish </button>
+        <Link to={{ pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length } }}>
+          <button className="waves-effect waves-light btn right finish-btn" id="finish-btn" > Finish </button>
         </Link>
       )
-    }  else if(this.state.current !== this.state.tasks.data.questionSet.length) {
+    } else if (this.state.current !== this.state.tasks.data.questionSet.length) {
       return (
-        <button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current+1, popUpMessage: '' })}> Next </button>
-        )
+        <button className="btn next-btn right" id="next-btn" onClick={() => this.setState({ current: this.state.current + 1, popUpMessage: '' })}> Next </button>
+      )
     }
   }
 
@@ -153,8 +153,10 @@ class UserTask extends Component {
   // Using back button user can check previosu question
   // If user is attmepting 1st question of quiz then previous button wont be displayed
   previousQuestion = () => {
-    if(!(this.state.current === 1)) {
-      return (<button className="btn previous-btn left" id="previous-btn" onClick={() => this.setState({ current: this.state.current - 1, popUpMessage: '' })}> Previous </button>)
+    if (!(this.state.current === 1)) {
+      return (
+      <button className="btn previous-btn left" id="previous-btn" onClick={() => this.setState({ current: this.state.current - 1, popUpMessage: '' })}> Previous </button>
+      )
     }
   }
 
@@ -162,17 +164,17 @@ class UserTask extends Component {
     // Use document.referrer to get last visited location
     let location = []
     let i = -1
-    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    while ((i = str.indexOf(subStr, i + 1)) >= 0) location.push(i);
     // If str last string on right after '/' is Number then slice 2 times else slice one 
-    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
-      location = location.splice(0,location.length)
+    if (isNaN(str.slice(location.slice(-1).pop() + 1))) {
+      location = location.splice(0, location.length)
       location = location.splice(-1)
       let newLocation = str.substring(0, location)
       return newLocation;
     } else {
-      location = location.splice(0,location.length-1)
+      location = location.splice(0, location.length - 1)
       location = location.splice(-1)
-      if(location.length === 1 && location[0] === 0) {
+      if (location.length === 1 && location[0] === 0) {
         let newLocation = ''
         return newLocation
       } else {
@@ -182,14 +184,14 @@ class UserTask extends Component {
     }
   }
 
-  render () {
+  render() {
     if (!this.state.tasks) return <LoadingComponent />;
-    return(
+    return (
       <div className="Tasks container">
         <div className="tasks-quiz-main">
           <div className="main-title row">
             <p className="col s11 m11 l11 left-align title"> Quiz </p>
-            <i className="col s1 m1 l1 material-icons btn-flat right-align favourite-icon" id={"tasks_" + this.state.tasks.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+            <i className="col s1 m1 l1 material-icons btn-flat right-align favourite-icon" id={"tasks_" + this.state.tasks.id + "-favourite-icon"} style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}> favorite </i>
             <p className="col s12 m12 l12 left-align sub-title"> Tasks {this.props.match.params.t_id}</p>
           </div>
           {this.generateQuiz(this.state.tasks.data)}
@@ -199,8 +201,14 @@ class UserTask extends Component {
             {this.previousQuestion()}
             {this.nextQuestionButton()}
           </div>
+
+          {/* Floating back button code */}
+          <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> 
+            <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
+              <i className="material-icons"> arrow_back </i>
+            </button> 
+          </Link>
         </div>
-        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
       </div>
     )
   }
