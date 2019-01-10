@@ -6,6 +6,7 @@ import M from "materialize-css";
 import API from 'helpers/api.js';
 import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
+import CalendarView from 'views/calendar/calendarView.jsx'
 
 class Header extends Component {
   constructor(props) {
@@ -83,6 +84,9 @@ class Header extends Component {
     // Drop down for notification desktop view
     let elem = document.querySelectorAll('.notification-dropdown');
     M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
+    let calendar = document.querySelectorAll('.calendar-dropdown');
+    // Drop down for calendar view
+    M.Dropdown.init(calendar, { inDuration: 300, outDuration: 225, coverTrigger: false, constrainWidth:'false', });
     let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav, { edge: 'right'});
   }
@@ -119,6 +123,9 @@ class Header extends Component {
               <li className="divider" tabIndex="-1"></li>
               <li><a href="#!">See all</a></li>
             </ul>
+            <ul id='calendar-dropdown' className='dropdown-content collection calendar-ul'>
+              <li> <div className="calendar-view center-align"> <CalendarView /> </div> </li>
+            </ul>
             <nav>
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
@@ -126,9 +133,10 @@ class Header extends Component {
                 {/* <a href="/home" className="brand-logo left">{this.props.title}</a> */}
                 { this.backButton() }
                 <ul id="nav-mobile" className="right">
-                  <li> <Link to="/calendar"> <i className="material-icons calendar" id="calendar" >event</i> </Link></li>
-                  <li className="hide-on-med-and-down notification" id="notification"> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">5</small></i> </a></li>
-                  <li className="hide-on-large-only notification" id="notification"><Link to={CONSTANTS.NOTIFICATIONS}> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">1</small></i> </Link> </li>
+                  {/* Calendar dropdown view */}
+                  <li> <a href="#!" className="calendar-dropdown" data-target="calendar-dropdown" id="calendar-dropdown"> <i className="material-icons calendar" id="calendar" >event</i> </a> </li>
+                  {/* Notification dropdown view */}
+                  <li> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">2</small></i> </a></li>
                   <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down menu-dropdown" id="menu-dropdown"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
