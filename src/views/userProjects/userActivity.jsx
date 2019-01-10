@@ -74,7 +74,7 @@ class UserActivity extends Component {
         </div>
         <div className="card activity-image">
         {
-          this.state.activity.section.map((items, i) => {
+          this.state.activity.sections.map((items, i) => {
             return (
               <div key={i+1} className="section">
                 <Section data = {items} />

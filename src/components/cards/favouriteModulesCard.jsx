@@ -7,7 +7,7 @@ class FavouriteModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleFavourite: this.props.data.favouriteStatus,
+      toggleFavourite: true,
     }
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
   }
@@ -24,13 +24,13 @@ class FavouriteModuleCard extends Component {
         <div className="card-panel">
           <div className="card-content">
             <div className="row">
-              <div className="col s10 m10 l10 card-title left-align"> Program {this.props.data.programId}: {this.props.data.title} </div>
+              <div className="col s10 m10 l10 card-title left-align"> Program {this.props.data.program.id}: {this.props.data.program.title} </div>
               <i className="col s1 m1 l1 material-icons btn-flat goal-icon"> directions_run </i>
               <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"favourite-module_" + this.props.data.programId + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.data.programId, this.props.data.id])}>
-            <p className="favourite-module-description" id={"favourite-module_" + this.props.data.programId + "-description"}>{this.props.data.shortDescription}</p>
+          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.data.program.id, this.props.data.module.id])}>
+            <p className="favourite-module-description" id={"favourite-module_" + this.props.data.module.id + "-description"}>{this.props.data.module.shortDescription}</p>
           </Link>
           <div className="row right-align favourite-module-status">
             {this.props.data.status}

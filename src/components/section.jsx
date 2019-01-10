@@ -6,7 +6,6 @@ function displayContent(data) {
       <img className="responsive-img" src={data.data.value} alt="section-img"/>
       )
   } else if (data.type === 'VIDEO') {
-    console.log(data)
     return (
       <div className="video-container">
         <iframe id="section-video" title="video" src={data.data.value} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />

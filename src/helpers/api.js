@@ -15,7 +15,6 @@ class API {
       password: data.password,
     })
     .then((response) => {
-      console.log(response);
     })
     .catch((error) => console.log(error));
   }
@@ -63,7 +62,6 @@ class API {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
-      console.log(response)
       stateHandler({module: response.data.data.module});
     })
   }
@@ -86,8 +84,8 @@ class API {
     })
     .then((response) => {
       stateHandler({
-        tasks: response.data.data.tasks,
-        toggleFavourite: response.data.data.tasks.favouriteStatus
+        tasks: response.data.data.task,
+        // toggleFavourite: response.data.data.tasks.favouriteStatus
       });
     })
   }
@@ -97,7 +95,6 @@ class API {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
-      console.log("Response:",response)
       stateHandler({resources: response.data.data});
     })
   }

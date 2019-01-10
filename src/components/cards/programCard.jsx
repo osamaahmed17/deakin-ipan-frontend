@@ -13,7 +13,7 @@ class ProgramCard extends Component {
           </div>
           <Link to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
             <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id}/>
-            <p className="text-color-white program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.shortDescription}</p>
+            <p className="text-color-white program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.description}</p>
           </Link>
           <div className="row" style={{marginBottom:"0px"}}>
             <p className="col right program-progress">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>

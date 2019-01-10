@@ -52,9 +52,6 @@ class UserPrograms extends Component {
   }
 
   render() {
-    // return (
-    //   <p>hello</p>
-    // )
     if (!this.state.programs) return <LoadingComponent />;
     return (
       <div className="Programs container">

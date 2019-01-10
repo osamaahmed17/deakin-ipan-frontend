@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-import ResourcesCard from 'components/cards/resourcesCard.jsx'
+// import ResourcesCard from 'components/cards/resourcesCard.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Collapsible from 'components/collapsible.jsx'

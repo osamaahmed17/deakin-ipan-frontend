@@ -23,22 +23,14 @@ class FavouriteModule extends Component {
     API.getFavouriteModules(this.stateHandler);
   }
 
-  mapCard = (data) => {
-    if(data.favouriteStatus === true) {
-      return (
-        <FavouriteModulesCard Card data={data} />
-      )
-    }
-  }
-
   render() {
     if (!this.state.favouriteModules) return <LoadingComponent />;
     return (
       <div className="FavouriteModule container">
         <p className="main-title left-align"> My Favourite Modules </p>
         {
-          this.state.favouriteModules.map((array, i) => {
-            return <div className="favourites-card" key={i}> {this.mapCard(array)} </div>
+          this.state.favouriteModules.map((data, i) => {
+            return <FavouriteModulesCard key={i} data={data} />
           })
         }
       </div>

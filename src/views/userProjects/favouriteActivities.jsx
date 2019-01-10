@@ -23,23 +23,14 @@ class FavouriteActivity extends Component {
   API.getFavouriteActivities(this.stateHandler);
   }
 
-  mapCard = (data) => {
-    if(data.favourite === true) {
-      return (
-        <FavouriteActivitiesCard data={data} />
-      )
-    }
-  }
-
   render() {
-    let favouriteActivities = this.state.favouriteActivities;
     if (!this.state.favouriteActivities) return <LoadingComponent />;
     return (
       <div className="FavouriteActivities container">
         <p className="main-title left-align">My Favourite Activities</p>
         {
-          favouriteActivities.map((data, i) => {
-            return <div key={i}> {this.mapCard(data)} </div>
+          this.state.favouriteActivities.map((data, i) => {
+            return <FavouriteActivitiesCard key={i} data={data} />
           })
         }
       </div>
