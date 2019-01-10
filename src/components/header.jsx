@@ -18,51 +18,6 @@ class Header extends Component {
     this.getName();
   }
 
-  // If path is /programs which is landing page for IPAN then hide back button
-  // Else show back button
-  backButton = () => {
-    // If consition for landing page to hide back button
-    if (this.props.location.pathname === '/programs') {
-      return null
-    } else {
-      return (
-        <ul>
-          <li>
-            {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
-            <Link to={this.createBackURL('/', this.props.location.pathname)}>
-              <i className="material-icons back-btn" id="back-btn">arrow_back</i>
-            </Link>
-          </li>
-        </ul>
-      )
-    }
-  }
-
-  // Function will create url for last visited page
-  createBackURL = (subStr, str) => {
-    // Use document.referrer to get last visited location
-    let location = []
-    let i = -1
-    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
-    // If str last string on right after '/' is Number then slice 2 times else slice one 
-    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
-      location = location.splice(0,location.length)
-      location = location.splice(-1)
-      let newLocation = str.substring(0, location)
-      return newLocation;
-    } else {
-      location = location.splice(0,location.length-1)
-      location = location.splice(-1)
-      if(location.length === 1 && location[0] === 0) {
-        let newLocation = ''
-        return newLocation
-      } else {
-        let newLocation = str.substring(0, location)
-        return newLocation;
-      }
-    }
-  }
-
   stateHandler = (state) => {
     this.setState(state);
   }
@@ -89,6 +44,21 @@ class Header extends Component {
     M.Dropdown.init(calendar, { inDuration: 300, outDuration: 225, coverTrigger: false, constrainWidth:'false', });
     let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav, { edge: 'right'});
+  }
+
+  programBackButton = () => {
+    if(!(this.props.location.pathname === CONSTANTS.PROGRAMS)) {
+      return (
+        <ul>
+          <li>
+            {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
+            <Link to={{pathname: CONSTANTS.PROGRAMS}}>
+              PROGRAMS
+            </Link>
+          </li>
+        </ul>
+      )
+    }
   }
 
   render() {
@@ -130,8 +100,8 @@ class Header extends Component {
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
                 
-                {/* <a href="/home" className="brand-logo left">{this.props.title}</a> */}
-                { this.backButton() }
+                {/* Back button will taek directly take to programs page */}
+                { this.programBackButton()}
                 <ul id="nav-mobile" className="right">
                   {/* Calendar dropdown view */}
                   <li> <a href="#!" className="calendar-dropdown" data-target="calendar-dropdown" id="calendar-dropdown"> <i className="material-icons calendar" id="calendar" >event</i> </a> </li>
