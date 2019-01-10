@@ -40,7 +40,7 @@ class API {
 
   // Get User Programs
   getPrograms = (stateHandler) => {
-    axiosClient.get(CONSTANTS.PROGRAMS, {
+    axiosClient.get('/user' + CONSTANTS.PROGRAMS, {
       headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
     })
     .then((response) => {
