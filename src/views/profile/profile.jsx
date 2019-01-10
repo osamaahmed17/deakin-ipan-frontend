@@ -34,11 +34,11 @@ class Profile extends Component {
         <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="user-img circle responsive-img"/>
         <div className="container row">
           <div className="col s4 left-align"> First Name: </div>
-          <div className="col s8 left-align first-name"> {profile.first_name} </div>
+          <div className="col s8 left-align first-name"> {profile.firstName} </div>
         </div>
         <div className="container row">
           <div className="col s4 left-align"> Last Name: </div>
-          <div className="col s8 left-align last-name"> {profile.last_name} </div>
+          <div className="col s8 left-align last-name"> {profile.lastName} </div>
         </div>
         <div className="container row">
           <div className="col s4 left-align"> Date of Birth: </div>
