@@ -1,4 +1,4 @@
-// import AppHelper from "helpers/AppHelper.js";
+import AppHelper from "helpers/AppHelper.js";
 import { axiosClient } from 'index.js';
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
@@ -22,79 +22,100 @@ class API {
 
   // GET requests
   getProfile = (stateHandler) => {
-    axiosClient.get("user/1/profile")
+    axiosClient.get("user/profile", {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({profile: response.data.profile});
+      stateHandler({profile: response.data.data.profile});
     })
   }
 
   getName = (stateHandler) => {
-    axiosClient.get("user/1/profile")
+    axiosClient.get("user/profile", {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({name: `${response.data.profile.first_name} ${response.data.profile.last_name}`});
+      console.log(response)
+      stateHandler({name: `${response.data.data.profile.firstName} ${response.data.data.profile.lastName}`});
     })
   }
 
   // Get User Programs
   getPrograms = (stateHandler) => {
-    axiosClient.get(CONSTANTS.PROGRAMS)
+    axiosClient.get(CONSTANTS.PROGRAMS, {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({programs: response.data.programs});
+      stateHandler({programs: response.data.data.programs});
     })
   }
 
   getProgram = (stateHandler, p_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.PROGRAM, [p_id]))
+    axiosClient.get(replacePlaceHolder(CONSTANTS.PROGRAM, [p_id]), {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({program: response.data.program});
+      stateHandler({program: response.data.data.program});
     })
   }
 
   getModule = (stateHandler, p_id, m_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.MODULES, [p_id, m_id]))
+    axiosClient.get(replacePlaceHolder(CONSTANTS.MODULES, [p_id, m_id]), {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({module: response.data.module});
+      stateHandler({module: response.data.data.module});
     })
   }
 
   getActivity = (stateHandler, p_id, m_id, a_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.ACTIVITIES, [p_id, m_id, a_id]))
+    axiosClient.get(replacePlaceHolder(CONSTANTS.ACTIVITIES, [p_id, m_id, a_id]), {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
       stateHandler({
-        activity: response.data.activity,
-        toggleFavourite: response.data.activity.favouriteStatus
+        activity: response.data.data.activity,
+        toggleFavourite: response.data.data.activity.favouriteStatus
       });
     })
   }
 
   getTasks = (stateHandler, p_id, m_id, t_id) => {
-    axiosClient.get(replacePlaceHolder(CONSTANTS.TASKS, [p_id, m_id, t_id]))
+    axiosClient.get(replacePlaceHolder(CONSTANTS.TASKS, [p_id, m_id, t_id]), {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
       stateHandler({
-        tasks: response.data.tasks,
-        toggleFavourite: response.data.tasks.favouriteStatus
+        tasks: response.data.data.tasks,
+        toggleFavourite: response.data.data.tasks.favouriteStatus
       });
     })
   }
 
   getResources = (stateHandler, p_id, m_id) => {
-    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/resources")
+    axiosClient.get("programs/" + p_id + "/modules/" + m_id + "/resources", {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
       console.log("Response:",response)
       stateHandler({resources: response.data.data});
     })
   }
   getFavouriteModules = (stateHandler) => {
-    axiosClient.get(CONSTANTS.FAVOURITE_MODULES)
+    axiosClient.get(CONSTANTS.FAVOURITE_MODULES, {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({favouriteModules: response.data.favouriteModules});
+      stateHandler({favouriteModules: response.data.data.favouriteModules});
     })
   }
 
   getFavouriteActivities = (stateHandler) => {
-    axiosClient.get(CONSTANTS.FAVOURITE_ACTIVITIES)
+    axiosClient.get(CONSTANTS.FAVOURITE_ACTIVITIES, {
+      headers: { Authorization: "Bearer " + AppHelper.getUserAccessToken() }
+    })
     .then((response) => {
-      stateHandler({favouriteActivities: response.data.favouriteActivities});
+      stateHandler({favouriteActivities: response.data.data.favouriteActivities});
     })
   }
 }
