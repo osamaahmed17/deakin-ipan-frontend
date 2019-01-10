@@ -21,3 +21,12 @@ $palettes: (
 @function get-color($color, $tint) {
   @return map-get(map-get($palettes, $color), $tint);
 }
+
+// Font weight
+$font-weight-lightest:  100;
+$font-weight-ligh:      200;
+$font-weight-normal:    400;
+$font-weight-bold:      700;
+$font-weight-bolder:    800;
+$font-weight-boldest:   900;
+
