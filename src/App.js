@@ -25,7 +25,7 @@ import Resources from 'views/resources/resources.jsx'
 import Notifications from 'views/notifications/notification.jsx'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
-
+import initializeSocketListener from 'helpers/socketHander.js'
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +49,10 @@ class App extends Component {
       this.props.dispatchAccessTokenLogin(token)
         .then((response) => {
           console.log(response);
+          if (response.payload.status === 200) {
+            console.log('Initializing socket')
+            initializeSocketListener();
+          }
         })
         .catch((error) => console.log(error));
     }
