@@ -158,6 +158,30 @@ class UserTask extends Component {
     }
   }
 
+  createBackButtonURL = (subStr, str) => {
+    // Use document.referrer to get last visited location
+    let location = []
+    let i = -1
+    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    // If str last string on right after '/' is Number then slice 2 times else slice one 
+    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
+      location = location.splice(0,location.length)
+      location = location.splice(-1)
+      let newLocation = str.substring(0, location)
+      return newLocation;
+    } else {
+      location = location.splice(0,location.length-1)
+      location = location.splice(-1)
+      if(location.length === 1 && location[0] === 0) {
+        let newLocation = ''
+        return newLocation
+      } else {
+        let newLocation = str.substring(0, location)
+        return newLocation;
+      }
+    }
+  }
+
   render () {
     if (!this.state.tasks) return <LoadingComponent />;
     return(
@@ -176,6 +200,7 @@ class UserTask extends Component {
             {this.nextQuestionButton()}
           </div>
         </div>
+        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
       </div>
     )
   }

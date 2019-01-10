@@ -26,6 +26,30 @@ class TaskSummary extends Component{
     }
   }
 
+  createBackButtonURL = (subStr, str) => {
+    // Use document.referrer to get last visited location
+    let location = []
+    let i = -1
+    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    // If str last string on right after '/' is Number then slice 2 times else slice one 
+    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
+      location = location.splice(0,location.length)
+      location = location.splice(-1)
+      let newLocation = str.substring(0, location)
+      return newLocation;
+    } else {
+      location = location.splice(0,location.length-1)
+      location = location.splice(-1)
+      if(location.length === 1 && location[0] === 0) {
+        let newLocation = ''
+        return newLocation
+      } else {
+        let newLocation = str.substring(0, location)
+        return newLocation;
+      }
+    }
+  }
+
   render() {
     if(_.isEqual(this.props.location.state, undefined)) return (
       <div className="TaskSummary container">
@@ -48,7 +72,6 @@ class TaskSummary extends Component{
           Task Summary
         </div>
         <div className="summary container left-align">
-        <p className="task-attempt-status">Total Questions attempted {this.props.location.state.quizRecord.length} out of {this.props.location.state.totalNumberOfQuestions}.</p>
           {
             this.props.location.state.quizRecord.map((data, i) => {
               return this.displayResult(data, i)
@@ -60,6 +83,7 @@ class TaskSummary extends Component{
             <button className="waves-effect waves-light btn back-to-program-btn" id="back-to-module-btn"> Back to Programs</button>
           </Link>
         </div>
+        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
       </div>
     )
   }

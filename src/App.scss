@@ -183,6 +183,17 @@ nav, footer {
   .goal-icon, .favourite-icon {
     margin-top: 5px;
   }
+  // Back button
+  #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 40px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
+  }
 }
 
 // Activity View
@@ -200,6 +211,17 @@ nav, footer {
   }
   .favourite-icon {
     margin-top: 5px;
+  }
+  // Back button
+  #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 40px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
   }
 }
 
@@ -241,6 +263,17 @@ nav, footer {
   }
   .favourite-icon {
     margin-top: 5px;
+  }
+  // Back button
+  #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 40px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
   }
 }
 
@@ -314,6 +347,18 @@ nav, footer {
   }
   #back-to-module-btn {
     width: 100%;
+    margin-bottom: 14px;
+  }
+  // Back button
+  #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 40px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
   }
 }
 

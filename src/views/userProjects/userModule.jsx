@@ -4,6 +4,7 @@ import ResourcesCard from 'components/cards/resourcesCard.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Collapsible from 'components/collapsible.jsx'
+import { Link } from 'react-router-dom'
 
 class UserModule extends Component {
   constructor(props) {
@@ -40,6 +41,30 @@ class UserModule extends Component {
       return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '1.0'}} onClick={this.handleGoalClick}> directions_run </i> )
     } else {
       return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '0.2'}} onClick={this.handleGoalClick}> directions_run </i> )
+    }
+  }
+  
+  createBackButtonURL = (subStr, str) => {
+    // Use document.referrer to get last visited location
+    let location = []
+    let i = -1
+    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    // If str last string on right after '/' is Number then slice 2 times else slice one 
+    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
+      location = location.splice(0,location.length)
+      location = location.splice(-1)
+      let newLocation = str.substring(0, location)
+      return newLocation;
+    } else {
+      location = location.splice(0,location.length-1)
+      location = location.splice(-1)
+      if(location.length === 1 && location[0] === 0) {
+        let newLocation = ''
+        return newLocation
+      } else {
+        let newLocation = str.substring(0, location)
+        return newLocation;
+      }
     }
   }
 
@@ -84,6 +109,8 @@ class UserModule extends Component {
         <div className="resources">
           <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
+        {/* In app back button. Modules page to modules list page */}
+        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
       </div>
     )
   }
