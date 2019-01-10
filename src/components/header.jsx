@@ -35,24 +35,24 @@ class Header extends Component {
   componentDidMount() {
     // Drop down for menu
     let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
+    M.Dropdown.init(elems, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth: 'false' });
     // Drop down for notification desktop view
     let elem = document.querySelectorAll('.notification-dropdown');
-    M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth:'false' });
+    M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth: 'false' });
     let calendar = document.querySelectorAll('.calendar-dropdown');
     // Drop down for calendar view
-    M.Dropdown.init(calendar, { inDuration: 300, outDuration: 225, coverTrigger: false, constrainWidth:'false', });
+    M.Dropdown.init(calendar, { inDuration: 300, outDuration: 225, coverTrigger: false, constrainWidth: 'false', });
     let sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav, { edge: 'right'});
+    M.Sidenav.init(sidenav, { edge: 'right' });
   }
 
   programBackButton = () => {
-    if(!(this.props.location.pathname === CONSTANTS.PROGRAMS)) {
+    if (!(this.props.location.pathname === CONSTANTS.PROGRAMS)) {
       return (
         <ul>
           <li className="back-to-programs-button" id="back-to-programs-button">
             {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
-            <Link to={{pathname: CONSTANTS.PROGRAMS}}>
+            <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
               PROGRAMS
             </Link>
           </li>
@@ -67,10 +67,10 @@ class Header extends Component {
         <div className='Header'>
           <ul className="sidenav slide-out" id="side-nav">
             <div className="profile-div">
-            <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img"/></li>
-            <span className='name-profile'>{this.state.name}</span>
+              <li><img width="100px" src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle responsive-img" /></li>
+              <span className='name-profile'>{this.state.name}</span>
             </div>
-            
+
             <li><a className="progress-sidenav" id="progress-sidenav" href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
             <li><a className="programs-sidenav" id="programs-sidenav" href={CONSTANTS.PROGRAMS}><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
             <li><a className="fav-modules-sidenav" id="fav-modules-sidenav" href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
@@ -103,15 +103,15 @@ class Header extends Component {
             <nav>
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
-                
+
                 {/* Back button will taek directly take to programs page */}
-                { this.programBackButton()}
+                {this.programBackButton()}
                 <ul id="nav-mobile" className="right">
                   {/* Calendar dropdown view */}
                   <li> <a href="#!" className="calendar-dropdown" data-target="calendar-dropdown" id="calendar-dropdown"> <i className="material-icons calendar" id="calendar" >event</i> </a> </li>
                   {/* Notification dropdown view */}
                   <li> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">2</small></i> </a></li>
-                  <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar"/></li>
+                  <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar" /></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down menu-dropdown" id="menu-dropdown"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
                 </ul>
@@ -126,7 +126,7 @@ class Header extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogout : () => dispatch(requestLogout())
+    dispatchLogout: () => dispatch(requestLogout())
   }
 }
 
