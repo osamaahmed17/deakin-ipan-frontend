@@ -5,6 +5,7 @@ import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Collapsible from 'components/collapsible.jsx'
 import { Link } from 'react-router-dom'
+var _ = require('underscore')
 
 class UserModule extends Component {
   constructor(props) {
@@ -37,28 +38,28 @@ class UserModule extends Component {
   // Display goal icon
   // If true opacity:1 else opacity: 0.2
   goalIcon = () => {
-    if(this.state.module.goalStatus) {
-      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '1.0'}} onClick={this.handleGoalClick}> directions_run </i> )
+    if (this.state.module.goalStatus) {
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{ opacity: '1.0' }} onClick={this.handleGoalClick}> directions_run </i>)
     } else {
-      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{opacity: '0.2'}} onClick={this.handleGoalClick}> directions_run </i> )
+      return (<i className="col s1 m1 l1 material-icons btn-flat goal-icon" style={{ opacity: '0.2' }} onClick={this.handleGoalClick}> directions_run </i>)
     }
   }
-  
+
   createBackButtonURL = (subStr, str) => {
     // Use document.referrer to get last visited location
     let location = []
     let i = -1
-    while((i = str.indexOf(subStr,i+1)) >=0 ) location.push(i);
+    while ((i = str.indexOf(subStr, i + 1)) >= 0) location.push(i);
     // If str last string on right after '/' is Number then slice 2 times else slice one 
-    if(isNaN(str.slice(location.slice(-1).pop()+1))) {
-      location = location.splice(0,location.length)
+    if (isNaN(str.slice(location.slice(-1).pop() + 1))) {
+      location = location.splice(0, location.length)
       location = location.splice(-1)
       let newLocation = str.substring(0, location)
       return newLocation;
     } else {
-      location = location.splice(0,location.length-1)
+      location = location.splice(0, location.length - 1)
       location = location.splice(-1)
-      if(location.length === 1 && location[0] === 0) {
+      if (location.length === 1 && location[0] === 0) {
         let newLocation = ''
         return newLocation
       } else {
@@ -68,20 +69,52 @@ class UserModule extends Component {
     }
   }
 
-  render () {
+  checkModulesLength = () => {
+    if (!_.isEqual(this.state.module.module.length, 0)) {
+      return (
+        <div className="container">
+          <Collapsible data={this.state.module.tasks} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
+        </div>
+      )
+    } else {
+      return (
+        <div className="empty-content container">
+          No module available.
+        </div>
+      )
+    }
+  }
+
+  checkTasksLength = () => {
+    if (!_.isEqual(this.state.module.tasks.length, 0)) {
+      return (
+        <div className="container">
+          <Collapsible data={this.state.module.tasks} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
+        </div>
+      )
+    } else {
+      return (
+        <div className="empty-content container">
+          No tasks available.
+        </div>
+      )
+    }
+  }
+
+  render() {
     if (!this.state.module) return <LoadingComponent />;
-    return(
+    return (
       <div className="Module container">
         <div className="main-title row">
           <p className="col s10 m10 l10 left-align title">Module {this.props.match.params.m_id}: {this.state.module.title}</p>
-          { this.goalIcon() }
-          <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}>favorite</i>
+          {this.goalIcon()}
+          <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         {
           this.state.module.sections.map((items, k) => {
             return (
               <div className="section" key={'section_' + k}>
-                <Section data = {items} p_id={this.props.match.params.p_id} m_id = {this.props.match.params.m_id} />
+                <Section data={items} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
               </div>
             )
           })
@@ -92,7 +125,7 @@ class UserModule extends Component {
               Activities
             </div>
             <div className="container">
-              <Collapsible data={this.state.module.activities}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
+              <Collapsible data={this.state.module.activities} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
             </div>
           </div>
         </div>
@@ -101,9 +134,7 @@ class UserModule extends Component {
             <div className="left-align collaps-title">
               Tasks
             </div>
-            <div className="container">
-              <Collapsible data={this.state.module.tasks}  p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
-            </div>
+            {this.checkTasksLength()}
           </div>
         </div>
         {/* <div className="resources">
