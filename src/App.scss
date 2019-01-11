@@ -383,13 +383,25 @@ nav, footer {
 // 7. Footer
 // ==========================================================================
 .Footer {
-  padding-top: 3% !important;
   .app-name {
     font-size: 1.5rem;
   }
-
   .app-name {
+    text-align: center;
     color: white;
+  }
+  .row {
+    margin: 0;
+  }
+  #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 10px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
   }
 }
 
