@@ -4,7 +4,7 @@ import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
-var _ = require('underscore')
+import { handleScroll, displayBackButton } from 'components/floatingButtonHelper'
 
 class UserActivity extends Component {
   constructor(props) {
@@ -17,23 +17,6 @@ class UserActivity extends Component {
     }
   }
 
-  handleScroll = () => {
-    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-    const body = document.body;
-    const html = document.documentElement;
-    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-    const windowBottom = Math.round(windowHeight + window.pageYOffset);
-    if (windowBottom >= docHeight) {
-      this.setState({
-        scrollBottomStatus: true
-      });
-    } else {
-      this.setState({
-        scrollBottomStatus: false
-      });
-    }
-  }
-
   handleFavouriteClick = () => {
     this.setState({
       toggleFavourite: !this.state.toggleFavourite
@@ -42,11 +25,11 @@ class UserActivity extends Component {
 
   componentDidMount() {
     this.getActivity();
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
   }
 
   stateHandler = (state) => {
@@ -57,37 +40,7 @@ class UserActivity extends Component {
     API.getActivity(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.a_id);
   }
 
-  createBackButtonURL = (subStr, str) => {
-    // Use document.referrer to get last visited location
-    let location = []
-    let i = -1
-    while ((i = str.indexOf(subStr, i + 1)) >= 0) location.push(i);
-    // If str last string on right after '/' is Number then slice 2 times else slice one 
-    if (isNaN(str.slice(location.slice(-1).pop() + 1))) {
-      location = location.splice(0, location.length)
-      location = location.splice(-1)
-      let newLocation = str.substring(0, location)
-      return newLocation;
-    } else {
-      location = location.splice(0, location.length - 1)
-      location = location.splice(-1)
-      if (location.length === 1 && location[0] === 0) {
-        let newLocation = ''
-        return newLocation
-      } else {
-        let newLocation = str.substring(0, location)
-        return newLocation;
-      }
-    }
-  }
 
-  displayBackButton = () => {
-    if (_.isEqual(this.state.scrollBottomStatus, false)) {
-      return (
-        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
-      )
-    }
-  }
 
   render() {
     if (!this.state.activity) return <LoadingComponent />;
@@ -123,7 +76,7 @@ class UserActivity extends Component {
           </button>
           </Link>
         </div>
-        {this.displayBackButton()}
+        {displayBackButton(this)}
       </div>
     )
   }
