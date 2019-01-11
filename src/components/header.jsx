@@ -53,7 +53,7 @@ class Header extends Component {
           <li className="back-to-programs-button" id="back-to-programs-button">
             {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
             <Link to={{pathname: CONSTANTS.PROGRAMS}}>
-              PROGRAMS
+              ALL PROGRAMS
             </Link>
           </li>
         </ul>
