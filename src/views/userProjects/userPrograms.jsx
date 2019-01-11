@@ -8,7 +8,7 @@ class UserPrograms extends Component {
     super(props);
     this.state = {
       programs: null
-    } 
+    }
   }
 
   componentDidMount() {
@@ -29,16 +29,18 @@ class UserPrograms extends Component {
     if (data.length > 0) {
       return (
         <div>
-          <p className="left-align main-title">Your Programs</p>
-            {
-              data.map((items) => {
-                return (
-                  <div key={items.id}>
-                      <Card data={items} p_id={items.id} />
-                  </div>
-                )
-              })
-            } 
+          <p className="left-align main-title">
+            Your Programs
+          </p>
+          {
+            data.map((items) => {
+              return (
+                <div key={items.id}>
+                  <Card data={items} p_id={items.id} />
+                </div>
+              )
+            })
+          }
         </div>
       )
     } else {

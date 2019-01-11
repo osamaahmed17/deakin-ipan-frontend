@@ -19,28 +19,32 @@ class UserProgram extends Component {
   }
 
   stateHandler = (state) => {
-    console.log('stateHandler ' + Date.now())
+    // console.log('stateHandler ' + Date.now())
     this.setState(state);
   }
 
   getProgram = () => {
-    console.log('getProgram ' + Date.now())
+    // console.log('getProgram ' + Date.now())
     API.getProgram(this.stateHandler, this.props.match.params.p_id);
   }
 
 
-  render () {
+  render() {
     if (!this.state.program) return <LoadingComponent />;
-    return(
+    return (
       <div className="Program container">
-        <p className="left-align main-title">Program {this.props.match.params.p_id}</p>
-        <p> {this.state.program.programDescription} </p>
+        <p className="left-align main-title">
+          Program {this.props.match.params.p_id}
+        </p>
+        <p>
+          {this.state.program.programDescription}
+        </p>
         {
           this.state.program.modules.map((items) => {
             return (
               <div key={items.id}>
                 {/* the status in card is for achivements and favourites */}
-                  <ModuleCard data={items} p_id={this.props.match.params.p_id} />
+                <ModuleCard data={items} p_id={this.props.match.params.p_id} />
               </div>
             )
           })

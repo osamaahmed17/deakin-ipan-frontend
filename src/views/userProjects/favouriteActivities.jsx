@@ -20,7 +20,7 @@ class FavouriteActivity extends Component {
   }
 
   favouriteActivities = () => {
-  API.getFavouriteActivities(this.stateHandler);
+    API.getFavouriteActivities(this.stateHandler);
   }
 
   render() {
