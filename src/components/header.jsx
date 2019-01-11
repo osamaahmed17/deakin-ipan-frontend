@@ -61,6 +61,26 @@ class Header extends Component {
     }
   }
 
+  displayNotifications = (data) => {
+    if(data.length !== 0) {
+      return (
+        data.map((items, key) => {
+          return (
+            <li key={key}>
+              <p> {items} </p>
+            </li>
+          )
+        })
+      )
+    } else {
+      return (
+        <li>
+          No new notifications.
+        </li>
+      )
+    }
+  }
+
   render() {
     return (
       <header>
@@ -88,12 +108,9 @@ class Header extends Component {
               <li><a id="nav-logout-btn" className="nav-logout-btn" onClick={this.logout} href="#!">Logout</a></li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
-              <li>
-                <a href="#!" className="left-align">Program 1</a>
-              </li>
-              <li>
-                <a href="#!" className="left-align">Program 2</a>
-              </li>
+              <div className="container">
+                {this.displayNotifications(this.props.notifications)}
+              </div>
               <li className="divider" tabIndex="-1"></li>
               <li><a href="#!" className="center-align">See all</a></li>
             </ul>
