@@ -55,7 +55,7 @@ class App extends Component {
     this.socket.on("disconnect", ()=> console.log("Socket disconnected"))
     this.socket.on("connect_failed", () => console.log("Socket connection failed: ", this.socket.id))
     this.socket.on('notification', (data) => {
-      console.log('Notification recieved', data.text)
+      this.setState({ notifications: [...this.state.notifications, data.text] })
       // TODO: push data object to state's notifications array
     })
   }
@@ -88,7 +88,7 @@ class App extends Component {
     else return (
       <div className="App">
         {/* Header */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} /> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history= {this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} notifications={this.state.notifications} /> : ''}
 
         {/* Main body */}
         <Switch>
