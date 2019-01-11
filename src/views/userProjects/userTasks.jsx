@@ -138,7 +138,7 @@ class UserTask extends Component {
   nextQuestionButton = () => {
     if (this.state.current === this.state.tasks.data.questionSet.length && (_.isEqual(this.state.quizRecord.length, this.state.tasks.data.questionSet.length))) {
       return (
-        <Link to={{ pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length } }}>
+        <Link to={{ pathname: replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id]), state: { quizRecord: this.state.quizRecord, totalNumberOfQuestions: this.state.tasks.data.questionSet.length, taskSummary: this.state.tasks.data.taskSummary } }}>
           <button className="waves-effect waves-light btn right finish-btn" id="finish-btn" > Finish </button>
         </Link>
       )
@@ -186,6 +186,7 @@ class UserTask extends Component {
 
   render() {
     if (!this.state.tasks) return <LoadingComponent />;
+    console.log(this.state.tasks)
     return (
       <div className="Tasks container">
         <div className="tasks-quiz-main">
