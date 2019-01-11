@@ -73,8 +73,6 @@ class Footer extends Component {
   }
 
   render() {
-    console.log(this.props.location.pathname)
-    console.log(this.props.location.pathname.includes('/modules/'))
     return (
       <footer className="Footer page-footer footer-fixed">
         <div className="container">
