@@ -25,13 +25,13 @@ import Resources from 'views/resources/resources.jsx'
 import Notifications from 'views/notifications/notification.jsx'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
-import initializeSocketListener from 'helpers/socketHander.js'
-
+import io from 'socket.io-client'
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'IPAN',
+      notifications: []
     };
   }
 
@@ -40,6 +40,24 @@ class App extends Component {
     this.setState(
       state
     )
+  }
+
+  socket = null
+  initializeSocketListener = (token) => {
+    console.log('Socket initialized')
+    var options = {
+      reconnectionAttempts: 5,
+      reconnectionDelay: 5000,
+      query: {token: token}
+    }
+    this.socket = io(process.env.REACT_APP_BASE_URL, options)
+    this.socket.on("connect", ()=> console.log("Socket connection established: ", this.socket.id))
+    this.socket.on("disconnect", ()=> console.log("Socket disconnected"))
+    this.socket.on("connect_failed", () => console.log("Socket connection failed: ", this.socket.id))
+    this.socket.on('notification', (data) => {
+      console.log('Notification recieved', data.text)
+      // TODO: push data object to state's notifications array
+    })
   }
 
   componentDidMount() {
@@ -51,10 +69,17 @@ class App extends Component {
           console.log(response);
           if (response.payload.status === 200) {
             console.log('Initializing socket')
-            initializeSocketListener();
+            this.initializeSocketListener(token);
           }
         })
         .catch((error) => console.log(error));
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.socket) {
+      console.log('Socket disconnecting')
+      this.socket.disconnect()
     }
   }
 
@@ -69,7 +94,7 @@ class App extends Component {
         <Switch>
 
           <Route exact path='/' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} /> )} />
+            <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} initializeSocketListener={this.initializeSocketListener} /> )} />
 
           <Route exact path='/home' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? 
             <Home {...props}/> : <Redirect to='/' /> )} />
