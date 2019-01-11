@@ -55,6 +55,7 @@ class Login extends Component {
     if (this.state.developerMode) {
       this.props.dispatchDeveloperModeLogin();
       AppHelper.developerModeLoginUser(true);
+      this.props.initializeSocketListener(AppHelper.getUserAccessToken());
       return;
     }
     if (!this.validationCheck()) return;
@@ -65,6 +66,7 @@ class Login extends Component {
       ) {
         const accessToken = response.payload.data.data.accessToken;
         AppHelper.loginUser(true, accessToken);
+        this.props.initializeSocketListener(accessToken);
       } else {
         this.setState({
           error: true,
