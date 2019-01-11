@@ -4,6 +4,7 @@ import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
+var _ = require('underscore')
 
 class UserActivity extends Component {
   constructor(props) {
@@ -11,6 +12,25 @@ class UserActivity extends Component {
     this.state = {
       activity: null,
       toggleFavourite: false,
+      height: window.innerHeight,
+      scrollBottomStatus: false,
+    }
+  }
+
+  handleScroll = () => {
+    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    const windowBottom = Math.round(windowHeight + window.pageYOffset);
+    if (windowBottom >= docHeight) {
+      this.setState({
+        scrollBottomStatus: true
+      });
+    } else {
+      this.setState({
+        scrollBottomStatus: false
+      });
     }
   }
 
@@ -22,6 +42,11 @@ class UserActivity extends Component {
 
   componentDidMount() {
     this.getActivity();
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   stateHandler = (state) => {
@@ -53,6 +78,14 @@ class UserActivity extends Component {
         let newLocation = str.substring(0, location)
         return newLocation;
       }
+    }
+  }
+
+  displayBackButton = () => {
+    if (_.isEqual(this.state.scrollBottomStatus, false)) {
+      return (
+        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
+      )
     }
   }
 
@@ -90,7 +123,7 @@ class UserActivity extends Component {
           </button>
           </Link>
         </div>
-        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}> <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back"> <i className="material-icons"> arrow_back </i> </button> </Link>
+        {this.displayBackButton()}
       </div>
     )
   }

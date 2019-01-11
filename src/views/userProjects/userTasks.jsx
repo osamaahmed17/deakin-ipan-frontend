@@ -14,13 +14,21 @@ class UserTask extends Component {
       current: 1,
       popUpMessage: '',
       toggleFavourite: false,
-      quizRecord: []
+      quizRecord: [],
+      height: window.innerHeight,
+      scrollBottomStatus: false,
     }
   }
 
   componentDidMount() {
     this.getTasks();
+    window.addEventListener("scroll", this.handleScroll);
   }
+  
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
 
   stateHandler = (state) => {
     this.setState(state);
@@ -184,9 +192,38 @@ class UserTask extends Component {
     }
   }
 
+  handleScroll = () => {
+    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+    const windowBottom = Math.round(windowHeight + window.pageYOffset);
+    if (windowBottom >= docHeight) {
+      this.setState({
+        scrollBottomStatus: true
+      });
+    } else {
+      this.setState({
+        scrollBottomStatus: false
+      });
+    }
+  }
+
+  // The button will hide when user is at the bottom of the page and footer will have back button
+  displayBackButton = () => {
+    if (_.isEqual(this.state.scrollBottomStatus, false)) {
+      return (
+        <Link to={this.createBackButtonURL('/', this.props.location.pathname)}>
+          <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
+            <i className="material-icons"> arrow_back </i>
+          </button>
+        </Link>
+      )
+    }
+  }
+
   render() {
     if (!this.state.tasks) return <LoadingComponent />;
-    console.log(this.state.tasks)
     return (
       <div className="Tasks container">
         <div className="tasks-quiz-main">
@@ -214,11 +251,7 @@ class UserTask extends Component {
           </div>
 
           {/* Floating back button code */}
-          <Link to={this.createBackButtonURL('/', this.props.location.pathname)}>
-            <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
-              <i className="material-icons"> arrow_back </i>
-            </button>
-          </Link>
+          {this.displayBackButton()}
         </div>
       </div>
     )
