@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { handleScroll, displayBackButton } from 'components/floatingButtonHelper'
+import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 var _ = require('underscore');
 
 class TaskSummary extends Component {

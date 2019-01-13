@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createBackButtonURL } from 'components/floatingButtonHelper'
+import { createBackButtonURL } from 'helpers/floatingButtonHelper.js'
 import { Link } from 'react-router-dom'
 var _ = require('underscore');
 

@@ -4,7 +4,7 @@ import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
-import { handleScroll, displayBackButton } from 'components/floatingButtonHelper'
+import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 
 class UserActivity extends Component {
   constructor(props) {

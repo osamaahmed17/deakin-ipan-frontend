@@ -4,7 +4,7 @@ import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
-import { handleScroll, displayBackButton } from 'components/floatingButtonHelper'
+import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 var _ = require('underscore')
 
 class UserTask extends Component {
