@@ -12,11 +12,11 @@ class TaskSummary extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   stateHandler = (state) => {

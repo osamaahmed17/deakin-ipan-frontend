@@ -52,7 +52,7 @@ class Header extends Component {
         <ul>
           <li className="back-to-programs-button" id="back-to-programs-button">
             {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
-            <Link to={{pathname: CONSTANTS.PROGRAMS}}>
+            <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
               ALL PROGRAMS
             </Link>
           </li>
@@ -62,7 +62,7 @@ class Header extends Component {
   }
 
   displayNotifications = (data) => {
-    if(data.length !== 0) {
+    if (data.length !== 0) {
       return (
         data.map((items, key) => {
           return (
@@ -91,21 +91,101 @@ class Header extends Component {
               <span className='name-profile'>{this.state.name}</span>
             </div>
 
-            <li><a className="progress-sidenav" id="progress-sidenav" href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li>
-            <li><a className="programs-sidenav" id="programs-sidenav" href={CONSTANTS.PROGRAMS}><i className="material-icons">adjust</i> <span>Programs</span> </a></li>
-            <li><a className="fav-modules-sidenav" id="fav-modules-sidenav" href={CONSTANTS.FAVOURITE_MODULES}><i className="material-icons">favorite_border</i> <span>Favourite Modules</span> </a></li>
-            <li><a className="fav-activities-sidenav" id="fav-activities-sidenav" href={CONSTANTS.FAVOURITE_ACTIVITIES}><i className="material-icons">favorite_border</i> <span>Favourite Activities</span> </a></li>
-            <li><a className="profile-sidenav" id="profile-sidenav" href={CONSTANTS.PROFILE}><i className="material-icons">face</i> <span>Profile</span></a></li>
+            {/* <li><a className="progress-sidenav" id="progress-sidenav" href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li> */}
+            <li>
+              <Link to='#!'>
+                <p className="progress-sidenav" id="progress-sidenav">
+                  <i className="material-icons">adjust</i>
+                  <span>
+                    Progress
+                  </span></p>
+              </Link>
+            </li>
+            <li>
+              <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
+                <p className="programs-sidenav" id="programs-sidenav">
+                  <i className="material-icons">adjust</i>
+                  <span>
+                    Programs
+                  </span>
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
+                <p className="fav-modules-sidenav" id="fav-modules-sidenav">
+                  <i className="material-icons">favorite_border</i>
+                  <span>
+                    Favourite Modules
+                  </span>
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
+                <p className="fav-activities-sidenav" id="fav-activities-sidenav">
+                  <i className="material-icons">favorite_border</i>
+                  <span>
+                    Favourite Activities
+                  </span>
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link to={{ pathname: CONSTANTS.PROFILE }}>
+                <p className="profile-sidenav" id="profile-sidenav">
+                  <i className="material-icons">face</i>
+                  <span>
+                    Profile
+                  </span>
+                </p>
+              </Link>
+            </li>
             <li><a className="logout-button sidenav-close" id="logout-btn-sidenav" onClick={this.logout} href="#!">Logout</a></li>
           </ul>
+
+          {/* Desktop view menu */}
           <div className="navbar-fixed">
             <ul id="dropdown1" className="dropdown-content">
-              <li><a href="#!">My progress</a></li>
-              <li><a id="my-programs" href={CONSTANTS.PROGRAMS}>My programs</a></li>
-              <li><a id="fav-modules" href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li>
-              <li><a id="fav-activities" href={CONSTANTS.FAVOURITE_ACTIVITIES}>Favourite Activities</a></li>
-              <li><a id="profile" href={CONSTANTS.PROFILE}>Profile</a></li>
-              <li><a id="nav-logout-btn" className="nav-logout-btn" onClick={this.logout} href="#!">Logout</a></li>
+              <li>
+                <Link to="#!">
+                  <p id="my-programs">
+                    My progress
+                    </p>
+                </Link>
+              </li>
+              <li>
+                <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
+                  <p>
+                    My programs
+                    </p>
+                </Link>
+              </li>
+              {/* <li><a id="fav-modules" href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li> */}
+              <li>
+                <Link to={{ pathname: CONSTANTS.FAVOURITE_MODULES }}>
+                  <p id="fav-modules">
+                    Favourite Modules
+                    </p>
+                </Link>
+              </li>
+              <li>
+                <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
+                  <p id="fav-activities">
+                    Favourite Activities
+                    </p>
+                </Link>
+              </li>
+              <li>
+                <Link to={{ pathname: CONSTANTS.PROFILE }}>
+                  <p id="profile">
+                    Profile
+                    </p>
+                </Link>
+              </li>
+              <li>
+                <a id="nav-logout-btn" className="nav-logout-btn" onClick={this.logout} href="#!">Logout</a>
+              </li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
               <div className="container">
@@ -121,7 +201,7 @@ class Header extends Component {
               <div className="nav-wrapper">
                 <a href="#!" data-target="side-nav" className="sidenav-trigger show-on-small right deakin-burger"><div><div className='deakin-burger-title' >Menu </div><div><i className="material-icons">menu</i></div></div></a>
 
-                {/* Back button will taek directly take to programs page */}
+                {/* Back button will directly take to programs page */}
                 {this.programBackButton()}
                 <ul id="nav-mobile" className="right">
                   {/* Calendar dropdown view */}

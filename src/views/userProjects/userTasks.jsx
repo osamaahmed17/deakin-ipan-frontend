@@ -23,11 +23,11 @@ class UserTask extends Component {
 
   componentDidMount() {
     this.getTasks();
-    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
-  
+
   componentWillUnmount() {
-    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
 

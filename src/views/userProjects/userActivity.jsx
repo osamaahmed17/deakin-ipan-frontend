@@ -25,11 +25,11 @@ class UserActivity extends Component {
 
   componentDidMount() {
     this.getActivity();
-    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   stateHandler = (state) => {
@@ -39,8 +39,6 @@ class UserActivity extends Component {
   getActivity = () => {
     API.getActivity(this.stateHandler, this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.a_id);
   }
-
-
 
   render() {
     if (!this.state.activity) return <LoadingComponent />;

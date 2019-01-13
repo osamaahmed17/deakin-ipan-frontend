@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { handleScroll, createBackButtonURL } from 'components/floatingButtonHelper'
+import { createBackButtonURL } from 'components/floatingButtonHelper'
 import { Link } from 'react-router-dom'
 var _ = require('underscore');
 
@@ -8,16 +8,16 @@ class Footer extends Component {
     super(props);
     this.state = {
       height: window.innerHeight,
-      scrollBottomStatus: false,
+      footerScrollBottomStatus: false,
     }
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   stateHandler = (state) => {
@@ -32,18 +32,18 @@ class Footer extends Component {
     const windowBottom = Math.round(windowHeight + window.pageYOffset);
     if (windowBottom >= docHeight) {
       this.setState({
-        scrollBottomStatus: true
+        footerScrollBottomStatus: true
       })
     } else {
       this.setState({
-        scrollBottomStatus: false
+        footerScrollBottomStatus: false
       })
     }
   }
 
   footerBackButton = () => {
     var pathname = this.props.location.pathname
-    if (_.isEqual(this.state.scrollBottomStatus, true) && 
+    if (_.isEqual(this.state.footerScrollBottomStatus, true) && 
       (pathname.includes('/modules/') || 
       pathname.includes('/tasks/') || 
       pathname.includes('/summary') || 

@@ -26,11 +26,11 @@ class UserModule extends Component {
 
   componentDidMount() {
     this.getModule();
-    window.addEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.addEventListener("scroll", (() => handleScroll(this, this.stateHandler)));
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", handleScroll(this, this.stateHandler));
+    window.removeEventListener("scroll", (() =>handleScroll(this, this.stateHandler)));
   }
 
   stateHandler = (state) => {
@@ -52,7 +52,7 @@ class UserModule extends Component {
   }
 
   checkModulesLength = () => {
-    if (!_.isEqual(this.state.module.module.length, 0)) {
+    if (!_.isEqual(this.state.module.activities.length, 0)) {
       return (
         <div className="container">
           <Collapsible data={this.state.module.tasks} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
