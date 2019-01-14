@@ -27,7 +27,6 @@ class FavouriteActivitiesCard extends Component {
   }
 
   render() {
-    console.log(this.props.data)
     return (
       <div className="col s12 m12 l6 offset-l3">
         <div className="card-panel">

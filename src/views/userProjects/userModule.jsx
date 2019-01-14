@@ -4,7 +4,6 @@ import Section from 'components/section.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Collapsible from 'components/collapsible.jsx'
-import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 var _ = require('underscore')
 
 class UserModule extends Component {
@@ -13,8 +12,6 @@ class UserModule extends Component {
     this.state = {
       module: null,
       toggleFavourite: '',
-      height: window.innerHeight,
-      scrollBottomStatus: false,
     }
   }
 
@@ -26,11 +23,6 @@ class UserModule extends Component {
 
   componentDidMount() {
     this.getModule();
-    window.addEventListener("scroll", (() => handleScroll(this, this.stateHandler)));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", (() =>handleScroll(this, this.stateHandler)));
   }
 
   stateHandler = (state) => {
@@ -123,7 +115,6 @@ class UserModule extends Component {
           <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
         {/* In app back button. Modules page to modules list page */}
-        {displayBackButton(this)}
       </div>
     )
   }

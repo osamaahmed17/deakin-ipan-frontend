@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 var _ = require('underscore')
 
+var isMainFloatingButtonVisible = true
 
 export const handleScroll = (obj, stateHandler) => {
   const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
@@ -10,10 +11,13 @@ export const handleScroll = (obj, stateHandler) => {
   const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
   const windowBottom = Math.round(windowHeight + window.pageYOffset);
   if (windowBottom >= docHeight) {
+    isMainFloatingButtonVisible = false
     stateHandler({
       scrollBottomStatus: true
     });
+
   } else {
+    isMainFloatingButtonVisible = true
     stateHandler({
       scrollBottomStatus: false
     });
@@ -21,14 +25,36 @@ export const handleScroll = (obj, stateHandler) => {
 }
 
 // The button will hide when user is at the bottom of the page and footer will have back button
-export const displayBackButton = (obj) => {
-  if (_.isEqual(obj.state.scrollBottomStatus, false)) {
+export const displayBackButton = (scrollBottomStatus, pathname) => {
+  if (_.isEqual(scrollBottomStatus, false) &&
+    (pathname.includes('/modules/') ||
+      pathname.includes('/tasks/') ||
+      pathname.includes('/summary') ||
+      pathname.includes('/activities/'))) {
     return (
-      <Link to={createBackButtonURL('/', obj.props.location.pathname)}>
+      <Link to={createBackButtonURL('/', pathname)}>
         <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
           <i className="material-icons"> arrow_back </i>
         </button>
       </Link>
+    )
+  }
+}
+
+export const footerBackButton = (pathname) => {
+  if (!isMainFloatingButtonVisible &&
+    (pathname.includes('/modules/') ||
+      pathname.includes('/tasks/') ||
+      pathname.includes('/summary') ||
+      pathname.includes('/activities/'))) {
+    return (
+      <span>
+        <Link to={createBackButtonURL('/', pathname)}>
+          <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
+            <i className="material-icons"> arrow_back </i>
+          </button>
+        </Link>
+      </span>
     )
   }
 }

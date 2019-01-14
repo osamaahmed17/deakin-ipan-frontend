@@ -4,7 +4,6 @@ import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
-import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 var _ = require('underscore')
 
 class UserTask extends Component {
@@ -16,20 +15,12 @@ class UserTask extends Component {
       popUpMessage: '',
       toggleFavourite: false,
       quizRecord: [],
-      height: window.innerHeight,
-      scrollBottomStatus: false,
     }
   }
 
   componentDidMount() {
     this.getTasks();
-    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
-  }
-
 
   stateHandler = (state) => {
     this.setState(state);
@@ -196,9 +187,6 @@ class UserTask extends Component {
             {this.previousQuestion()}
             {this.nextQuestionButton()}
           </div>
-
-          {/* Floating back button code */}
-          {displayBackButton(this)}
         </div>
       </div>
     )

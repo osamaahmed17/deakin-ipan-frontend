@@ -26,12 +26,15 @@ import Notifications from 'views/notifications/notification.jsx'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 import io from 'socket.io-client'
+import { handleScroll, displayBackButton} from 'helpers/floatingButtonHelper.js'
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'IPAN',
-      notifications: []
+      notifications: [],
+      scrollBottomStatus: false
     };
   }
 
@@ -61,6 +64,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // console.log('app.js')
+    // console.log(this.props)
+    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
     let token = ''
     if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
       if (token === 'true') return;
@@ -77,6 +83,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
     if (this.socket) {
       console.log('Socket disconnecting')
       this.socket.disconnect()
@@ -140,9 +147,10 @@ class App extends Component {
           <Route render={() => <div>404 Error</div>} />
 
         </Switch>
-
+        
+        {displayBackButton(this.state.scrollBottomStatus, this.props.location.pathname)}
         {/* Footer */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} /> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} scrollBottomStatus={this.state.scrollBottomStatus}/> : ''}
       </div>
     );
   }

@@ -4,7 +4,6 @@ import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
-import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 
 class UserActivity extends Component {
   constructor(props) {
@@ -12,8 +11,6 @@ class UserActivity extends Component {
     this.state = {
       activity: null,
       toggleFavourite: false,
-      height: window.innerHeight,
-      scrollBottomStatus: false,
     }
   }
 
@@ -25,11 +22,6 @@ class UserActivity extends Component {
 
   componentDidMount() {
     this.getActivity();
-    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   stateHandler = (state) => {
@@ -74,7 +66,7 @@ class UserActivity extends Component {
           </button>
           </Link>
         </div>
-        {displayBackButton(this)}
+        
       </div>
     )
   }

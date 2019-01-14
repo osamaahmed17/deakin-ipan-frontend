@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 var _ = require('underscore');
 
 class TaskSummary extends Component {
@@ -7,16 +6,8 @@ class TaskSummary extends Component {
     super(props);
     this.state = {
       height: window.innerHeight,
-      scrollBottomStatus: '',
+      scrollBottomStatus: false,
     }
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
   }
 
   stateHandler = (state) => {
@@ -73,7 +64,7 @@ class TaskSummary extends Component {
           <br />
           {this.props.location.state.taskSummary}
         </div>
-        {displayBackButton(this)}
+        
       </div>
     )
   }
