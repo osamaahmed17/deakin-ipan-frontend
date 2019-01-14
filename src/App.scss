@@ -1,9 +1,5 @@
 @import './variables';
 @import './Global.scss';
-$primary:#0c8573;
-$secondary:white;
-$tertiary:#c74298;
-$primary-text:#3D3E3E;
 
 
 // ==========================================================================
@@ -48,6 +44,7 @@ nav, footer {
   opacity: 1;
   z-index: 999;
   }
+  background-color: #e9e9e9;
 }
 
 // ==========================================================================
@@ -102,7 +99,8 @@ nav, footer {
 // 3. Login
 // ==========================================================================
 .Login{
-  min-height: 100vh;
+  // min-height: 100vh;
+  height: 100vh;
   background-image: url("images/ipan2.png");
 }
 
@@ -118,6 +116,12 @@ nav, footer {
   }
   .reset-btn, .redirect-btn {
     padding: 10px 0 10px 0;
+  }
+  #multi-select {
+    background-color: $secondary;
+  }
+  #range-select {
+    background-color: $secondary;
   }
 }
 
@@ -135,8 +139,8 @@ nav, footer {
   font-size: 1.42rem;
 }
 .card-panel {
-  color : $secondary;
-  background-color: $primary !important;
+  color : black;
+  background-color: $secondary !important;
 }
 
 // Goal and Favourite Icon
@@ -148,11 +152,12 @@ nav, footer {
 .program-description, .module-description, .favourite-module-description, .favourite-activity-description{
   text-align: justify;
   font-size: 1rem;
-  color : $secondary;
+  color : black;
 }
 
 // Programs View
 .Programs {
+  height: 100%;
   // Progress bar
   .progress {
     margin: .5rem 0 0!important;

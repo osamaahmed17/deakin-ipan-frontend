@@ -39,6 +39,7 @@ class FavouriteActivitiesCard extends Component {
           <Link to={replacePlaceHolder(CONSTANTS.ACTIVITIES,[this.props.data.program.id, this.props.data.module.id, this.props.data.activity.id])}>
             <p className="col s12 favourite-activity-description"> {this.props.data.activity.shortDescription} </p>
           </Link>
+          <div className="divider"></div>
           <div className="row right-align favourite-activity-status">
             {this.completionStatus(this.props.favourite)}
           </div>

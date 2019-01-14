@@ -44,6 +44,7 @@ class ModuleCard extends Component {
           <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
             <p className="module-description" id={"module_" + this.props.data.id + "-description"}>{this.props.data.shortDescription}</p>
           </Link>
+          <div className="divider"></div>
           <div className="status row">
             <p className="col right module-status" id={"module_" + this.props.data.id + "-status"} style={{marginBottom:"0px"}}> {this.props.data.status} </p>
           </div>

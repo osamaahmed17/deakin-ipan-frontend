@@ -12,19 +12,19 @@ class ProgramCard extends Component {
             <span className="card-title"> {this.props.data.title} </span>
           </div>
           <Link to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
-            <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id}/>
-            <p className="text-color-white program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.description}</p>
+            <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id} />
+            <p className="program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.description}</p>
           </Link>
-          <div className="row" style={{marginBottom:"0px"}}>
-            <p className="col right program-progress">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>
-          </div>
           <div className="progress">
-            <div className="determinate white" style={{width: (this.props.data.progress === '' ? 0 : ((this.props.data.progress*100)/this.props.data.total)) +"%"}}></div>
+            <div className="determinate white" style={{ width: (this.props.data.progress === '' ? 0 : ((this.props.data.progress * 100) / this.props.data.total)) + "%" }}></div>
+          </div>
+          <div className="row" style={{ marginBottom: "0px" }}>
+            <p className="col right program-progress">Completed Modules {this.props.data.progress === '' ? 0 : this.props.data.progress}/{this.props.data.total}</p>
           </div>
         </div>
       </div>
     )
-  } 
+  }
 }
 
 export default ProgramCard;

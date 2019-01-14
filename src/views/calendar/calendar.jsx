@@ -16,6 +16,7 @@ class ViewCalender extends Component {
       selectedDays: [],
       from: undefined,
       to: undefined,
+      currentDay: new Date()
     }
     this.handleDayClick = this.handleDayClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
@@ -131,7 +132,7 @@ class ViewCalender extends Component {
             </Helmet>
         </div>
             <div id="multi-select" className="col s12">
-              <DayPicker selectedDays = {this.state.selectedDays} onDayClick = {this.handleMultiDayClick} />
+            <DayPicker selectedDays={this.state.selectedDays} onDayClick={this.handleMultiDayClick} disabledDays={{ before: this.state.currentDay }}/>
             </div>
           </div>
         <div className="redirect-btn center-align">
