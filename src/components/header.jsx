@@ -112,7 +112,7 @@ class Header extends Component {
               </Link>
             </li>
             <li>
-              <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
+              <Link to={{ pathname: CONSTANTS.FAVOURITE_MODULES }}>
                 <p className="fav-modules-sidenav sidenav-close" id="fav-modules-sidenav">
                   <i className="material-icons">favorite_border</i>
                   <span>
