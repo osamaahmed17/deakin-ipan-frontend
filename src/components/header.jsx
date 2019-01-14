@@ -94,7 +94,7 @@ class Header extends Component {
             {/* <li><a className="progress-sidenav" id="progress-sidenav" href="#!"><i className="material-icons">adjust</i> <span>Progress</span> </a></li> */}
             <li>
               <Link to='#!'>
-                <p className="progress-sidenav" id="progress-sidenav">
+                <p className="progress-sidenav sidenav-close" id="progress-sidenav">
                   <i className="material-icons">adjust</i>
                   <span>
                     Progress
@@ -103,7 +103,7 @@ class Header extends Component {
             </li>
             <li>
               <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
-                <p className="programs-sidenav" id="programs-sidenav">
+                <p className="programs-sidenav sidenav-close" id="programs-sidenav">
                   <i className="material-icons">adjust</i>
                   <span>
                     Programs
@@ -113,7 +113,7 @@ class Header extends Component {
             </li>
             <li>
               <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
-                <p className="fav-modules-sidenav" id="fav-modules-sidenav">
+                <p className="fav-modules-sidenav sidenav-close" id="fav-modules-sidenav">
                   <i className="material-icons">favorite_border</i>
                   <span>
                     Favourite Modules
@@ -123,7 +123,7 @@ class Header extends Component {
             </li>
             <li>
               <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
-                <p className="fav-activities-sidenav" id="fav-activities-sidenav">
+                <p className="fav-activities-sidenav sidenav-close" id="fav-activities-sidenav">
                   <i className="material-icons">favorite_border</i>
                   <span>
                     Favourite Activities
@@ -133,7 +133,7 @@ class Header extends Component {
             </li>
             <li>
               <Link to={{ pathname: CONSTANTS.PROFILE }}>
-                <p className="profile-sidenav" id="profile-sidenav">
+                <p className="profile-sidenav sidenav-close" id="profile-sidenav">
                   <i className="material-icons">face</i>
                   <span>
                     Profile
