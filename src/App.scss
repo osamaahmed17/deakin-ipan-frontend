@@ -10,7 +10,7 @@ $primary-text:#3D3E3E;
 // Table of Contents:
 // ==========================================================================
 //
-//  1. Color header & footer
+//  1. APP
 //  2. Header
 //  3. Login
 //  4. Calendar
@@ -28,13 +28,27 @@ $primary-text:#3D3E3E;
 
 
 // ==========================================================================
-// 1. Color header & footer
+// 1. APP
 // ==========================================================================
 
 nav, footer {
   background-color: $primary !important;
 }
 
+  // Back button
+.App {
+  #back-btn {
+  margin: 0px;
+  top: auto;
+  left: 20px;
+  bottom: 40px;
+  right: auto;
+  position: fixed;
+  color: #0c8573;
+  opacity: 1;
+  z-index: 999;
+  }
+}
 
 // ==========================================================================
 // 2. Header
@@ -69,6 +83,18 @@ nav, footer {
   font-weight: $font-weight-bold;
   a {
     padding: 0 0 0 25px;
+  }
+}
+
+.sidenav {
+  p {
+    margin: 0px;
+  }
+}
+
+#dropdown1 {
+  p{
+    margin: 0px;
   }
 }
 
@@ -190,17 +216,6 @@ nav, footer {
   .goal-icon, .favourite-icon {
     margin-top: 5px;
   }
-  // Back button
-  #back-btn {
-    margin: 0px;
-    top: auto;
-    left: 20px;
-    bottom: 40px;
-    right: auto;
-    position: fixed;
-    color: #0c8573;
-    opacity: 1;
-  }
   .empty-content {
     font-size: 1.1rem;
   }
@@ -221,17 +236,6 @@ nav, footer {
   }
   .favourite-icon {
     margin-top: 5px;
-  }
-  // Back button
-  #back-btn {
-    margin: 0px;
-    top: auto;
-    left: 20px;
-    bottom: 40px;
-    right: auto;
-    position: fixed;
-    color: #0c8573;
-    opacity: 1;
   }
 }
 
@@ -267,17 +271,6 @@ nav, footer {
   }
   .favourite-icon {
     margin-top: 5px;
-  }
-  // Back button
-  #back-btn {
-    margin: 0px;
-    top: auto;
-    left: 20px;
-    bottom: 40px;
-    right: auto;
-    position: fixed;
-    color: #0c8573;
-    opacity: 1;
   }
 }
 
@@ -352,17 +345,6 @@ nav, footer {
   #back-to-module-btn {
     width: 100%;
     margin-bottom: 14px;
-  }
-  // Back button
-  #back-btn {
-    margin: 0px;
-    top: auto;
-    left: 20px;
-    bottom: 40px;
-    right: auto;
-    position: fixed;
-    color: #0c8573;
-    opacity: 1;
   }
   .task-summary {
     text-align: justify;

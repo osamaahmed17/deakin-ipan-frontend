@@ -25,13 +25,16 @@ import Resources from 'views/resources/resources.jsx'
 import Notifications from 'views/notifications/notification.jsx'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
-import initializeSocketListener from 'helpers/socketHander.js'
+import io from 'socket.io-client'
+import { handleScroll, displayBackButton} from 'helpers/floatingButtonHelper.js'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: 'IPAN',
+      notifications: [],
+      scrollBottomStatus: false
     };
   }
 
@@ -42,7 +45,28 @@ class App extends Component {
     )
   }
 
+  socket = null
+  initializeSocketListener = (token) => {
+    console.log('Socket initialized')
+    var options = {
+      reconnectionAttempts: 5,
+      reconnectionDelay: 5000,
+      query: {token: token}
+    }
+    this.socket = io(process.env.REACT_APP_BASE_URL, options)
+    this.socket.on("connect", ()=> console.log("Socket connection established: ", this.socket.id))
+    this.socket.on("disconnect", ()=> console.log("Socket disconnected"))
+    this.socket.on("connect_failed", () => console.log("Socket connection failed: ", this.socket.id))
+    this.socket.on('notification', (data) => {
+      this.setState({ notifications: [...this.state.notifications, data.text] })
+      // TODO: push data object to state's notifications array
+    })
+  }
+
   componentDidMount() {
+    // console.log('app.js')
+    // console.log(this.props)
+    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
     let token = ''
     if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
       if (token === 'true') return;
@@ -51,10 +75,18 @@ class App extends Component {
           console.log(response);
           if (response.payload.status === 200) {
             console.log('Initializing socket')
-            initializeSocketListener();
+            this.initializeSocketListener(token);
           }
         })
         .catch((error) => console.log(error));
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
+    if (this.socket) {
+      console.log('Socket disconnecting')
+      this.socket.disconnect()
     }
   }
 
@@ -63,13 +95,13 @@ class App extends Component {
     else return (
       <div className="App">
         {/* Header */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} /> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history= {this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} notifications={this.state.notifications} /> : ''}
 
         {/* Main body */}
         <Switch>
 
           <Route exact path='/' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} />)} />
+            <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} initializeSocketListener={this.initializeSocketListener} /> )} />
 
           <Route exact path='/home' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
             <Home {...props} /> : <Redirect to='/' />)} />
@@ -115,9 +147,10 @@ class App extends Component {
           <Route render={() => <div>404 Error</div>} />
 
         </Switch>
-
+        
+        {displayBackButton(this.state.scrollBottomStatus, this.props.location.pathname)}
         {/* Footer */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} /> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} scrollBottomStatus={this.state.scrollBottomStatus}/> : ''}
       </div>
     );
   }
