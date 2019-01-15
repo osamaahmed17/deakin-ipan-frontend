@@ -51,7 +51,13 @@ nav, footer {
 // 2. Header
 // ==========================================================================
 //  Menu Icon (Deakin Burger)
-.deakin-burger{
+header {
+  .events-list {
+    .title {
+      font-size: 1.5rem;
+    }
+  }
+  .deakin-burger {
   background-color: $secondary;
   color:$primary;
   border-radius: 70px 0 0 70px;
@@ -60,49 +66,42 @@ nav, footer {
   i{
     display: inline !important;
   }
-}
-
-//  Avatar image
-.header-avatar {
-  max-height: 56px;
-  width: auto;
-  margin-top: 4px;
-}
-
-// Username
-.header-username {
-  padding: 0 15px;
-  font-weight: 600;
-}
-
-// Button for programs page
-.back-to-programs-button {
-  font-weight: $font-weight-bold;
-  a {
-    padding: 0 0 0 25px;
   }
-}
-
-.sidenav {
-  p {
-    margin: 0px;
+  //  Avatar image
+  .header-avatar {
+    max-height: 56px;
+    width: auto;
+    margin-top: 4px;
   }
-}
-
-#dropdown1 {
-  p{
-    margin: 0px;
+  // Username
+  .header-username {
+    padding: 0 15px;
+    font-weight: 600;
+  }
+  // Button for programs page
+  .back-to-programs-button {
+    font-weight: $font-weight-bold;
+    a {
+      padding: 0 0 0 25px;
+    }
+  }
+  .sidenav {
+    p {
+      margin: 0px;
+    }
+  }
+  #dropdown1 {
+    p{
+      margin: 0px;
+    }
   }
 }
 
 // ==========================================================================
 // 3. Login
 // ==========================================================================
-.Login{
-  // min-height: 100vh;
-  height: 100vh;
-  background-image: url("images/ipan2.png");
-}
+// .Login{
+// }
 
 // ==========================================================================
 // 4. Calendar
@@ -111,10 +110,17 @@ nav, footer {
   .DayPicker-Day {
     padding: 0.8em;
   }
+  // Below media query is for small screen mobiles to set calendar padding
+  @media screen and (max-width: 400px) {
+  .DayPicker-Day {
+    padding: 0.5em;
+  }
+}
   a {
     color: $secondary;
   }
-  .reset-btn, .redirect-btn {
+  .reset-btn {
+    width: 100%;
     padding: 10px 0 10px 0;
   }
   #multi-select {
@@ -131,7 +137,7 @@ nav, footer {
 // Main title
 .main-title {
   font-size: 2.14rem;
-  margin: 2.3733571428571425rem 0 1rem 0;
+  margin: 1rem 0 0 0 !important;
 }
 
 // Card title
@@ -196,6 +202,9 @@ nav, footer {
 
 // Module View
 .Module {
+  .row {
+    margin-bottom: 0;
+  }
   .title {
     padding: 0px !important;
     margin: 0;
