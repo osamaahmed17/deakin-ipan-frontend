@@ -19,7 +19,7 @@ class Login extends Component {
   errorMessage = () => {
     if(this.state.error) {
       return (
-        <p className="error-message" id="error-message"><b>{this.state.errorMsg}</b></p>
+        <p className="error-message" id="error-message">{this.state.errorMsg}</p>
       )
     }
   }
@@ -83,20 +83,34 @@ class Login extends Component {
           {this.props.parentState.title}
         </h2>
         <div className='row'>
-          <form id="login-form">
-            <div className='col s8 offset-s2 login-credentials-div'>
-              <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
-              <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              {this.errorMessage()}
-            </div>
-            <div className='button-container'>
-              {
-                this.props.loginLoading ? 
-                  <LoadingComponent /> :
-                  <button className="col s8 offset-s2 btn waves-effect waves-light login-button" id="login-button" onClick={this.performLogin}>Login</button>
-              }
+          <form id="login-form col s12">
+            <div className="row">
+              <div className='col s8 offset-s2 login-credentials-div'>
+                {/* Put placeholder if you remove <label> tag */}
+                <div className="input-field">
+                  <label class="active" for="email">Email</label>
+                  <input id="email" type="email" className="validate login-form-styling" onChange={this.handleEmailChange} />
+                </div>
+                <div className="input-field">
+                  <label class="active" for="password">Password</label>
+                  <input id="password" type="password" className="validate login-form-styling" onChange={this.handlePasswordChange} />
+                </div>
+                {this.errorMessage()}
+              </div>
+              <div className='button-container'>
+                {
+                  this.props.loginLoading ?
+                    <LoadingComponent /> :
+                    <button className="col s8 offset-s2 btn waves-effect waves-light login-button" id="login-button" onClick={this.performLogin}>Login</button>
+                }
+              </div>
             </div>
           </form>
+        </div>
+        <div className="dev-message">
+          <p className="center-align">
+            Developed by Deakin Launchpad
+          </p>
         </div>
       </div>
     );
