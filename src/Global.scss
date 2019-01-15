@@ -6,33 +6,39 @@ $primary-text:#3D3E3E;
 // Main layout start
 
 .App {
-  display: grid;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   text-align: center;
-  // grid layout: set header to auto otherwise 
-  grid-template-rows: 7% auto 8%;
-  height: 100vh;
   font-family: Open Sans, Arial, sans-serif
 }
 
+html, body {
+  height:100%;
+  min-height:100%;
+  // Next line code will remove bouncy effect on website
+  overscroll-behavior: none;
+}
+
 header {
-  // Don't need anything here
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 1 auto;
+  position: relative;/* need this to position inner content */
+  overflow-y: scroll;
 }
 
 footer {
-  // Don't need anything here
+  flex: 0 0 auto;
 }
 
-body {
-  // Next tline code will remove bouncy effect on website
-  // Works only for desktop
-  overscroll-behavior: none;
-  // Code will remove opacity from sidenav-overlay when user logouts
-  // .sidenav-overlay {
-  //   display: none !important;
-  //   opacity: 0 !important;
-  // }
-}
-
+// .footer-fixed {
+// 	position: fixed;
+// 	bottom: 0;
+// 	width: 100%;
+// }
 // Main layout end
 
 // HEADER AND MOBILE MENU
@@ -143,7 +149,9 @@ h2{
 ///// LOGIN
 .Login{
   h2{
-    margin-top: 100px;
+    margin: 0px;
+    padding-top: 100px;
+    // margin-top: 100px;
     color:$primary
   }
 
