@@ -33,13 +33,13 @@ class ViewCalender extends Component {
       to: undefined,
     });
   }
-  
+
   componentDidMount() {
     const options = {}
     let el = document.querySelector('.tabs');
     M.Tabs.init(el, options)
   }
-  
+
   handleMultiDayClick(day, { selected }) {
     const { selectedDays } = this.state;
     if (selected) {
@@ -54,7 +54,7 @@ class ViewCalender extends Component {
   }
 
   btnRedirect = (data) => {
-    if(data === null || data === undefined) {
+    if (data === null || data === undefined) {
       return (
         <Link to='/programs'>
           <button className="waves-effect waves-light btn"> Programs </button>
@@ -62,27 +62,27 @@ class ViewCalender extends Component {
       )
     } else {
       return (
-        <Link to={'/programs/' + this.props.match.params.p_id}> 
+        <Link to={'/programs/' + this.props.match.params.p_id}>
           <button className="waves-effect waves-light btn"> Back To Programs </button>
         </Link>
       )
     }
   }
 
-  render () {
+  render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
     return (
       <div className="Calendar container">
-        <h2 className="left-align heading col s12">Schedule</h2>
-        <div className="row col s12 center-align">
-            <div className="">
-              <ul className="tabs center-align">
-                <li className="tab col s6"><a href="#range-select">Range Select</a></li>
-                <li className="tab col s6"><a className="active" href="#multi-select">Multi Select</a></li>
-              </ul>
-            </div>
-            <div id="range-select" className="col s12">
+        <p className="left-align main-title col s12">Schedule</p>
+        <div className="row col s12 center-align card-panel">
+          <div className="select-type">
+            <ul className="tabs center-align">
+              <li className="tab col s6"><a href="#range-select">Range Select</a></li>
+              <li className="tab col s6"><a className="active" href="#multi-select">Multi Select</a></li>
+            </ul>
+          </div>
+          <div id="range-select" className="col s12">
             <div className="RangeExample">
               <p>
                 <b>
@@ -97,7 +97,7 @@ class ViewCalender extends Component {
                 </b>
                 {from &&
                   to && (
-                    <button className="link btn-small waves-effect waves-light calendar-reset-btn" id="calendar-reset-btn" onClick=       {this.handleResetClick}>
+                    <button className="link btn-small waves-effect waves-light calendar-reset-btn" id="calendar-reset-btn" onClick={this.handleResetClick}>
                       Reset
                     </button>
                   )}
@@ -108,6 +108,7 @@ class ViewCalender extends Component {
                 selectedDays={[from, { from, to }]}
                 modifiers={modifiers}
                 onDayClick={this.handleDayClick}
+                disabledDays={{ before: this.state.currentDay }}
               />
             </div>
             <Helmet>
@@ -130,14 +131,11 @@ class ViewCalender extends Component {
                 `}
               </style>
             </Helmet>
-        </div>
-            <div id="multi-select" className="col s12">
-            <DayPicker selectedDays={this.state.selectedDays} onDayClick={this.handleMultiDayClick} disabledDays={{ before: this.state.currentDay }}/>
-            </div>
           </div>
-        <div className="redirect-btn center-align">
-          {this.btnRedirect(this.props.match.params.p_id)}  
-        </div> 
+          <div id="multi-select" className="col s12">
+            <DayPicker selectedDays={this.state.selectedDays} onDayClick={this.handleMultiDayClick} disabledDays={{ before: this.state.currentDay }} />
+          </div>
+        </div>
       </div>
     )
   }
