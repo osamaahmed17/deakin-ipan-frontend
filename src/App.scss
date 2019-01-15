@@ -180,6 +180,9 @@ header {
 
 // Program List View
 .Program {
+  .program-description{
+    text-align: justify;
+  }
   .card-content {
     padding: 0;
   }
@@ -255,9 +258,9 @@ header {
 
 // Tasks View
 .Tasks {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   .tasks-quiz-footer {
     margin-top: auto;
   }
