@@ -255,9 +255,12 @@ header {
 
 // Tasks View
 .Tasks {
-  display: grid;
-  grid-template-rows: auto 10%;
-  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .tasks-quiz-footer {
+    margin-top: auto;
+  }
   .title {
     padding: 0px !important;
     margin: 0;
