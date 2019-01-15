@@ -31,13 +31,14 @@ class UserProgram extends Component {
 
   render() {
     if (!this.state.program) return <LoadingComponent />;
+    console.log(this.state.program)
     return (
       <div className="Program container">
         <p className="left-align main-title">
           Program {this.props.match.params.p_id}
         </p>
-        <p>
-          {this.state.program.programDescription}
+        <p className="program-description">
+          {this.state.program.description}
         </p>
         {
           this.state.program.modules.map((items) => {
