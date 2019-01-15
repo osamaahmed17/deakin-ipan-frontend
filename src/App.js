@@ -26,7 +26,7 @@ import Notifications from 'views/notifications/notification.jsx'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 import io from 'socket.io-client'
-import { handleScroll, displayBackButton} from 'helpers/floatingButtonHelper.js'
+import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
 
 class App extends Component {
   constructor(props) {
@@ -51,11 +51,11 @@ class App extends Component {
     var options = {
       reconnectionAttempts: 5,
       reconnectionDelay: 5000,
-      query: {token: token}
+      query: { token: token }
     }
     this.socket = io(process.env.REACT_APP_BASE_URL, options)
-    this.socket.on("connect", ()=> console.log("Socket connection established: ", this.socket.id))
-    this.socket.on("disconnect", ()=> console.log("Socket disconnected"))
+    this.socket.on("connect", () => console.log("Socket connection established: ", this.socket.id))
+    this.socket.on("disconnect", () => console.log("Socket disconnected"))
     this.socket.on("connect_failed", () => console.log("Socket connection failed: ", this.socket.id))
     this.socket.on('notification', (data) => {
       this.setState({ notifications: [...this.state.notifications, data.text] })
@@ -95,62 +95,64 @@ class App extends Component {
     else return (
       <div className="App">
         {/* Header */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history= {this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} notifications={this.state.notifications} /> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} notifications={this.state.notifications} /> : ''}
 
         {/* Main body */}
-        <Switch>
+        <main>
+          <Switch>
 
-          <Route exact path='/' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} initializeSocketListener={this.initializeSocketListener} /> )} />
+            <Route exact path='/' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <Redirect to='/programs' /> : <Login parentState={this.state} parentProps={this.props} initializeSocketListener={this.initializeSocketListener} />)} />
 
-          <Route exact path='/home' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Home {...props} /> : <Redirect to='/' />)} />
+            <Route exact path='/home' render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <Home {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.PROGRAMS)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <UserPrograms {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.PROGRAMS)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <UserPrograms {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.PROGRAM, [":p_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <UserProgram {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.PROGRAM, [":p_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <UserProgram {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.MODULES, [":p_id", ":m_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <UserModule {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.MODULES, [":p_id", ":m_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <UserModule {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.ACTIVITIES, [":p_id", ":m_id", ":a_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <UserActivity {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.ACTIVITIES, [":p_id", ":m_id", ":a_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <UserActivity {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.TASKS, [":p_id", ":m_id", ":t_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <UserTask {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.TASKS, [":p_id", ":m_id", ":t_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <UserTask {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={CONSTANTS.CALENDAR} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <ViewCalendar {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={CONSTANTS.CALENDAR} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <ViewCalendar {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.RESOURCES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Resources {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.RESOURCES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <Resources {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.FAVOURITE_ACTIVITIES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <FavouriteActivities {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.FAVOURITE_ACTIVITIES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <FavouriteActivities {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.FAVOURITE_MODULES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <FavouriteModules {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.FAVOURITE_MODULES)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <FavouriteModules {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [":p_id", ":m_id", ":t_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <TaskSummary {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.TASK_SUMMARY, [":p_id", ":m_id", ":t_id"])} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <TaskSummary {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.NOTIFICATIONS)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Notifications {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.NOTIFICATIONS)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <Notifications {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path={replacePlaceHolder(CONSTANTS.PROFILE)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
-            <Profile {...props} /> : <Redirect to='/' />)} />
+            <Route exact path={replacePlaceHolder(CONSTANTS.PROFILE)} render={(props) => (this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ?
+              <Profile {...props} /> : <Redirect to='/' />)} />
 
-          <Route exact path='/test' render={() => <div>Test</div>} />
+            <Route exact path='/test' render={() => <div>Test</div>} />
 
-          <Route render={() => <div>404 Error</div>} />
+            <Route render={() => <div>404 Error</div>} />
 
-        </Switch>
-        
+          </Switch>
+        </main>
+
         {displayBackButton(this.state.scrollBottomStatus, this.props.location.pathname)}
         {/* Footer */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} scrollBottomStatus={this.state.scrollBottomStatus}/> : ''}
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} scrollBottomStatus={this.state.scrollBottomStatus} /> : ''}
       </div>
     );
   }
