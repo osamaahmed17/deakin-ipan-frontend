@@ -84,33 +84,35 @@ class UserModule extends Component {
           {this.goalIcon()}
           <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
-        {
-          this.state.module.sections.map((items, k) => {
-            return (
-              <div className="section" key={'section_' + k}>
-                <Section data={items} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
+        <div className="card-panel">
+          {
+            this.state.module.sections.map((items, k) => {
+              return (
+                <div className="section" key={'section_' + k}>
+                  <Section data={items} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
+                </div>
+              )
+            })
+          }
+          <div className="activities">
+            <div className="row">
+              <div className="left-align collaps-title">
+                Activities
+            </div>
+              <div className="container">
+                <Collapsible data={this.state.module.activities} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
               </div>
-            )
-          })
-        }
-        <div className="activities">
-          <div className="row">
-            <div className="left-align collaps-title">
-              Activities
-            </div>
-            <div className="container">
-              <Collapsible data={this.state.module.activities} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
             </div>
           </div>
-        </div>
-        <div className="tasks">
-          <div className="row">
-            <div className="left-align collaps-title">
-              Tasks
+          <div className="tasks">
+            <div className="row">
+              <div className="left-align collaps-title">
+                Tasks
             </div>
-            {this.checkTasksLength()}
-          </div>
+              {this.checkTasksLength()}
+            </div>
         </div>
+      </div>
         {/* <div className="resources">
           <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
