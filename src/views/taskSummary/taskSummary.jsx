@@ -39,11 +39,13 @@ class TaskSummary extends Component {
   render() {
     if (_.isEqual(this.props.location.state, undefined)) return (
       <div className="TaskSummary container">
-        <div className="main-title left-align">
-          Task Summary
-        </div>
-        <div className="summary container left-align">
-          <p> Please finish the task {this.props.match.params.t_id}.</p>
+        <div className="card-panel">
+          <div className="main-title left-align">
+            Task Summary
+          </div>
+          <div className="summary container left-align">
+            <p> Please finish the task {this.props.match.params.t_id}.</p>
+          </div>
         </div>
       </div>
     )
@@ -52,19 +54,20 @@ class TaskSummary extends Component {
         <div className="main-title left-align">
           Task Summary
         </div>
-        <div className="summary container left-align">
-          {
-            this.props.location.state.quizRecord.map((data, i) => {
-              return this.displayResult(data, i)
-            })
-          }
-        </div>
-        <div className="container task-summary">
-          Summary
+        <div className="card-panel">
+          <div className="summary left-align">
+            {
+              this.props.location.state.quizRecord.map((data, i) => {
+                return this.displayResult(data, i)
+              })
+            }
+          </div>
+          <div className="container task-summary">
+            Summary
           <br />
-          {this.props.location.state.taskSummary}
+            {this.props.location.state.taskSummary}
+          </div>
         </div>
-        
       </div>
     )
   }
