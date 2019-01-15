@@ -148,9 +148,12 @@ class App extends Component {
             <Route render={() => <div>404 Error</div>} />
 
           </Switch>
-        </main>
 
-        {displayBackButton(this.state.scrollBottomStatus, this.props.location.pathname)}
+          <div className="back-button">
+            {displayBackButton(this.state.scrollBottomStatus, this.props.location.pathname)}
+          </div>
+        </main>
+        
         {/* Footer */}
         {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Footer history={this.props.history} location={this.props.location} scrollBottomStatus={this.state.scrollBottomStatus} /> : ''}
       </div>
