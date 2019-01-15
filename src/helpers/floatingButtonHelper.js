@@ -30,7 +30,8 @@ export const displayBackButton = (scrollBottomStatus, pathname) => {
     (pathname.includes('/modules/') ||
       pathname.includes('/tasks/') ||
       pathname.includes('/summary') ||
-      pathname.includes('/activities/'))) {
+      pathname.includes('/activities/') ||
+      pathname.includes('calendar'))) {
     return (
       <Link to={createBackButtonURL('/', pathname)}>
         <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
@@ -46,7 +47,8 @@ export const footerBackButton = (pathname) => {
     (pathname.includes('/modules/') ||
       pathname.includes('/tasks/') ||
       pathname.includes('/summary') ||
-      pathname.includes('/activities/'))) {
+      pathname.includes('/activities/') ||
+      pathname.includes('calendar'))) {
     return (
       <span>
         <Link to={createBackButtonURL('/', pathname)}>
@@ -60,7 +62,6 @@ export const footerBackButton = (pathname) => {
 }
 
 export const createBackButtonURL = (subStr, str) => {
-  // Use document.referrer to get last visited location
   let location = []
   let i = -1
   while ((i = str.indexOf(subStr, i + 1)) >= 0) location.push(i);
