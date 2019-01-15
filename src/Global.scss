@@ -1,3 +1,4 @@
+@import './variables';
 $primary:#0c8573;
 $secondary:white;
 $tertiary:#c74298;
@@ -99,7 +100,6 @@ footer {
     padding-left: 16px;
   }
   .material-icons{
-    margin: 0 10px 0 0 !important;
     // color:$primary !important;
     font-weight: bold !important;
   }
@@ -148,19 +148,36 @@ h2{
 
 ///// LOGIN
 .Login{
+  min-height: 100vh;
+  height: 100vh;
+  background-image: url("images/ipan2.png");
   h2{
     margin: 0px;
     padding-top: 100px;
-    // margin-top: 100px;
     color:$primary
   }
-
-  .login-credentials-div{
-    margin-top: 200px
+  .col {
+    padding: 0px !important;
   }
-
-  #loginButton{
-    margin-top: 80px;
+  .login-credentials-div{
+    margin-top: 200px;
+  }
+  .login-form-styling {
+    padding: 0 10px 0 10px !important;
+    border-radius: 20px !important;
+  }
+  #error-message {
+    font-weight: $font-weight-bold;
+  }
+  .input-field {
+    margin: 20px 0 20px 0;
+    font-size: 1.4rem;
+  }
+  label {
+    font-size: 1.2rem !important;
+    line-height: 0.2;
+  }
+  #login-button{
     border: none;
     position: relative;
     display: inline-block;
@@ -175,11 +192,16 @@ h2{
     font-size: 1.4rem;
     line-height: 14px;
     line-height: 1.4rem;
-    border-radius: 30px;
     transition: all .15s ease-out;
     font-family: Arial,sans-serif;
-    font-weight: 600;
     font-style: normal;
     background-color: $tertiary;
+    font-weight: $font-weight-bold;
+    border-radius: 20px !important;
+  }
+  .dev-message {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
   }
 }
