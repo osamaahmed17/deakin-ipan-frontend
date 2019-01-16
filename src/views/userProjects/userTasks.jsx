@@ -40,7 +40,7 @@ class UserTask extends Component {
   // GenerateQuiz Function will take array as data and map them
   generateQuiz = (quiz) => {
     return (
-      <div className="quiz">
+      <div className="quiz card-panel">
         {
           quiz.questionSet.map((question, i) => {
             if (question.id === this.state.current) {
