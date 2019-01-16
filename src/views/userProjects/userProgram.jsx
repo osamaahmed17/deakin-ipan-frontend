@@ -31,7 +31,6 @@ class UserProgram extends Component {
 
   render() {
     if (!this.state.program) return <LoadingComponent />;
-    console.log(this.state.program)
     return (
       <div className="Program container">
         <p className="left-align main-title">
