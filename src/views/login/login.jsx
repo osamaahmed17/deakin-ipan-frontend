@@ -88,11 +88,11 @@ class Login extends Component {
               <div className='col s8 offset-s2 login-credentials-div'>
                 {/* Put placeholder if you remove <label> tag */}
                 <div className="input-field">
-                  <label class="active" for="email">Email</label>
+                  <label className="active" htmlFor="email">Email</label>
                   <input id="email" type="email" className="validate login-form-styling" onChange={this.handleEmailChange} />
                 </div>
                 <div className="input-field">
-                  <label class="active" for="password">Password</label>
+                  <label className="active" htmlFor="password">Password</label>
                   <input id="password" type="password" className="validate login-form-styling" onChange={this.handlePasswordChange} />
                 </div>
                 {this.errorMessage()}
