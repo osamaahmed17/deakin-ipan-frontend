@@ -6,9 +6,18 @@ class EventsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: [],
+      day: this.generateEventDate(new Date()),
       events: [],
     }
+  }
+
+  generateEventDate = (date) => {
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+    ]
+    return (
+      date.getDate() + ' ' + monthNames[date.getMonth()]
+    )
   }
 
   displayEvents = (event) => {
@@ -38,28 +47,49 @@ class EventsView extends Component {
     } else {
       return (
         <div className="no-events">
-          No events scheduled.
+          <p>
+            No events scheduled.
+          </p>
         </div>
       )
     }
   }
 
-  render () {
+  render() {
     return (
       <div className="events-view container">
-        <div className="calendar-view center-align">
-          <DayPicker />
-          {/* <DayPicker onDayClick={(day) => this.setState({ date: day})}/> */}
+        {/* Calendar & events for mobile and tablet view */}
+        <div className="calendar-view center-align hide-on-large-only">
+          <DayPicker onDayClick={(day) => this.setState({ day: this.generateEventDate(day) })} />
+          {/* <DayPicker onDayClick={(day) => this.setState({ day: day})}/> */}
         </div>
-        <div className="events-list row">
+        <div className="events-list row hide-on-large-only">
           <div className="title">
-            Events:
+            {this.state.day} Events:
           </div>
-          <div className="events container">
-            Display list of events here ...
-          {/* { this.displayEvents(this.state.events) } */}
+          <div className="events container hide-on-large-only">
+            {this.displayEvents(this.state.events)}
           </div>
         </div>
+
+        {/* Calendar & events for desktop view */}
+        <div className="calendar-view-l row hide-on-med-and-down">
+          <div className="col s6 m6 l6">
+            <DayPicker onDayClick={(day) => this.setState({ day: day })} />
+          </div>
+          <div className="col s6 m6 l6">
+            <div className="events-list row">
+              <div className="title">
+                {this.state.day} Events:
+              </div>
+              <div className="events container">
+                {this.displayEvents(this.state.events)}
+              </div>
+            </div>
+          </div>
+          {/* <DayPicker onDayClick={(day) => this.setState({ day: day})}/> */}
+        </div>
+
       </div>
     )
   }
