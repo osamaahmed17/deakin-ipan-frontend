@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Section from 'components/section.jsx'
-// import ResourcesCard from 'components/cards/resourcesCard.jsx'
+import ResourcesCard from 'components/cards/resourcesCard.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import Collapsible from 'components/collapsible.jsx'
@@ -112,10 +112,10 @@ class UserModule extends Component {
               {this.checkTasksLength()}
             </div>
         </div>
-      </div>
-        {/* <div className="resources">
-          <ResourcesCard data={this.state.module.resources} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
+        <div className="resources container">
+          <ResourcesCard p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
         </div>
+      </div>
         {/* In app back button. Modules page to modules list page */}
       </div>
     )
