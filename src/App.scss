@@ -438,6 +438,11 @@ header {
     width: 100% !important;
     left: 0 !important;
   }
+//  OnClick of calendar dropdown color changes to #eee
+//  So we have set color to white `
+.dropdown-content li:hover, .dropdown-content li.active {
+  background-color: $secondary !important;
+}
 
   // Menu Dropdown Desktop
   #dropdown1 {
