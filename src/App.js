@@ -33,8 +33,9 @@ class App extends Component {
     super(props);
     this.state = {
       title: 'IPAN',
-      notifications: [],
-      scrollBottomStatus: false
+      notifications: '',
+      scrollBottomStatus: false,
+      unreadNotificationsCounter : 0,
     };
   }
 
@@ -58,23 +59,20 @@ class App extends Component {
     this.socket.on("disconnect", () => console.log("Socket disconnected"))
     this.socket.on("connect_failed", () => console.log("Socket connection failed: ", this.socket.id))
     this.socket.on('notification', (data) => {
-      this.setState({ notifications: [...this.state.notifications, data.text] })
+      this.setState({ notifications: [...this.state.notifications, data], unreadNotificationsCounter: this.state.unreadNotificationsCounter + 1 })
       // TODO: push data object to state's notifications array
     })
   }
 
   componentDidMount() {
-    // console.log('app.js')
-    // console.log(this.props)
     window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
     let token = ''
     if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
       if (token === 'true') return;
       this.props.dispatchAccessTokenLogin(token)
         .then((response) => {
-          console.log(response);
           if (response.payload.status === 200) {
-            console.log('Initializing socket')
+            this.setState({ notifications: response.payload.data.data.userDetails.notifications})
             this.initializeSocketListener(token);
           }
         })
@@ -95,8 +93,7 @@ class App extends Component {
     else return (
       <div className="App">
         {/* Header */}
-        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} logout={this.stateHandler} notifications={this.state.notifications} /> : ''}
-
+        {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} parentStateHandler={this.stateHandler} notifications={this.state.notifications} unreadNotificationsCounter= {this.state.unreadNotificationsCounter} /> : ''}
         {/* Main body */}
         <main>
           <Switch>
