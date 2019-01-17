@@ -7,6 +7,7 @@ import API from 'helpers/api.js';
 import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import EventsView from 'views/events/eventsView.jsx'
+var _ = require('underscore')
 
 class Header extends Component {
   constructor(props) {
@@ -62,12 +63,17 @@ class Header extends Component {
   }
 
   displayNotifications = (data) => {
-    if (data.length !== 0) {
+    var sortNotificationsReverse = ''
+    if (!_.isEqual(data, undefined)) sortNotificationsReverse = _.sortBy(data, data.deliverDateTime).reverse()
+    else sortNotificationsReverse = []
+    if (sortNotificationsReverse.length !== 0) {
       return (
-        data.map((items, key) => {
+        sortNotificationsReverse.map((items) => {
           return (
-            <li key={key}>
-              <p> {items} </p>
+            <li key={items._id}>
+              <Link to={{ pathname: items.appLink }}>
+                {items.text}
+              </Link>
             </li>
           )
         })
@@ -75,7 +81,9 @@ class Header extends Component {
     } else {
       return (
         <li>
-          No new notifications.
+          <p>
+            No new notifications.
+          </p>
         </li>
       )
     }
@@ -191,12 +199,6 @@ class Header extends Component {
               <div className="container">
                 {this.displayNotifications(this.props.notifications)}
               </div>
-              <li className="divider" tabIndex="-1"></li>
-              <li>
-                <a href="#!" className="center-align">
-                  See all
-                </a>
-              </li>
             </ul>
             <ul id='calendar-dropdown' className='dropdown-content collection calendar-ul'>
               <li>
@@ -213,7 +215,7 @@ class Header extends Component {
                   {/* Calendar dropdown view */}
                   <li> <a href="#!" className="calendar-dropdown" data-target="calendar-dropdown" id="calendar-dropdown"> <i className="material-icons calendar" id="calendar" >event</i> </a> </li>
                   {/* Notification dropdown view */}
-                  <li> <a href="#!" className='notification-dropdown' data-target="notification-dropdown"> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">{this.props.notifications.length}</small></i> </a></li>
+                  <li> <a href="#!" className='notification-dropdown' data-target="notification-dropdown" onClick={() => this.props.parentStateHandler({ unreadNotificationsCounter: 0 })}> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">{this.props.unreadNotificationsCounter}</small></i> </a></li>
                   <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar" /></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down menu-dropdown" id="menu-dropdown"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
