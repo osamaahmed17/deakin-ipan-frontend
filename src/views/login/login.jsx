@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHelper from "helpers/AppHelper.js";
 import { connect } from 'react-redux';
-import { requestLogin, developerModeLogin } from 'actions';
+import { requestLogin, developerModeLogin, reduxNotifySetAccessTokenInLocalStorage } from 'actions';
 import LoadingComponent from 'components/loading/loading';
 
 class Login extends Component {
@@ -65,8 +65,10 @@ class Login extends Component {
       response.payload.data.data && response.payload.data.data.accessToken
       ) {
         const accessToken = response.payload.data.data.accessToken;
-        AppHelper.loginUser(true, accessToken);
-        this.props.initializeSocketListener(accessToken);
+        AppHelper.loginUser(true, accessToken, () => {
+          this.props.dispatchReduxNotifySetAccessTokenInLocalStorage()
+          this.props.initializeSocketListener(accessToken)
+        });
       } else {
         this.setState({
           error: true,
@@ -120,7 +122,8 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchLogin  : (data) => dispatch(requestLogin(data)),
-    dispatchDeveloperModeLogin : () => dispatch(developerModeLogin())
+    dispatchDeveloperModeLogin : () => dispatch(developerModeLogin()),
+    dispatchReduxNotifySetAccessTokenInLocalStorage : () => dispatch(reduxNotifySetAccessTokenInLocalStorage()),
   }
 }
 
