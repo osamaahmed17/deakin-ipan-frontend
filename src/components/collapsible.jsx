@@ -11,30 +11,29 @@ class Collapsible extends Component {
     };
     M.Collapsible.init(this.Collapsible, options);
   }
-  checkContentType = (data, data_id) => {
-    if(data === 'activities') {
+  checkContentType = (contentType, data_id) => {
+    if(contentType === 'activities') {
       return replacePlaceHolder(CONSTANTS.ACTIVITIES, [this.props.p_id, this.props.m_id, data_id])
-    } else if (data === 'tasks') {
+    } else if (contentType === 'tasks') {
       return replacePlaceHolder(CONSTANTS.TASKS, [this.props.p_id, this.props.m_id, data_id])
     }
   }
   
   render () {
-    // {'/programs/' + this.props.p_id + '/modules/' + this.props.m_id + '/' + this.props.contentType + '/' + item.id}
     return(
       <ul className="collapsible expandable" ref={Collapsible => { this.Collapsible = Collapsible; }}>
         {
-          this.props.data.map((item, i) => {
+          this.props.data.map((items, key) => {
             return (
-              <li key = {i}>
+              <li key = {key}>
                 <div className="collapsible-header">
-                  <span className="left-align collapsible-title sub-heading"> {item.title} </span>
+                  <span className="left-align collapsible-title sub-heading"> {items.title} </span>
                   <i className="material-icons right">expand_more</i>
-                  <span className="right status"> {item.status} </span>
+                  <span className="right status"> {items.status} </span>
                 </div>
                 <div className="collapsible-body description">
-                  <Link to={this.checkContentType(this.props.contentType, i+1)}>
-                      {item.shortDescription}
+                  <Link to={this.checkContentType(this.props.contentType, items.id)}>
+                      {items.shortDescription}
                     </Link>
                 </div>
               </li>
