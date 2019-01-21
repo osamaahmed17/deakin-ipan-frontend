@@ -452,6 +452,15 @@ header {
     width: 100% !important;
     left: 0 !important;
     height: 50vh;
+    .container {
+      padding: 5px 0 0 0;
+    }
+    a {
+      padding: 0;
+    }
+    .row {
+      margin: 0;
+    }
   }
 
   // Events view -> calendar: mobile and tablet view
