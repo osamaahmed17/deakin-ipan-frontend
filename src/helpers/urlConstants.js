@@ -33,4 +33,9 @@ export const CONSTANTS = {
 
   // User register
   REGISTER_USER:              "user/register",
+
+  // Toggle Favourite
+  TOGGLE_MODULE_FAVOURITE:    "user/favourites/modules/:id/toggle?programId=:id",
+  TOGGLE_ACTIVITY_FAVOURITE:  "user/favourites/activities/:id/toggle?programId=:id&moduleId=:id",
+  TOGGLE_TASK_FAVOURITE:      "user/favourites/tasks/:id/toggle?programId=:id&moduleId=:id"
 }
