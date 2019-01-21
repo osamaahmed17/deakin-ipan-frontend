@@ -387,8 +387,15 @@ header {
 // ==========================================================================
 // 6. Profile
 // ==========================================================================
-.profile {
-  font-size: 1.1em
+.Profile {
+  font-size: 1.1em;
+  .row {
+    padding: 0px !important;
+    margin-bottom: 0.7rem;
+  }
+  .label {
+    font-weight: 500;
+  }
 }
 
 
