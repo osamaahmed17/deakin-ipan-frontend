@@ -10,14 +10,12 @@ class UserActivity extends Component {
     super(props);
     this.state = {
       activity: null,
-      toggleFavourite: false,
     }
   }
 
   handleFavouriteClick = () => {
-    this.setState({
-      toggleFavourite: !this.state.toggleFavourite
-    })
+    // API call for toggling favourite icon
+    API.toggleFavouriteActivity(this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.a_id, this.stateHandler, this.state.favouriteStatus)
   }
 
   componentDidMount() {
@@ -46,7 +44,7 @@ class UserActivity extends Component {
               Weekly Planner Activity
             </span>
           </p>
-          <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"activity_" + this.state.activity.id + "-favourite-icon"} style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
+          <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"activity_" + this.state.activity.id + "-favourite-icon"} style={{ opacity: this.state.favouriteStatus ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         <div className="card activity-image">
           {
@@ -66,7 +64,7 @@ class UserActivity extends Component {
           </button>
           </Link>
         </div>
-        
+
       </div>
     )
   }

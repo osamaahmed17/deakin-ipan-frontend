@@ -11,14 +11,12 @@ class UserModule extends Component {
     super(props);
     this.state = {
       module: null,
-      toggleFavourite: this.props.location.state.favouriteStatus,
     }
   }
 
   handleFavouriteClick = () => {
-    this.setState(state => ({
-      toggleFavourite: !state.toggleFavourite
-    }))
+    // API call for toggling favourite icon
+    API.toggleFavouriteModule(this.props.match.params.p_id, this.props.match.params.m_id, this.stateHandler, this.state.favouriteStatus)
   }
 
   componentDidMount() {
@@ -82,7 +80,7 @@ class UserModule extends Component {
         <div className="main-title row">
           <p className="col s10 m10 l10 left-align title">Module {this.props.match.params.m_id}: {this.state.module.title}</p>
           {this.goalIcon()}
-          <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
+          <i className="col s1 m1 l1 material-icons favourite-icon btn-flat" style={{ opacity: this.state.favouriteStatus ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}>favorite</i>
         </div>
         <div className="card-panel">
           {
@@ -111,11 +109,11 @@ class UserModule extends Component {
             </div>
               {this.checkTasksLength()}
             </div>
+          </div>
+          <div className="resources container">
+            <ResourcesCard p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
+          </div>
         </div>
-        <div className="resources container">
-          <ResourcesCard p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
-        </div>
-      </div>
         {/* In app back button. Modules page to modules list page */}
       </div>
     )

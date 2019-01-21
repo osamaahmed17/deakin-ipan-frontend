@@ -13,7 +13,6 @@ class UserTask extends Component {
       tasks: null,
       current: 1,
       popUpMessage: '',
-      toggleFavourite: false,
       quizRecord: [],
     }
   }
@@ -32,9 +31,8 @@ class UserTask extends Component {
 
   // Onclick favourite icon toggle true and false state
   handleFavouriteClick = () => {
-    this.setState({
-      toggleFavourite: !this.state.toggleFavourite
-    })
+    // API call for toggling favourite icon
+    API.toggleFavouriteTask(this.props.match.params.p_id, this.props.match.params.m_id, this.props.match.params.t_id, this.stateHandler, this.state.favouriteStatus)
   }
 
   // GenerateQuiz Function will take array as data and map them
@@ -169,15 +167,15 @@ class UserTask extends Component {
             <p className="col s11 m11 l11 left-align title">
               Quiz
             </p>
-            <i className="col s1 m1 l1 material-icons btn-flat right-align favourite-icon" id={"tasks_" + this.state.tasks.id + "-favourite-icon"} style={{ opacity: this.state.toggleFavourite ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}> favorite </i>
+            <i className="col s1 m1 l1 material-icons btn-flat right-align favourite-icon" id={"tasks_" + this.state.tasks.id + "-favourite-icon"} style={{ opacity: this.state.favouriteStatus ? '1.0' : '0.2' }} onClick={this.handleFavouriteClick}> favorite </i>
             <p className="col s6 m6 l6 left-align sub-title left-align">
               Tasks {this.props.match.params.t_id}
             </p>
             <p className="col s6 m6 l6 left-align sub-title right-align">
-              Progress {this.state.quizRecord.length}/{this.state.tasks.data.questionSet.length}   
+              Progress {this.state.quizRecord.length}/{this.state.tasks.data.questionSet.length}
             </p>
             <div className="progress">
-              <div className="determinate" style={{ width: ((this.state.quizRecord.length / this.state.tasks.data.questionSet.length)*100) + "%"}}></div>
+              <div className="determinate" style={{ width: ((this.state.quizRecord.length / this.state.tasks.data.questionSet.length) * 100) + "%" }}></div>
             </div>
           </div>
           {this.generateQuiz(this.state.tasks.data)}
