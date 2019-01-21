@@ -48,7 +48,7 @@ class EventsView extends Component {
       return (
         <div className="no-events">
           <p>
-            No events scheduled.
+            No events scheduled on this day yet
           </p>
         </div>
       )
@@ -63,10 +63,11 @@ class EventsView extends Component {
           <DayPicker onDayClick={(day) => this.setState({ day: this.generateEventDate(day) })} />
           {/* <DayPicker onDayClick={(day) => this.setState({ day: day})}/> */}
         </div>
-        <div className="events-list row hide-on-large-only">
+        <div className="events-list row hide-on-large-only center-align">
           <div className="title">
-            {this.state.day} Events:
+            SCHEDULED EVENTS
           </div>
+          
           <div className="events container hide-on-large-only">
             {this.displayEvents(this.state.events)}
           </div>
@@ -80,9 +81,9 @@ class EventsView extends Component {
           <div className="col s6 m6 l6">
             <div className="events-list row">
               <div className="title">
-                {this.state.day} Events:
+                SCHEDULED EVENTS
               </div>
-              <div className="events container">
+              <div className="events">
                 {this.displayEvents(this.state.events)}
               </div>
             </div>
