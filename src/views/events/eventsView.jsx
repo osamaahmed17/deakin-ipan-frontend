@@ -6,18 +6,9 @@ class EventsView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      day: this.generateEventDate(new Date()),
+      day: new Date(),
       events: [],
     }
-  }
-
-  generateEventDate = (date) => {
-    const monthNames = [
-      "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-    ]
-    return (
-      date.getDate() + ' ' + monthNames[date.getMonth()]
-    )
   }
 
   displayEvents = (event) => {
@@ -60,7 +51,7 @@ class EventsView extends Component {
       <div className="events-view container">
         {/* Calendar & events for mobile and tablet view */}
         <div className="calendar-view center-align hide-on-large-only">
-          <DayPicker onDayClick={(day) => this.setState({ day: this.generateEventDate(day) })} />
+          <DayPicker onDayClick={(day) => this.setState({ day: day })} />
           {/* <DayPicker onDayClick={(day) => this.setState({ day: day})}/> */}
         </div>
         <div className="events-list row hide-on-large-only center-align">
