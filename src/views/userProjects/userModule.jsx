@@ -11,7 +11,7 @@ class UserModule extends Component {
     super(props);
     this.state = {
       module: null,
-      toggleFavourite: '',
+      toggleFavourite: this.props.location.state.favouriteStatus,
     }
   }
 
