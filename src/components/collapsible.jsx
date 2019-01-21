@@ -12,20 +12,20 @@ class Collapsible extends Component {
     M.Collapsible.init(this.Collapsible, options);
   }
   checkContentType = (contentType, data_id) => {
-    if(contentType === 'activities') {
+    if (contentType === 'activities') {
       return replacePlaceHolder(CONSTANTS.ACTIVITIES, [this.props.p_id, this.props.m_id, data_id])
     } else if (contentType === 'tasks') {
       return replacePlaceHolder(CONSTANTS.TASKS, [this.props.p_id, this.props.m_id, data_id])
     }
   }
-  
-  render () {
-    return(
+
+  render() {
+    return (
       <ul className="collapsible expandable" ref={Collapsible => { this.Collapsible = Collapsible; }}>
         {
           this.props.data.map((items, key) => {
             return (
-              <li key = {key}>
+              <li key={key}>
                 <div className="collapsible-header">
                   <span className="left-align collapsible-title sub-heading"> {items.title} </span>
                   <i className="material-icons right">expand_more</i>
@@ -33,8 +33,8 @@ class Collapsible extends Component {
                 </div>
                 <div className="collapsible-body description">
                   <Link to={this.checkContentType(this.props.contentType, items.id)}>
-                      {items.shortDescription}
-                    </Link>
+                    {items.shortDescription}
+                  </Link>
                 </div>
               </li>
             )
