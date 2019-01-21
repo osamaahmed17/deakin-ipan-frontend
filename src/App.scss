@@ -387,6 +387,8 @@ header {
 // 6. Profile
 // ==========================================================================
 .Profile {
+  // Wrap words to next line on overflow
+  word-wrap: break-word;
   font-size: 1.1em;
   .row {
     padding: 0px !important;
