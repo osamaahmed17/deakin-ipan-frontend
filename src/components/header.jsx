@@ -7,6 +7,7 @@ import API from 'helpers/api.js';
 import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import EventsView from 'views/events/eventsView.jsx'
+import moment from 'moment'
 var _ = require('underscore')
 
 class Header extends Component {
@@ -74,7 +75,14 @@ class Header extends Component {
           return (
             <li key={items._id}>
               <Link to={{ pathname: items.appLink }}>
-                {items.text}
+                <div className="row">
+                  <div className="col s8 m8 l8 left-align">
+                    {items.text}
+                  </div>
+                  <div className="col s4 m4 l4 right-align">
+                    {moment(items.deliverDateTime).fromNow()}
+                  </div>
+                </div>
               </Link>
             </li>
           )
