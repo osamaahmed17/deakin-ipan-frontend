@@ -37,10 +37,12 @@ class Header extends Component {
     // Drop down for menu
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth: 'false' });
+
     // Drop down for notification desktop view
     let elem = document.querySelectorAll('.notification-dropdown');
     M.Dropdown.init(elem, { inDuration: 300, outDuration: 225, coverTrigger: false, alignment: 'right', constrainWidth: 'false' });
     let calendar = document.querySelectorAll('.calendar-dropdown');
+
     // Drop down for calendar view
     M.Dropdown.init(calendar, { inDuration: 300, outDuration: 225, coverTrigger: false, constrainWidth: 'false', closeOnClick: false, });
     let sidenav = document.querySelectorAll('.sidenav');
@@ -82,7 +84,7 @@ class Header extends Component {
       return (
         <li>
           <p>
-            No new notifications.
+            No new notifications
           </p>
         </li>
       )
@@ -106,7 +108,8 @@ class Header extends Component {
                   <i className="material-icons">adjust</i>
                   <span>
                     Progress
-                  </span></p>
+                  </span>
+                </p>
               </Link>
             </li>
             <li>
@@ -159,14 +162,14 @@ class Header extends Component {
                 <Link to="#!">
                   <p id="my-programs">
                     My progress
-                    </p>
+                  </p>
                 </Link>
               </li>
               <li>
                 <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
                   <p>
                     My programs
-                    </p>
+                  </p>
                 </Link>
               </li>
               {/* <li><a id="fav-modules" href={CONSTANTS.FAVOURITE_MODULES}>Favourite Modules</a></li> */}
@@ -174,21 +177,21 @@ class Header extends Component {
                 <Link to={{ pathname: CONSTANTS.FAVOURITE_MODULES }}>
                   <p id="fav-modules">
                     Favourite Modules
-                    </p>
+                  </p>
                 </Link>
               </li>
               <li>
                 <Link to={{ pathname: CONSTANTS.FAVOURITE_ACTIVITIES }}>
                   <p id="fav-activities">
                     Favourite Activities
-                    </p>
+                  </p>
                 </Link>
               </li>
               <li>
                 <Link to={{ pathname: CONSTANTS.PROFILE }}>
                   <p id="profile">
                     Profile
-                    </p>
+                  </p>
                 </Link>
               </li>
               <li>
