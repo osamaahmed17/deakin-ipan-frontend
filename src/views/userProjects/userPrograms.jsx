@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Card from 'components/cards/programCard.jsx'
 import API from 'helpers/api.js'
-import LoadingComponent from 'components/loading/loading';
+import LoadingComponent from 'components/loading/loading'
+import track from 'react-tracking'
 
 class UserPrograms extends Component {
   constructor(props) {
@@ -63,4 +64,4 @@ class UserPrograms extends Component {
   }
 }
 
-export default UserPrograms;
+export default track()(UserPrograms);

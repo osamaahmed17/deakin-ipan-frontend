@@ -27,6 +27,8 @@ import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 import io from 'socket.io-client'
 import { handleScroll, displayBackButton } from 'helpers/floatingButtonHelper.js'
+import track from 'react-tracking'
+import appendTrackingData, { E } from 'tracking/tracking.js' 
 
 class App extends Component {
   constructor(props) {
@@ -65,7 +67,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
+    // window.addEventListener("scroll", () => handleScroll(this, this.stateHandler));
+    // window.addEventListener("scroll", () => console.log('asdasd'));
     let token = ''
     if ((token = AppHelper.isUserLocalStorageLoggedIn())) {
       if (token === 'true') return;
@@ -81,7 +84,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
+    // window.removeEventListener("scroll", () => handleScroll(this, this.stateHandler));
     if (this.socket) {
       console.log('Socket disconnecting')
       this.socket.disconnect()
@@ -89,9 +92,10 @@ class App extends Component {
   }
 
   render() {
+    this.props.tracking.trackEvent({url: this.props.location.pathname, event: E.T_VISIT_URL})
     if (this.props.loading) return (<LoadingComponent />);
     else return (
-      <div className="App">
+      <div className="App" onScroll={this.test}>
         {/* Header */}
         {this.props.loggedIn || AppHelper.isUserLocalStorageLoggedIn() ? <Header history={this.props.history} location={this.props.location} title={this.state.title} parentStateHandler={this.stateHandler} notifications={this.state.notifications} unreadNotificationsCounter= {this.state.unreadNotificationsCounter} /> : ''}
         {/* Main body */}
@@ -170,5 +174,12 @@ const mapDispatchToProps = (dispatch) => {
     dispatchAccessTokenLogin: (token) => dispatch(requestAccessTokenLogin(token))
   }
 }
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+var TRACK = track(
+  {},
+  {
+    dispatch: (data) => {
+      appendTrackingData(data)
+    }
+  }
+)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TRACK));

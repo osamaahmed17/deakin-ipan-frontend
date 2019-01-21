@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
+import track from 'react-tracking'
+import TrackedLink from 'tracking/components/trackedLink.jsx'
 
 class ModuleCard extends Component {
   constructor(props) {
@@ -41,9 +42,9 @@ class ModuleCard extends Component {
               <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"module_" + this.props.data.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
-          <Link to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
+          <TrackedLink to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
             <p className="module-description" id={"module_" + this.props.data.id + "-description"}>{this.props.data.shortDescription}</p>
-          </Link>
+          </TrackedLink>
           <div className="divider"></div>
           <div className="status row">
             <p className="col right module-status" id={"module_" + this.props.data.id + "-status"} style={{marginBottom:"0px"}}> {this.props.data.status} </p>
@@ -54,4 +55,11 @@ class ModuleCard extends Component {
   } 
 }
 
-export default ModuleCard;
+export default track((props) => {
+  return {
+    url: window.location.pathname,
+    misc: [{
+      module: props.data.id
+    }]
+  }
+})(ModuleCard);
