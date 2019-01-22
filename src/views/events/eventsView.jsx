@@ -25,7 +25,7 @@ class EventsView extends Component {
                 return (
                   <p>
                     <label>
-                      <input type="checkbox" class="filled-in" checked="checked" disabled="disabled" />
+                      <input type="checkbox" className="filled-in" checked="checked" disabled="disabled" />
                       <span>{items}</span>
                     </label>
                   </p>
