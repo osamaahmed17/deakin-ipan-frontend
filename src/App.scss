@@ -482,14 +482,14 @@ header {
     width: 100% !important;
     left: 0 !important;
     height: 50vh;
-    .container {
-      padding: 5px 0 0 0;
+    li {
+      border-bottom: 1px solid #ccc;
+    }
+    .notification-arrival-time {
+      font-size: 1rem !important;
     }
     a {
-      padding: 0;
-    }
-    .row {
-      margin: 0;
+      padding: 0.8rem 1.3rem;
     }
   }
 

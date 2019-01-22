@@ -74,13 +74,10 @@ class Header extends Component {
         sortNotificationsReverse.map((items) => {
           return (
             <li key={items._id}>
-              <Link to={{ pathname: items.appLink }} id={"notification" + items._id}>
-                <div className="row">
-                  <span className="notification">{items.text}</span>
-                  <br />
-                  <span className="notification-arrival-time">{moment(items.deliverDateTime).fromNow()}</span>
-                  <div className="divider"></div>
-                </div>
+              <Link to={{ pathname: items.appLink }} id={"notification_" + items._id}>
+                <span className="notification">{items.text}</span>
+                <br />
+                <span className="notification-arrival-time">{moment(items.deliverDateTime).fromNow()}</span>
               </Link>
             </li>
           )
@@ -205,7 +202,7 @@ class Header extends Component {
               </li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
-              <div>
+              <div className="notifications">
                 {this.displayNotifications(this.props.notifications)}
                 <li>
                   <span className="center-align all-notifications" id="all-notifications">
