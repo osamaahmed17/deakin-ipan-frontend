@@ -7,6 +7,8 @@ import API from 'helpers/api.js';
 import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import EventsView from 'views/events/eventsView.jsx'
+import track from 'react-tracking'
+import { E } from 'tracking/tracking.js'
 var _ = require('underscore')
 
 class Header extends Component {
@@ -31,6 +33,7 @@ class Header extends Component {
     e.preventDefault();
     this.props.dispatchLogout()
     AppHelper.logoutUser()
+    this.props.tracking.trackEvent({ event: E.T_LOGOUT })
   }
 
   componentDidMount() {
@@ -238,4 +241,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+const TRACK = track()(Header)
+
+export default connect(null, mapDispatchToProps)(TRACK);

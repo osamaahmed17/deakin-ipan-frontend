@@ -7,6 +7,13 @@ class API {
 
   // POST requests
 
+  postTrackingData (data, cb) {
+    axiosClient.post("track", data)
+    .then((response) => {
+      cb(null, response.data.data)
+    })
+  }
+
   registerUser (data) {
     axiosClient.post(CONSTANTS.REGISTER_USER, {
       firstName: data.firstName,
