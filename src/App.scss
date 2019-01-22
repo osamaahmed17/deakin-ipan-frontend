@@ -260,7 +260,24 @@ header {
     text-align: left;
   }
   .collapsible-body {
+    padding: 0.9rem;
     text-align: justify;
+    .description {
+      // color: $tertiary;
+    }
+    span {
+      a {
+        color: $tertiary;
+      }
+      display: block;
+    }
+    .material-icons{
+    -ms-transform: rotate(0deg) !important; /* IE 9 */
+    -webkit-transform: rotate(0deg) !important; /* Chrome, Safari, Opera */
+    transform: rotate(0deg) !important;
+    display: inline-block;
+    vertical-align: top;
+    }
   }
   .goal-icon, .favourite-icon {
     margin-top: 5px;

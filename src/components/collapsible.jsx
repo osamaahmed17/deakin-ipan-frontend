@@ -31,10 +31,12 @@ class Collapsible extends Component {
                   <i className="material-icons right">expand_more</i>
                   <span className="right status"> {items.status} </span>
                 </div>
-                <div className="collapsible-body description">
-                  <Link to={this.checkContentType(this.props.contentType, items.id)}>
-                    {items.shortDescription}
-                  </Link>
+                <div className="collapsible-body">
+                  <span className="description">
+                    <Link to={this.checkContentType(this.props.contentType, items.id)}>
+                      {items.shortDescription}
+                    </Link>
+                  </span>
                 </div>
               </li>
             )
