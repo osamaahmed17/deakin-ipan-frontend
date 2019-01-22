@@ -29,7 +29,7 @@ class Collapsible extends Component {
             <span className="left-align collapsible-title"> {this.props.contentType} </span>
           </div>
           <div className="collapsible-body">
-            {_.isEmpty(this.props.data) ? <div> Nothing new.</div> : this.props.data.map(items => {
+            {_.isEmpty(this.props.data) ? <div>Nothing to see here yet!</div> : this.props.data.map(items => {
               return (
                 <div className="row" key={items.id}>
                   <span className="col s8">
