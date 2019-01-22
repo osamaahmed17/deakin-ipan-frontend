@@ -57,7 +57,7 @@ class Header extends Component {
           <li className="back-to-programs-button" id="back-to-programs-button">
             {/* If user directly visit the url then back button goes to landing page else createBackURL function will run*/}
             <Link to={{ pathname: CONSTANTS.PROGRAMS }}>
-              ALL PROGRAMS
+              <i class="material-icons">home</i>
             </Link>
           </li>
         </ul>
@@ -74,14 +74,12 @@ class Header extends Component {
         sortNotificationsReverse.map((items) => {
           return (
             <li key={items._id}>
-              <Link to={{ pathname: items.appLink }}>
+              <Link to={{ pathname: items.appLink }} id={"notification"+ items._id}>
                 <div className="row">
-                  <div className="col s8 m8 l8 left-align">
-                    {items.text}
-                  </div>
-                  <div className="col s4 m4 l4 right-align">
-                    {moment(items.deliverDateTime).fromNow()}
-                  </div>
+                  <span className="notification">{items.text}</span>
+                  <br/>
+                  <span className="notification-arrival-time">{moment(items.deliverDateTime).fromNow()}</span>
+                  <div className="divider"></div>
                 </div>
               </Link>
             </li>
@@ -207,8 +205,13 @@ class Header extends Component {
               </li>
             </ul>
             <ul id='notification-dropdown' className='dropdown-content collection'>
-              <div className="container">
+              <div>
                 {this.displayNotifications(this.props.notifications)}
+                <li>
+                  <span className="center-align all-notifications" id="all-notifications">
+                    See all notifications
+                  </span>
+                </li>
               </div>
             </ul>
             <ul id='calendar-dropdown' className='dropdown-content collection calendar-ul'>
