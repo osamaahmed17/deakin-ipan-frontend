@@ -34,7 +34,7 @@ export const displayBackButton = (scrollBottomStatus, pathname) => {
       pathname.includes('calendar'))) {
     return (
       <Link to={createBackButtonURL('/', pathname)}>
-        <button className="back-btn btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
+        <button className="back-btn btn-large btn-floating waves-effect waves-light" id="back-btn" title="Go Back">
           <i className="material-icons"> arrow_back </i>
         </button>
       </Link>
