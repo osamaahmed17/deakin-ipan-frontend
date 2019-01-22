@@ -245,31 +245,22 @@ header {
   .row {
     margin-bottom: 0;
   }
-  .title {
-    padding: 0px !important;
-    margin: 0;
-  }
   // Collapsible
-  .collaps-title {
-    font-size: 1.8rem;
-  }
-  //  Dropdown icon rotate on click 180deg
-  .collapsible li.active i {
-    -ms-transform: rotate(180deg); /* IE 9 */
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-    transform: rotate(180deg);
-  }
-  //  Title css
-  .collapsible-header {
-    display: block !important;
-    text-align: left;
-    i {
-      margin: 0px;
-    }
+  .collapsible-title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
   }
   .collapsible-body {
+
+    .title {
+      color: black;
+      margin: 0;
+    }
     padding: 0.9rem;
     text-align: justify;
+    .col {
+      padding: 0.5rem 0.75rem;
+    }
     span {
       a {
         color: $tertiary;
@@ -277,9 +268,6 @@ header {
       display: block;
     }
     .material-icons{
-    -ms-transform: rotate(0deg) !important; /* IE 9 */
-    -webkit-transform: rotate(0deg) !important; /* Chrome, Safari, Opera */
-    transform: rotate(0deg) !important;
     display: inline-block;
     vertical-align: top;
     }

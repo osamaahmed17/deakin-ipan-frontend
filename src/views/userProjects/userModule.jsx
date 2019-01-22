@@ -57,22 +57,6 @@ class UserModule extends Component {
     }
   }
 
-  checkTasksLength = () => {
-    if (!_.isEqual(this.state.module.tasks.length, 0)) {
-      return (
-        <div className="container">
-          <Collapsible data={this.state.module.tasks} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
-        </div>
-      )
-    } else {
-      return (
-        <div className="empty-content container">
-          No tasks available.
-        </div>
-      )
-    }
-  }
-
   render() {
     if (!this.state.module) return <LoadingComponent />;
     return (
@@ -92,23 +76,11 @@ class UserModule extends Component {
               )
             })
           }
-          <div className="activities">
-            <div className="row">
-              <div className="left-align collaps-title">
-                Activities
-            </div>
-              <div className="container">
-                <Collapsible data={this.state.module.activities} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
-              </div>
-            </div>
+          <div className="activities container">
+            <Collapsible data={this.state.module.activities} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="activities" />
           </div>
-          <div className="tasks">
-            <div className="row">
-              <div className="left-align collaps-title">
-                Tasks
-            </div>
-              {this.checkTasksLength()}
-            </div>
+          <div className="tasks container">
+            <Collapsible data={this.state.module.tasks} p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} contentType="tasks" />
           </div>
           <div className="resources container">
             <ResourcesCard p_id={this.props.match.params.p_id} m_id={this.props.match.params.m_id} />
