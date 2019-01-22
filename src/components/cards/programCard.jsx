@@ -12,7 +12,7 @@ class ProgramCard extends Component {
             <span className="card-title"> {this.props.data.title} </span>
           </div>
           <TrackedLink to={replacePlaceHolder(CONSTANTS.PROGRAM, [this.props.data.id])}>
-            <img className="responsive-img" src="https://i.imgur.com/vAPuzqe.jpg" alt={"image_" + this.props.data.id} />
+            <img className="responsive-img" src={this.props.data.coverPhoto} alt={"image_" + this.props.data.id} />
             <p className="program-description" id={"program_" + this.props.data.id + "-description"}>{this.props.data.description}</p>
           </TrackedLink>
           <div className="progress">
