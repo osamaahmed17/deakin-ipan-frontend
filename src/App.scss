@@ -157,12 +157,17 @@ header {
 // ==========================================================================
 // 5. Views
 // ==========================================================================
+// Padding bottom
+.Programs, .Program, .Module, .Activity, .Tasks, .TaskSummary, .FavouriteActivities, .FavouriteModule, .Profile {
+  padding-bottom: 20px;
+}
 // Main title
 .main-title {
   color: $tertiary;
   font-weight: $font-weight-bold;
   font-size: 2.14rem;
-  margin: 2.5rem 0 0 0 !important;
+  padding: 20px 0 0 0 !important;
+  margin: 0px;
 }
 
 // Card title
