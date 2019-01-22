@@ -27,7 +27,7 @@ class FavouriteModule extends Component {
     if (!this.state.favouriteModules) return (
       <div className="FavouriteModule container">
         <p className="main-title left-align"> My Favourite Modules </p>
-        <p>No favourite Modules.</p>
+        <p>No favourite yet</p>
       </div>
     );
     return (

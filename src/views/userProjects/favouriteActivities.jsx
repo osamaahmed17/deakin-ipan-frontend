@@ -27,7 +27,7 @@ class FavouriteActivity extends Component {
     if (!this.state.favouriteActivities) return (
       <div className="FavouriteActivities container">
         <p className="main-title left-align">My Favourite Activities</p>
-        No favourite activities
+        <p>No favourite yet</p>
       </div>
       );
     return (
