@@ -42,7 +42,7 @@ nav, footer {
   position: fixed;
   color: #0c8573;
   opacity: 1;
-  z-index: 999;
+  z-index: 99;
   }
   // #e9e9e9 set earlier
   background-color: #f3f3f3;
@@ -390,10 +390,6 @@ header {
   .text {
     margin: 0px;
   }
-  #back-to-module-btn {
-    width: 100%;
-    margin-bottom: 14px;
-  }
   .task-summary {
     text-align: justify;
     margin-bottom: 14px;
@@ -431,16 +427,6 @@ header {
   }
   .row {
     margin: 0;
-  }
-  #back-btn {
-    margin: 0px;
-    top: auto;
-    left: 20px;
-    bottom: 10px;
-    right: auto;
-    position: fixed;
-    color: #0c8573;
-    opacity: 1;
   }
 }
 
