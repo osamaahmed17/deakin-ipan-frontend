@@ -74,10 +74,10 @@ class Header extends Component {
         sortNotificationsReverse.map((items) => {
           return (
             <li key={items._id}>
-              <Link to={{ pathname: items.appLink }} id={"notification"+ items._id}>
+              <Link to={{ pathname: items.appLink }} id={"notification" + items._id}>
                 <div className="row">
                   <span className="notification">{items.text}</span>
-                  <br/>
+                  <br />
                   <span className="notification-arrival-time">{moment(items.deliverDateTime).fromNow()}</span>
                   <div className="divider"></div>
                 </div>
@@ -228,8 +228,20 @@ class Header extends Component {
                 <ul id="nav-mobile" className="right">
                   {/* Calendar dropdown view */}
                   <li> <a href="#!" className="calendar-dropdown" data-target="calendar-dropdown" id="calendar-dropdown"> <i className="material-icons calendar" id="calendar" >event</i> </a> </li>
-                  {/* Notification dropdown view */}
-                  <li> <a href="#!" className='notification-dropdown' data-target="notification-dropdown" onClick={() => this.props.parentStateHandler({ unreadNotificationsCounter: 0 })}> <i className="material-icons">notifications<small className="notification-badge" id="notification-badge">{this.props.unreadNotificationsCounter}</small></i> </a></li>
+                  {/* Notification dropdown view 
+                    If unreadNotificationsCounter is equal to 0 then hide notification badge  */}
+                  <li> 
+                    <a href="#!" className='notification-dropdown' data-target="notification-dropdown" onClick={() => this.props.parentStateHandler({ unreadNotificationsCounter: 0 })}>
+                      <i className="material-icons">
+                        notifications
+                        {!_.isEqual(this.props.unreadNotificationsCounter, 0) ? 
+                          <small className="notification-badge" id="notification-badge">
+                            {this.props.unreadNotificationsCounter}
+                          </small>
+                          : undefined}
+                      </i>
+                    </a>
+                  </li>
                   <li className="hide-on-med-and-down user-avatar" id="user-avatar"> <img src="https://imgur.com/9EHx6W8.png" alt="Avatar" className="circle header-avatar" /></li>
                   <li className="hide-on-med-and-down header-username">{this.state.name}</li>
                   <li className="hide-on-med-and-down menu-dropdown" id="menu-dropdown"> <a className="dropdown-trigger" data-target="dropdown1" href="#!"><i className="material-icons">menu</i></a></li>
