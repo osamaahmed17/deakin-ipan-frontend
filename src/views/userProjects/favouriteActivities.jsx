@@ -24,7 +24,12 @@ class FavouriteActivity extends Component {
   }
 
   render() {
-    if (!this.state.favouriteActivities) return <LoadingComponent />;
+    if (!this.state.favouriteActivities) return (
+      <div className="FavouriteActivities container">
+        <p className="main-title left-align">My Favourite Activities</p>
+        No favourite activities
+      </div>
+      );
     return (
       <div className="FavouriteActivities container">
         <p className="main-title left-align">My Favourite Activities</p>
