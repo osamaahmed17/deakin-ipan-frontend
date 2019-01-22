@@ -91,6 +91,6 @@ function initDispatchTimer() {
 
 initDispatchTimer()
 
-window.addEventListener("beforeunload", handleBrowserExit)
+// window.addEventListener("beforeunload", handleBrowserExit)
 
 export default appendTrackingData
