@@ -63,7 +63,8 @@ export default track((props) => {
   return {
     url: window.location.pathname,
     misc: [{
-      module: props.data.id
+      key: "MODULE_ID",
+      value: props.data.id
     }]
   }
 })(ModuleCard);

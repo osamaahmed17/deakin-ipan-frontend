@@ -4,10 +4,6 @@ import track from 'react-tracking'
 import { E } from 'tracking/tracking.js'
 
 class TrackedLink extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   trackClick = () => {
     this.props.tracking.trackEvent({ event: E.T_UI_CLICK })
     if (this.props.onClick) {

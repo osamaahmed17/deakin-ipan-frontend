@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 import track from 'react-tracking'
@@ -32,7 +31,8 @@ export default track((props) => {
   return {
     url: window.location.pathname,
     misc: [{
-      program: props.data.id
+      key: "PROGRAM_ID",
+      value: props.data.id
     }]
   }
 })(ProgramCard);
