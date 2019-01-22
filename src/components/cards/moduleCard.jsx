@@ -3,20 +3,15 @@ import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
 import track from 'react-tracking'
 import TrackedLink from 'tracking/components/trackedLink.jsx'
+import API from 'helpers/api.js'
 
 class ModuleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleFavourite: this.props.data.favouriteStatus,
+      favouriteStatus: this.props.data.favouriteStatus,
     }
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this)
-  }
-
-  handleFavouriteClick() {
-    this.setState(state => ({
-      toggleFavourite: !state.toggleFavourite
-    }))
   }
 
   // Display goal icon
@@ -29,6 +24,15 @@ class ModuleCard extends Component {
     }
   }
 
+  handleFavouriteClick = () => {
+    // API call for toggling favourite icon
+    API.toggleFavouriteModule(this.props.p_id, this.props.data.id, this.stateHandler, this.state.favouriteStatus)
+  }
+
+  stateHandler = (state) => {
+    this.setState(state);
+  }
+  
   render() {
     return (
       <div className="col s12 m12 l6 offset-l3">
@@ -39,7 +43,7 @@ class ModuleCard extends Component {
                 {this.props.data.title}
               </div>
               { this.goalIcon() }
-              <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"module_" + this.props.data.id + "-favourite-icon"} style={{opacity: this.state.toggleFavourite ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
+              <i className="col s1 m1 l1 material-icons btn-flat favourite-icon" id={"module_" + this.props.data.id + "-favourite-icon"} style={{ opacity: this.state.favouriteStatus ? '1.0' : '0.2'}} onClick={this.handleFavouriteClick}> favorite </i>
             </div>
           </div>
           <TrackedLink to={replacePlaceHolder(CONSTANTS.MODULES,[this.props.p_id, this.props.data.id])}>
