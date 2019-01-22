@@ -258,13 +258,13 @@ header {
   .collapsible-header {
     display: block !important;
     text-align: left;
+    i {
+      margin: 0px;
+    }
   }
   .collapsible-body {
     padding: 0.9rem;
     text-align: justify;
-    .description {
-      // color: $tertiary;
-    }
     span {
       a {
         color: $tertiary;
