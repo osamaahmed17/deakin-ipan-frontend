@@ -165,6 +165,18 @@ header {
   padding: 0px !important;
 }
 
+.favourite-icon {
+  color: $tertiary !important;
+}
+
+// Progress bar
+.progress {
+  background-color: #B9DCD7 !important;
+}
+.determinate {
+  background-color: $primary !important;
+}
+
 // Description
 .program-description, .module-description, .favourite-module-description, .favourite-activity-description{
   text-align: justify;
