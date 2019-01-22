@@ -101,6 +101,10 @@ header {
       margin: 0px;
     }
   }
+  // Notification badge css
+  .notification-badge {
+    background-color: $tertiary !important;
+  }
 }
 
 .sidenav {
