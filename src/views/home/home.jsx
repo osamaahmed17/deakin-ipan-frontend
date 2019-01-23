@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from 'images/deakin-logo.svg';
 
+// We don't use this at the moment
 class Home extends Component {
   render() {
     return (

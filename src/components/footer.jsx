@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
+import { footerBackButton } from 'helpers/floatingButtonHelper.js'
 
 class Footer extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: window.innerHeight,
+    }
+  }
+
+  render() {
     return (
-      <footer className="Footer page-footer">
-        <div className="footer-copyright">
-          <div className="container">
-            Modify components/footer.jsx
-          </div>
+      <footer className="Footer page-footer footer-fixed">
+        <div className="container">
+          {footerBackButton(this.props.location.pathname)}
+          <span className="app-name" id="app-name">
+            IPAN
+          </span>
         </div>
       </footer>
     )

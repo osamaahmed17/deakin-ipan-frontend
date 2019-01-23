@@ -1,34 +1,556 @@
 @import './variables';
+@import './Global.scss';
+
+
+// ==========================================================================
+// Table of Contents:
+// ==========================================================================
+//
+//  1. APP
+//  2. Header
+//  3. Login
+//  4. Calendar
+//  5. Views
+//  6. Profile
+//  7. Footer
+//  8. Section
+//  9. Dropdown Menu
+//  10. Home.jsx -> Logo spin, app-link-color
+//  9. Notification
+//
+// ==========================================================================
+//  End
+// ==========================================================================
+
+
+// ==========================================================================
+// 1. APP
+// ==========================================================================
 
 nav, footer {
-  background-color: get-color(green, darkest) !important;
+  background-color: $primary !important;
 }
 
+  // Back button
 .App {
-  text-align: center;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  .back-button {
+    #back-btn {
+    margin: 0px;
+    top: auto;
+    left: 20px;
+    bottom: 23px;
+    right: auto;
+    position: fixed;
+    color: #0c8573;
+    opacity: 1;
+    z-index: 99;
+    }
+    .btn-floating {
+      background-color: $tertiary;
+    }
+    .btn-large i {
+      font-size: 3rem;
+    }
+  }
+  // #e9e9e9 set earlier
+  background-color: #f3f3f3;
 }
 
+// ==========================================================================
+// 2. Header
+// ==========================================================================
+//  Menu Icon (Deakin Burger)
+header {
+  .calendar-ul {
+    overflow: auto;
+  }
+  .events-list {
+    .title {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      font-weight: $font-weight-bold;
+    }
+  }
+  .deakin-burger {
+  background-color: $secondary;
+  color:$primary;
+  border-radius: 70px 0 0 70px;
+  margin: 0 0px !important;
+  width: 100px;
+  i{
+    display: inline !important;
+  }
+  }
+  //  Avatar image
+  .header-avatar {
+    max-height: 56px;
+    width: auto;
+    margin-top: 4px;
+  }
+  // Username
+  .header-username {
+    padding: 0 15px;
+    font-weight: 600;
+  }
+  // Button for programs page
+  .back-to-programs-button {
+    font-weight: $font-weight-bold;
+    a {
+      padding: 0 15px;
+    }
+  }
+  .sidenav {
+    p {
+      margin: 0px;
+    }
+  }
+  #dropdown1 {
+    p{
+      margin: 0px;
+    }
+  }
+  // Notification badge css
+  .notification-badge {
+    background-color: $tertiary !important;
+  }
+}
+
+.sidenav {
+  span {
+    padding: 0 10px;
+  }
+}
+// ==========================================================================
+// 3. Login
+// ==========================================================================
+// .Login{
+// }
+
+// ==========================================================================
+// 4. Calendar
+// ==========================================================================
+.Calendar {
+  .DayPicker-Day {
+    padding: 0.8em;
+  }
+  // Below media query is for small screen mobiles to set calendar padding
+  @media screen and (max-width: 400px) {
+  .DayPicker-Day {
+    padding: 0.5em;
+  }
+}
+  a {
+    color: $secondary;
+  }
+  .reset-btn {
+    width: 100%;
+    padding: 10px 0 10px 0;
+  }
+  #multi-select {
+    background-color: $secondary;
+  }
+  #range-select {
+    background-color: $secondary;
+  }
+}
+
+// ==========================================================================
+// 5. Views
+// ==========================================================================
+// Padding bottom
+.Programs, .Program, .Module, .Activity, .Tasks, .TaskSummary, .FavouriteActivities, .FavouriteModule, .Profile {
+  padding-bottom: 20px;
+}
+// Main title
+.main-title {
+  color: $tertiary;
+  font-weight: $font-weight-bold;
+  font-size: 2.14rem;
+  padding: 20px 0 0 0 !important;
+  margin: 0px;
+}
+
+// Card title
+.card-title {
+  font-size: 1.42rem;
+}
+.card-panel {
+  color : black;
+  background-color: $secondary !important;
+}
+
+// Goal and Favourite Icon
+.goal-icon, .favourite-icon {
+  padding: 0px !important;
+}
+
+.favourite-icon {
+  color: $tertiary !important;
+}
+
+// Progress bar
+.progress {
+  background-color: #B9DCD7 !important;
+}
+.determinate {
+  background-color: $primary !important;
+}
+
+// Description
+.program-description, .module-description, .favourite-module-description, .favourite-activity-description{
+  text-align: justify;
+  font-size: 1rem;
+  color : black;
+}
+
+// Programs View
+.Programs {
+  height: 100%;
+  // Progress bar
+  .progress {
+    margin: .5rem 0 0!important;
+  }
+
+  .program-progress {
+    margin: 0px;
+  }
+  
+  .card-content {
+    margin-bottom: 10px;
+  }
+}
+
+// Program List View
+.Program {
+  .program-description{
+    text-align: justify;
+  }
+  .card-content {
+    padding: 0;
+  }
+
+  .module-description {
+    margin-top: 0px; 
+  }
+
+  .status {
+    margin-bottom: 0 !important;
+  }
+
+  .module-status {
+    margin-top: 0px;
+  }
+  .goal-icon, .favourite-icon {
+    margin-top: 2px;
+  }
+}
+
+// Module View
+.Module {
+  .row {
+    margin-bottom: 0;
+  }
+  .main-title {
+    p{
+      margin: 0px;
+    }
+  }
+  // Collapsible
+  .collapsible-title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+  }
+  .collapsible-body {
+
+    .title {
+      color: black;
+      margin: 0;
+    }
+    padding: 0.9rem;
+    text-align: justify;
+    .col {
+      padding: 0.5rem 0.75rem;
+    }
+    span {
+      a {
+        color: $tertiary;
+      }
+      display: block;
+    }
+    .material-icons{
+    display: inline-block;
+    vertical-align: top;
+    }
+  }
+  .goal-icon, .favourite-icon {
+    margin-top: 5px;
+  }
+  .empty-content {
+    font-size: 1.1rem;
+  }
+}
+
+// Activity View
+.Activity {
+  .title {
+    padding: 0px !important;
+    margin: 0;
+  }
+  .sub-title {
+    font-size: 1.2rem;
+  }
+  .add-activity-to-calendar-btn {
+    width: 100%;
+    margin-bottom: 14px;
+  }
+  .favourite-icon {
+    margin-top: 5px;
+  }
+}
+
+// Tasks View
+.Tasks {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  .tasks-quiz-footer {
+    margin-top: auto;
+  }
+  .title {
+    padding: 0px !important;
+    margin: 0;
+  }
+  .sub-title {
+    font-size: 1.2rem;
+    padding: 0px !important;
+    margin: 0px;
+  }
+  .question {
+    margin-bottom: 0 0 20px;
+    text-align: justify;
+  }
+  .popup-message {
+    text-align: justify;
+    padding: 1rem;
+  }
+  // Tasks Grid Template
+  .tasks-quiz {
+    .message{
+      padding: 15px;
+    }
+  }
+  .message{
+    padding: 15px;
+  }
+  .favourite-icon {
+    margin-top: 5px;
+  }
+}
+
+// Favourite Modules View
+.FavouriteModule {
+  .favourite-module-description {
+    margin-top: 0px;
+  }
+  .favourite-module-status {
+    margin-bottom: 0px;
+  }
+  .goal-icon {
+    opacity: 1;
+  }
+}
+
+// Favourite Activities View
+.FavouriteActivities {
+  .favourite-activity-description {
+    margin-top: 0px;
+  }
+  .favourite-activity-status {
+    margin-bottom: 0px;
+  }
+}
+
+// Resources View
+.resources {
+  .description {
+    text-align: justify;
+  }
+
+  // Temporary delete below code for justify content
+  // When resources page is ready
+  .justify-content {
+    text-align: justify;
+  }
+}
+
+// Tasks Summary
+.TaskSummary {
+  .summary {
+    font-size: 1.2rem
+  }
+  .title {
+    font-size: 1.5rem;
+    margin: 0px;
+  }
+  .question {
+    margin: 5px 0 5px 0;
+    text-align: justify;
+  }
+  .wrong-selection{
+    margin-top: 0px;
+    border: red;
+    border-left-style: solid;
+    background-color: rgb(255,177,177);
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+  }
+  .correct-answer {
+    margin-top: 0px;
+    border: $primary;
+    border-left-style: solid;
+    background-color: rgb(210,248,210);
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+  }
+  .text {
+    margin: 0px;
+  }
+  .task-summary {
+    text-align: justify;
+    margin-bottom: 14px;
+  }
+}
+
+
+// ==========================================================================
+// 6. Profile
+// ==========================================================================
+.Profile {
+  // Wrap words to next line on overflow
+  word-wrap: break-word;
+  font-size: 1.1em;
+  .row {
+    padding: 0px !important;
+    margin-bottom: 0.7rem;
+  }
+  .label {
+    font-weight: 500;
+  }
+}
+
+
+// ==========================================================================
+// 7. Footer
+// ==========================================================================
+.Footer {
+  .app-name {
+    font-size: 1.5rem;
+  }
+  .app-name {
+    text-align: center;
+    color: white;
+  }
+  .row {
+    margin: 0;
+  }
+}
+
+.page-footer {
+  padding: 10px 0 !important;
+}
+
+
+// ==========================================================================
+// 8. Section
+// ==========================================================================
+.section {
+  text-align: justify;
+
+  .description {
+    font-size: 1rem;
+  }
+}
+
+
+// ==========================================================================
+// 9. Dropdrown Menu
+// ==========================================================================
+  // Notification dropdown Desktop
+  #notification-dropdown {
+    width: 100% !important;
+    left: 0 !important;
+    height: 50vh;
+    li {
+      border-bottom: 1px solid #ccc;
+    }
+    .notification-arrival-time {
+      font-size: 1rem !important;
+    }
+    a {
+      padding: 0.8rem 1.3rem;
+    }
+  }
+
+  // Events view -> calendar: mobile and tablet view
+  .calendar-ul {
+    width: 100% !important;
+    left: 0 !important;
+    .DayPicker {
+      // Days font size
+      font-size: 1rem;
+      // Month font size
+      .DayPicker-Caption > div {
+        font-size: 1.5rem
+      }
+      .DayPicker-Day {
+        padding: 0.9rem;
+      }
+      .DayPicker-Month {
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+    }
+  }
+  // Events view -> calendar: desktop view
+  .calendar-view-l {
+    // Set desktop calendar drop down height
+    height: 310px;
+    width: 100% !important;
+    left: 0 !important;
+    .DayPicker {
+      // Days font size
+      font-size: 1rem;
+      // Month font size
+      .DayPicker-Caption > div {
+        font-size: 1.5rem
+      }
+      .DayPicker-Day {
+        padding: 0.9rem;
+      }
+      .DayPicker-Month {
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+    }
+  }
+//  OnClick of calendar dropdown color changes to #eee
+//  So we have set color to white `
+.dropdown-content li:hover, .dropdown-content li.active {
+  background-color: $secondary !important;
+}
+
+  // Menu Dropdown Desktop
+  #dropdown1 {
+    width: 150px !important;
+  }
+
+// ==========================================================================
+// 10. Home.jsx -> Logo spin, app-link-color
+// ==========================================================================
+// Used in home.jsx.. useless
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
-}
-
-.App-header {
-  background-color: #0C8573;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -40,27 +562,7 @@ nav, footer {
   }
 }
 
-.header-avatar {
-  max-height: 56px;
-  width: auto;
-  margin-top: 4px;
-}
-
-.header-username {
-  padding: 0 15px;
-  font-weight: 600;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-.card-panel {
-  color : get-color(white, color);
-  background-color: get-color(green, darkest) !important;
-}
-
-.flat-btn {
-  color: get-color(white, color);
-  background-color: get-color(green, darkest);
+// Used in home.jsx.. useless
+.App-link {
+  color: #61dafb;
 }

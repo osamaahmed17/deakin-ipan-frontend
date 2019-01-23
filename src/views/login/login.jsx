@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AppHelper from "helpers/AppHelper.js";
 import { connect } from 'react-redux';
-import { requestLogin, developerModeLogin } from 'actions';
+import { requestLogin, developerModeLogin, reduxNotifySetAccessTokenInLocalStorage } from 'actions';
+import LoadingComponent from 'components/loading/loading';
 
 class Login extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Login extends Component {
   errorMessage = () => {
     if(this.state.error) {
       return (
-        <p><b>{this.state.errorMsg}</b></p>
+        <p className="error-message" id="error-message">{this.state.errorMsg}</p>
       )
     }
   }
@@ -54,6 +55,7 @@ class Login extends Component {
     if (this.state.developerMode) {
       this.props.dispatchDeveloperModeLogin();
       AppHelper.developerModeLoginUser(true);
+      this.props.initializeSocketListener(AppHelper.getUserAccessToken());
       return;
     }
     if (!this.validationCheck()) return;
@@ -63,7 +65,10 @@ class Login extends Component {
       response.payload.data.data && response.payload.data.data.accessToken
       ) {
         const accessToken = response.payload.data.data.accessToken;
-        AppHelper.loginUser(true, accessToken);
+        AppHelper.loginUser(true, accessToken, () => {
+          this.props.dispatchReduxNotifySetAccessTokenInLocalStorage()
+          this.props.initializeSocketListener(accessToken)
+        });
       } else {
         this.setState({
           error: true,
@@ -76,24 +81,38 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1>
+        <h2>
           {this.props.parentState.title}
-        </h1>
+        </h2>
         <div className='row'>
-          <div className='row'>
-            <div className='col s6 offset-s3'>
-              <input placeholder="Email" id="email" type="email" className="validate" onChange={this.handleEmailChange} />
-              <input placeholder="Password" id="password" type="password" className="validate" onChange={this.handlePasswordChange} />
-              {this.errorMessage()}
-              {
-                this.props.loginLoading ? 
-                  "Loading..." : 
-                  <a className="waves-effect waves-light btn" id="loginButton" onClick={this.performLogin} href="#!">
-                    <i className="material-icons left">cloud</i>Login
-                  </a>
-              }
+          <form id="login-form col s12">
+            <div className="row">
+              <div className='col s8 offset-s2 login-credentials-div'>
+                {/* Put placeholder if you remove <label> tag */}
+                <div className="input-field">
+                  <label className="active" htmlFor="email">Email</label>
+                  <input id="email" type="email" className="validate login-form-styling" onChange={this.handleEmailChange} />
+                </div>
+                <div className="input-field">
+                  <label className="active" htmlFor="password">Password</label>
+                  <input id="password" type="password" className="validate login-form-styling" onChange={this.handlePasswordChange} />
+                </div>
+                {this.errorMessage()}
+              </div>
+              <div className='button-container'>
+                {
+                  this.props.loginLoading ?
+                    <LoadingComponent /> :
+                    <button className="col s8 offset-s2 btn waves-effect waves-light login-button" id="login-button" onClick={this.performLogin}>Login</button>
+                }
+              </div>
             </div>
-          </div>
+          </form>
+        </div>
+        <div className="dev-message">
+          <p className="center-align">
+            Developed by Deakin Launchpad
+          </p>
         </div>
       </div>
     );
@@ -103,7 +122,8 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     dispatchLogin  : (data) => dispatch(requestLogin(data)),
-    dispatchDeveloperModeLogin : () => dispatch(developerModeLogin())
+    dispatchDeveloperModeLogin : () => dispatch(developerModeLogin()),
+    dispatchReduxNotifySetAccessTokenInLocalStorage : () => dispatch(reduxNotifySetAccessTokenInLocalStorage()),
   }
 }
 
