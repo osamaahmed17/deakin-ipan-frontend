@@ -4,6 +4,7 @@ import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { Link } from 'react-router-dom'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
+import track from 'react-tracking'
 var _ = require('underscore')
 
 class UserTask extends Component {
@@ -191,4 +192,8 @@ class UserTask extends Component {
   }
 }
 
-export default UserTask;
+export default track((props) => {
+  return {
+    url: window.location.pathname
+  }
+})(UserTask);
