@@ -29,10 +29,6 @@ class ProgramCard extends Component {
 
 export default track((props) => {
   return {
-    url: window.location.pathname,
-    misc: [{
-      key: "PROGRAM_ID",
-      value: props.data.id
-    }]
+    url: window.location.pathname
   }
 })(ProgramCard);

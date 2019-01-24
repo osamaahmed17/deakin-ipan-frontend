@@ -61,10 +61,6 @@ class ModuleCard extends Component {
 
 export default track((props) => {
   return {
-    url: window.location.pathname,
-    misc: [{
-      key: "MODULE_ID",
-      value: props.data.id
-    }]
+    url: window.location.pathname
   }
 })(ModuleCard);

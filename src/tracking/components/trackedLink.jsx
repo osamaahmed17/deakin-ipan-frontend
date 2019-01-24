@@ -5,7 +5,7 @@ import { E } from 'tracking/tracking.js'
 
 class TrackedLink extends Component {
   trackClick = () => {
-    this.props.tracking.trackEvent({ event: E.T_UI_CLICK })
+    this.props.tracking.trackEvent({ event: E.T_UI_CLICK, misc: [{key: "LINK", value: this.props.to}] })
     if (this.props.onClick) {
       this.props.onClick(); // Call the function passed from parent
     }

@@ -3,6 +3,7 @@ import Section from 'components/section.jsx'
 import API from 'helpers/api.js'
 import LoadingComponent from 'components/loading/loading'
 import { CONSTANTS } from 'helpers/urlConstants.js'
+import track from 'react-tracking'
 import { Link } from 'react-router-dom'
 
 class UserActivity extends Component {
@@ -70,4 +71,8 @@ class UserActivity extends Component {
   }
 }
 
-export default UserActivity;
+export default track((props) => {
+  return {
+    url: window.location.pathname
+  }
+})(UserActivity);

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import M from "materialize-css";
-import { Link } from 'react-router-dom'
 import { CONSTANTS } from 'helpers/urlConstants.js'
 import { replacePlaceHolder } from 'helpers/urlHelper.js'
+import track from 'react-tracking'
+import TrackedLink from 'tracking/components/trackedLink.jsx'
 var _ = require('underscore')
 
 class Collapsible extends Component {
@@ -39,9 +40,9 @@ class Collapsible extends Component {
                     </label>
                   </span>
                   <span className="col s4 right-align">
-                    <Link to={this.checkContentType(this.props.contentType, items.id)} id={"start-" + this.props.contentType + items.id} className={"start-" + this.props.contentType + items.id}>
+                    <TrackedLink to={this.checkContentType(this.props.contentType, items.id)} id={"start-" + this.props.contentType + items.id} className={"start-" + this.props.contentType + items.id}>
                       Start <i className="material-icons">chevron_right</i>
-                    </Link>
+                    </TrackedLink>
                   </span>
                 </div>
               )
@@ -56,4 +57,8 @@ class Collapsible extends Component {
   }
 }
 
-export default Collapsible;
+export default track((props) => {
+  return {
+    url: window.location.pathname
+  }
+})(Collapsible);
